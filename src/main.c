@@ -5,16 +5,18 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/27 19:35:04 by jaehyuki          #+#    #+#             */
-/*   Updated: 2022/12/27 19:35:24 by jaehyuki         ###   ########.fr       */
+/*   Created: 2023/01/02 20:04:49 by jaehyuki          #+#    #+#             */
+/*   Updated: 2023/01/02 20:32:54 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "minirt.h"
 
-int	main(void)
+int main(int argc, char **argv)
 {
-	printf("Done!\n");
+	t_scene *scene;
+	
+	scene = parse_arg(argc, argv);
 
 	return (0);
 }

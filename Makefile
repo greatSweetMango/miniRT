@@ -6,7 +6,7 @@
 #    By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/14 16:46:22 by jaehyuki          #+#    #+#              #
-#    Updated: 2022/12/27 20:13:33 by jaehyuki         ###   ########.fr        #
+#    Updated: 2023/01/02 20:07:10 by jaehyuki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,14 +27,15 @@ LIBFT		=	./libft/libft.a
 MLX			=	./mlx/libmlx.a
 
 ##########BONUS##############
-MAIN = main.c #??
+MAIN = src/main.c #??
 
 ifdef bonus
 	MAIN = main_bonus.c
 endif
 ##############################
 
-SRCS		=	$(MAIN)	
+SRCS		=	$(MAIN)		\
+				src/parse_arg.c
 
 OBJS		=	$(addprefix $(OUTDIR),$(SRCS:%.c=%.o))
 DEPS		=	$(addprefix $(OUTDIR),$(SRCS:%.c=%.d))
