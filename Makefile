@@ -6,14 +6,14 @@
 #    By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/14 16:46:22 by jaehyuki          #+#    #+#              #
-#    Updated: 2023/01/02 20:07:10 by jaehyuki         ###   ########.fr        #
+#    Updated: 2023/01/05 17:40:28 by jaehyuki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 .DEFAULT_GOAL = all
 
 NAME		=	minirt
-CFLAGS		=	-Wall -Werror -Wextra -MMD -MP
+CFLAGS		=	-Wall -Werror -Wextra -MMD -MP -g
 CPPFLAGS	=	-I./include -I./libft -I./mlx
 LDFLAGS		=	-L./libft -L./mlx
 LDLIBS		=	-lft -lmlx
@@ -27,15 +27,19 @@ LIBFT		=	./libft/libft.a
 MLX			=	./mlx/libmlx.a
 
 ##########BONUS##############
-MAIN = src/main.c #??
+MAIN = src/test.c #??
 
 ifdef bonus
 	MAIN = main_bonus.c
 endif
 ##############################
 
-SRCS		=	$(MAIN)		\
-				src/parse_arg.c
+SRCS		=	$(MAIN)					\
+				src/error.c				\
+				src/get_rgb.C			\
+				src/parse_arg.c			\
+				src/set_scene.c			\
+				src/functions/ft_atod.c
 
 OBJS		=	$(addprefix $(OUTDIR),$(SRCS:%.c=%.o))
 DEPS		=	$(addprefix $(OUTDIR),$(SRCS:%.c=%.d))

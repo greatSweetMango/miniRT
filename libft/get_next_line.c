@@ -6,7 +6,7 @@
 /*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 16:54:32 by jaehyuki          #+#    #+#             */
-/*   Updated: 2022/11/14 16:54:32 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/01/04 19:46:32 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,5 +120,5 @@ int	get_next_line(int fd, char **rv_line)
 	*rv_line = line;
 	if (!(*rv_line))
 		return (0);
-	return (1);
+	return (ft_strlen_g(*rv_line, '\0'));
 }
