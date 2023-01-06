@@ -6,7 +6,7 @@
 /*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:53:28 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/01/04 19:51:15 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/01/06 21:39:30 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,3 +17,5 @@
 #define STDERR	2
 
 #define WHITE_SPACE	"\n\t\v\f\r "
+
+#define RGB_MAX 255

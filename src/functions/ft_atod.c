@@ -6,7 +6,7 @@
 /*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 20:40:16 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/01/05 17:38:44 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/01/06 21:19:34 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ void	init_vars(double *dnum, int *sign, int *i, char *str)
 	if (str[0] == '-')
 	{
 		*sign = -1;
-		*i = 1;
+		*i = 0;
 	}
 	else
 	{
 		*sign = 1;
-		*i = 0;
+		*i = -1;
 	}
 }
 
@@ -36,13 +36,13 @@ double	ft_atod(char *str)
 
 	rv = 0;
 	init_vars (&dnum, &sign, &i, str);
-	while (str[i])
+	while (str[++i])
 	{
 		if (ft_isdigit(str[i]))
 		{
 			if (dnum == 10)
 				rv = (rv * dnum) + ((str[i] - '0') * sign);
-			else if (dnum == 0.1)
+			else
 			{
 				rv += (str[i] - '0') * dnum * sign;
 				dnum *= 0.1;
@@ -51,7 +51,7 @@ double	ft_atod(char *str)
 		else if (str[i] == '.' && dnum == 10)
 			dnum = 0.1;
 		else
-			puterr_exit("Parsing fail! (object's property is wrong)");		
+			puterr_exit("Parsing fail! (object's property is wrong)");
 	}
 	return (rv);
 }

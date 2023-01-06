@@ -6,7 +6,7 @@
 /*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:52:47 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/01/04 20:22:24 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/01/06 21:26:10 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ typedef struct s_camera
 {
 	t_vec3	pos;
 	t_vec3	orientation;
-	t_vec3	fov;
+	double	fov;
 }	t_camera;
 
 typedef struct s_light
@@ -57,7 +57,7 @@ typedef struct s_light
 }	t_light;
 
 typedef struct s_sphere
-{
+{ 
 	t_vec3	pos;
 	double	diameter;
 	t_rgb	color;
@@ -77,7 +77,7 @@ typedef struct t_cylinder
 	double	diameter;
 	double	height;
 	t_rgb	color;
-}	t_sylinder;
+}	t_cylinder;
 
 typedef struct s_scene
 {
@@ -86,7 +86,5 @@ typedef struct s_scene
 	t_list				*lights;
 	t_list				*spheres;
 	t_list				*planes;
-	t_list				*squares;
 	t_list				*cylinders;
-	t_list				*triangles;
 }	t_scene;
