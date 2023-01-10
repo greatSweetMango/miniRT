@@ -6,7 +6,7 @@
 #    By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/14 16:46:22 by jaehyuki          #+#    #+#              #
-#    Updated: 2023/01/06 20:42:47 by jaehyuki         ###   ########.fr        #
+#    Updated: 2023/01/10 20:29:17 by jaehyuki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,10 +35,12 @@ endif
 ##############################
 
 SRCS		=	$(MAIN)							\
+				src/draw_scene.c				\
 				src/error.c						\
 				src/parse_arg.c					\
-				src/set_scene.c					\
+				src/push_keys.c					\
 				src/set_scene_util.c			\
+				src/set_scene.c					\
 				src/functions/ft_ato_rgb.c		\
 				src/functions/ft_ato_vec3.c		\
 				src/functions/ft_atod.c			\

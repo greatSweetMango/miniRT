@@ -6,7 +6,7 @@
 /*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 20:04:49 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/01/06 21:41:54 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/01/10 21:02:27 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,11 +118,33 @@ void	print_all_objects_test(t_scene *scene)
 	printf("\n-END-\n");
 }//테스트코드
 
+int	close_scene(t_scene *scene)
+{
+	mlx_destroy_window(scene->mlx, scene->win);
+	exit(0);
+}
+
+void	init_img(t_scene *scene)
+{
+	t_img	img;
+
+	img.img_ptr = mlx_new_image(scene->mlx, WIN_WIDTH, WIN_HEIGHT);
+	img.data = (int *)mlx_get_data_addr(img.img_ptr, &img.bpp, &img.size_l, &img.endian);
+	scene->img = img;
+}
+
 int main(int argc, char **argv)
 {
 	t_scene *scene;
 	
 	scene = parse_arg(argc, argv);
-	print_all_objects_test(scene);
+	print_all_objects_test(scene); //테스트 코드
+	scene->mlx = mlx_init();
+	scene->win = mlx_new_window(scene->mlx, WIN_WIDTH, WIN_HEIGHT, "miniRT");
+	init_img(scene);
+	mlx_hook(scene->win, 2, 0, push_keys, scene);
+	mlx_hook(scene->win, 17, 0, close_scene, scene);
+	draw_scene(scene);
+	mlx_loop(scene->mlx);
 	exit(0);
 }

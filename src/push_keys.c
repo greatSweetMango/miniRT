@@ -1,30 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   defines.h                                          :+:      :+:    :+:   */
+/*   push_keys.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/02 19:53:28 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/01/10 20:57:03 by jaehyuki         ###   ########.fr       */
+/*   Created: 2023/01/10 20:00:19 by jaehyuki          #+#    #+#             */
+/*   Updated: 2023/01/10 21:02:02 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#include "minirt.h"
 
-/* File descripter */
-#define STDIN	0
-#define STDOUT	1
-#define STDERR	2
-
-#define WHITE_SPACE	"\n\t\v\f\r "
-
-/* COLOR */
-#define RGB_MAX 255
-
-/* Image info */
-#define WIN_WIDTH	700
-#define WIN_HEIGHT	700
-
-/* Key value */
-# define KEY_ESC 53
+int	push_keys(int keycode, t_scene *scene)
+{
+	(void)scene;
+	if (keycode == KEY_ESC)
+		close_scene(scene);
+	//키값 입력에 따른 값 변동 및 drawscreen 추가 필요
+	return (0);
+}

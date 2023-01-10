@@ -6,7 +6,7 @@
 /*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:52:47 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/01/06 21:26:10 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/01/10 20:30:55 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,22 @@ typedef struct t_cylinder
 	t_rgb	color;
 }	t_cylinder;
 
+/* Main Structs */
+
+typedef struct    s_img
+{
+    void	*img_ptr;
+    int		*data;
+    int		size_l;
+    int		bpp;
+    int		endian;
+}	t_img;
+
 typedef struct s_scene
 {
+	void	*mlx;
+	void	*win;
+	t_img	img;
 	t_ambient_lightning	ambient_lightning;
 	t_list				*cameras;
 	t_list				*lights;

@@ -6,7 +6,7 @@
 /*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:59:09 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/01/06 21:23:04 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/01/10 20:57:43 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,23 @@ void	ft_split_free(char **str_arr);
 
 /* SOURCE CODES */
 
+// draw_scene.c
+void	put_scene_to_img(t_scene *scene, t_img *img);
+void	draw_scene(t_scene *scene);
+
 // error.c
 void	puterr_exit(char *str);
+
+// main.c
+int		close_scene(t_scene *scene);
+void	init_img(t_scene *scene);
 
 // parse_arg.c
 void		put2scene(t_scene *scene, char *line);
 t_scene		*parse_arg(int argc, char **argv);
+
+// push_keys.c
+int	push_keys(int keycode, t_scene *scene);
 
 // set_scene.c
 void	set_scene(t_scene *scene, char **object);
