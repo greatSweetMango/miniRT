@@ -6,7 +6,7 @@
 #    By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/14 16:46:22 by jaehyuki          #+#    #+#              #
-#    Updated: 2023/01/18 19:45:51 by jaehyuki         ###   ########.fr        #
+#    Updated: 2023/01/18 20:01:40 by jaehyuki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,8 +46,12 @@ SRCS		=	$(MAIN)							\
 				src/functions/ft_atod.c			\
 				src/functions/ft_lst.c			\
 				src/functions/ft_rgb_to_i.c		\
-				src/functions/ft_split_free.c
-
+				src/functions/ft_split_free.c	\
+				src/operators/vec3_div.c		\
+				src/operators/vec3_minus.c		\
+				src/operators/vec3_multi.c		\
+				src/operators/vec3_plus.c		
+				
 OBJS		=	$(addprefix $(OUTDIR),$(SRCS:%.c=%.o))
 DEPS		=	$(addprefix $(OUTDIR),$(SRCS:%.c=%.d))
 -include $(DEPS)

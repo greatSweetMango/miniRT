@@ -6,7 +6,7 @@
 /*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:59:09 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/01/18 19:48:16 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/01/18 20:04:36 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,28 @@ int	ft_rgb_to_i(t_rgb rgb);
 
 //ft_split_free.c
 void	ft_split_free(char **str_arr);
+
+/* OPERATORS */
+
+// vec3_div.c
+t_vec3	v3_div_v3(t_vec3 v1, t_vec3 v2);
+t_vec3	v3_div_ds(t_vec3 v1, double x, double y, double z);
+t_vec3	v3_div_d(t_vec3 v1, double d);
+
+// vec3_minus.c
+t_vec3	v3_minus_v(t_vec3 v1, t_vec3 v2);
+t_vec3	v3_minus_ds(t_vec3 v1, double x, double y, double z);
+t_vec3	v3_minus_d(t_vec3 v1, double d);
+
+// vec3_multi.c
+t_vec3	v3_mul_v3(t_vec3 v1, t_vec3 v2);
+t_vec3	v3_mul_ds(t_vec3 v1, double x, double y, double z);
+t_vec3	v3_mul_d(t_vec3 v1, double d);
+
+//vec3_plus.c
+t_vec3	v3_plus_v3(t_vec3 v1, t_vec3 v2);
+t_vec3	v3_plus_ds(t_vec3 v1, double x, double y, double z);
+t_vec3	v3_plus_d(t_vec3 v1, double d);
 
 /* SOURCE CODES */
 
