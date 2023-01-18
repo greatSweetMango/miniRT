@@ -6,7 +6,7 @@
 #    By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/14 16:46:22 by jaehyuki          #+#    #+#              #
-#    Updated: 2023/01/10 20:29:17 by jaehyuki         ###   ########.fr        #
+#    Updated: 2023/01/18 19:45:51 by jaehyuki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,6 +45,7 @@ SRCS		=	$(MAIN)							\
 				src/functions/ft_ato_vec3.c		\
 				src/functions/ft_atod.c			\
 				src/functions/ft_lst.c			\
+				src/functions/ft_rgb_to_i.c		\
 				src/functions/ft_split_free.c
 
 OBJS		=	$(addprefix $(OUTDIR),$(SRCS:%.c=%.o))

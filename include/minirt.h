@@ -6,7 +6,7 @@
 /*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:59:09 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/01/10 20:57:43 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/01/18 19:48:16 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,9 @@ double	ft_atod(char *str);
 t_list	*ft_lstlast(t_list *lst);
 void	ft_lstadd_back(t_list **lst, t_list *new);
 t_list	*ft_lstnew(void	*content);
+
+// ft_rgb_to_i.c
+int	ft_rgb_to_i(t_rgb rgb);
 
 //ft_split_free.c
 void	ft_split_free(char **str_arr);
