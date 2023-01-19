@@ -6,7 +6,7 @@
 /*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 20:19:16 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/01/06 21:21:16 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/01/19 20:15:46 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	set_spheres(t_scene *scene, char **object)
 	sphere->pos = ft_ato_vec3(object[1]);
 	sphere->diameter = ft_atod(object[2]);
 	sphere->color = ft_ato_rgb(object[3]);
-	ft_lstadd_back(&(scene->spheres), ft_lstnew(sphere));
+	ft_lstadd_back(&(scene->spheres), ft_lstnew(sphere, SPHERE));
 }
 
 void	set_lights(t_scene *scene, char **object)
@@ -39,7 +39,7 @@ void	set_lights(t_scene *scene, char **object)
 	light->pos = ft_ato_vec3(object[1]);
 	light->ratio = ft_atod(object[2]);
 	light->color = ft_ato_rgb(object[3]);
-	ft_lstadd_back(&(scene->lights), ft_lstnew(light));
+	ft_lstadd_back(&(scene->lights), ft_lstnew(light, LIGHT));
 }
 
 void	set_cameras(t_scene *scene, char **object)
@@ -54,7 +54,7 @@ void	set_cameras(t_scene *scene, char **object)
 	camera->pos = ft_ato_vec3(object[1]);
 	camera->orientation = ft_ato_vec3(object[2]);
 	camera->fov = ft_atod(object[3]);
-	ft_lstadd_back(&(scene->cameras), ft_lstnew(camera));
+	ft_lstadd_back(&(scene->cameras), ft_lstnew(camera, CAMERA));
 }
 
 void	set_ambient_lightning(t_scene *scene, char **object)

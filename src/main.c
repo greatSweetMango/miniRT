@@ -6,7 +6,7 @@
 /*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 20:04:49 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/01/18 20:08:50 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/01/19 20:15:46 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,33 +133,34 @@ void	init_img(t_scene *scene)
 	scene->img = img;
 }
 
-int	main(void)
+int main(int argc, char **argv)
 {
-	t_vec3 v1;
-	t_vec3 v2;
+	t_scene *scene;
 	
-	v1.x = 1.5;
-	v1.y = 1.5;
-	v1.z = 1.5;
-
-	v2 = v1;
-	v1 = v3_div_d(v1, 0);
-	printf("%f %f %f\n", v1.x, v1.y, v1.z);
-	return (0);
+	scene = parse_arg(argc, argv);
+	print_all_objects_test(scene); //테스트 코드
+	scene->mlx = mlx_init();
+	scene->win = mlx_new_window(scene->mlx, WIN_WIDTH + CONSOLE_WIDTH, WIN_HEIGHT, "miniRT");
+	init_img(scene);
+	mlx_hook(scene->win, 2, 0, push_keys, scene);
+	mlx_hook(scene->win, 17, 0, close_scene, scene);
+	mlx_mouse_hook(scene->win, mouse_button, NULL);
+	draw_scene(scene);
+	mlx_loop(scene->mlx);
+	exit(0);
 }
 
-// int main(int argc, char **argv)
+// int	main(void)
 // {
-// 	t_scene *scene;
+// 	t_vec3 v1;
+// 	t_vec3 v2;
 	
-// 	scene = parse_arg(argc, argv);
-// 	print_all_objects_test(scene); //테스트 코드
-// 	scene->mlx = mlx_init();
-// 	scene->win = mlx_new_window(scene->mlx, WIN_WIDTH, WIN_HEIGHT, "miniRT");
-// 	init_img(scene);
-// 	mlx_hook(scene->win, 2, 0, push_keys, scene);
-// 	mlx_hook(scene->win, 17, 0, close_scene, scene);
-// 	draw_scene(scene);
-// 	mlx_loop(scene->mlx);
-// 	exit(0);
+// 	v1.x = 1.5;
+// 	v1.y = 1.5;
+// 	v1.z = 1.5;
+
+// 	v2 = v1;
+// 	v1 = v3_div_d(v1, 0);
+// 	printf("%f %f %f\n", v1.x, v1.y, v1.z);
+// 	return (0);
 // }

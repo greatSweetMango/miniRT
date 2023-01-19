@@ -6,7 +6,7 @@
 #    By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/14 16:46:22 by jaehyuki          #+#    #+#              #
-#    Updated: 2023/01/18 20:01:40 by jaehyuki         ###   ########.fr        #
+#    Updated: 2023/01/19 20:15:46 by jaehyuki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,7 +50,8 @@ SRCS		=	$(MAIN)							\
 				src/operators/vec3_div.c		\
 				src/operators/vec3_minus.c		\
 				src/operators/vec3_multi.c		\
-				src/operators/vec3_plus.c		
+				src/operators/vec3_plus.c		\
+				src/key_hooks/mouse_button.c
 				
 OBJS		=	$(addprefix $(OUTDIR),$(SRCS:%.c=%.o))
 DEPS		=	$(addprefix $(OUTDIR),$(SRCS:%.c=%.d))

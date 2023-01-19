@@ -6,7 +6,7 @@
 /*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:52:47 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/01/17 19:23:52 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/01/19 20:15:46 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct s_vec3
 
 typedef	struct s_list
 {
+	int				obj_type;
 	void			*content;
 	struct s_list	*pre;
 	struct s_list	*next;

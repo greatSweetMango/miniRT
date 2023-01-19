@@ -6,7 +6,7 @@
 /*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 20:19:16 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/01/06 21:18:22 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/01/19 20:15:46 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	set_cylinders(t_scene *scene, char **object)
 	cylinder->diameter = ft_atod(object[3]);
 	cylinder->height = ft_atod(object[4]);
 	cylinder->color = ft_ato_rgb(object[5]);
-	ft_lstadd_back(&(scene->cylinders), ft_lstnew(cylinder));
+	ft_lstadd_back(&(scene->cylinders), ft_lstnew(cylinder, CYLINDER));
 }
 
 void	set_planes(t_scene *scene, char **object)
@@ -42,5 +42,5 @@ void	set_planes(t_scene *scene, char **object)
 	plane->pos = ft_ato_vec3(object[1]);
 	plane->orientation = ft_ato_vec3(object[2]);
 	plane->color = ft_ato_rgb(object[3]);
-	ft_lstadd_back(&(scene->planes), ft_lstnew(plane));
+	ft_lstadd_back(&(scene->planes), ft_lstnew(plane, PLANE));
 }

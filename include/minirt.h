@@ -6,7 +6,7 @@
 /*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:59:09 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/01/18 20:04:36 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/01/19 20:10:23 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ double	ft_atod(char *str);
 // ft_lst.c
 t_list	*ft_lstlast(t_list *lst);
 void	ft_lstadd_back(t_list **lst, t_list *new);
-t_list	*ft_lstnew(void	*content);
+t_list	*ft_lstnew(void	*content, int obj_type);
 
 // ft_rgb_to_i.c
 int	ft_rgb_to_i(t_rgb rgb);
@@ -49,12 +49,22 @@ int	ft_rgb_to_i(t_rgb rgb);
 //ft_split_free.c
 void	ft_split_free(char **str_arr);
 
+/* KEY_HOOKS */
+
+// mouse_button.c
+int	mouse_button(int btn, int x, int y, void *param);
+
 /* OPERATORS */
 
+// vec3_cross_product.c
+t_vec3	v3_cross_product_v(t_vec3 v1, t_vec3 v2);
 // vec3_div.c
 t_vec3	v3_div_v3(t_vec3 v1, t_vec3 v2);
 t_vec3	v3_div_ds(t_vec3 v1, double x, double y, double z);
 t_vec3	v3_div_d(t_vec3 v1, double d);
+
+// double	v3_inner_product_v(t_vec3 v1, t_vec3 v2);
+// double	v3_inner_product_ds(t_vec3 v1, double x, double y, double z);
 
 // vec3_minus.c
 t_vec3	v3_minus_v(t_vec3 v1, t_vec3 v2);
