@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:52:47 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/01/19 20:15:46 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/01/25 18:05:03 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+// #pragma once
+#ifndef STRUCTS_H
+# define STRUCTS_H
 
 /* BASE */
 typedef struct s_rgb
@@ -27,7 +29,7 @@ typedef struct s_vec3
 	double	z;
 }	t_vec3;
 
-typedef	struct s_list
+typedef struct s_list
 {
 	int				obj_type;
 	void			*content;
@@ -58,7 +60,7 @@ typedef struct s_light
 }	t_light;
 
 typedef struct s_sphere
-{ 
+{
 	t_vec3	pos;
 	double	diameter;
 	t_rgb	color;
@@ -71,7 +73,7 @@ typedef struct s_plane
 	t_rgb	color;
 }	t_plane;
 
-typedef struct t_cylinder
+typedef struct s_cylinder
 {
 	t_vec3	pos;
 	t_vec3	orientation;
@@ -80,22 +82,31 @@ typedef struct t_cylinder
 	t_rgb	color;
 }	t_cylinder;
 
+typedef struct s_screen
+{
+	t_vec3	orient;
+	t_vec3	lowerleft;
+	t_vec3	upperright;
+	t_vec3	x_dir;
+	t_vec3	y_dir;
+}	t_screen;
+
 /* Main Structs */
 
-typedef struct    s_img
+typedef struct s_img
 {
-    void	*img_ptr;
-    int		*data;
-    int		size_l;
-    int		bpp;
-    int		endian;
+	void	*img_ptr;
+	int		*data;
+	int		size_l;
+	int		bpp;
+	int		endian;
 }	t_img;
 
 typedef struct s_scene
 {
-	void	*mlx;
-	void	*win;
-	t_img	img;
+	void				*mlx;
+	void				*win;
+	t_img				img;
 	t_ambient_lightning	ambient_lightning;
 	t_list				*cameras;
 	t_list				*lights;
@@ -103,3 +114,5 @@ typedef struct s_scene
 	t_list				*planes;
 	t_list				*cylinders;
 }	t_scene;
+
+#endif

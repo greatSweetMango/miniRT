@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:59:09 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/01/19 20:10:23 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/01/25 19:41:16 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#pragma	once
 
 /* STANDARD HEADER */
 #include <stdio.h>
@@ -58,13 +58,14 @@ int	mouse_button(int btn, int x, int y, void *param);
 
 // vec3_cross_product.c
 t_vec3	v3_cross_product_v(t_vec3 v1, t_vec3 v2);
+t_vec3	v3_cross_product_ds(t_vec3 v1, double x, double y, double z);
 // vec3_div.c
 t_vec3	v3_div_v3(t_vec3 v1, t_vec3 v2);
 t_vec3	v3_div_ds(t_vec3 v1, double x, double y, double z);
 t_vec3	v3_div_d(t_vec3 v1, double d);
-
-// double	v3_inner_product_v(t_vec3 v1, t_vec3 v2);
-// double	v3_inner_product_ds(t_vec3 v1, double x, double y, double z);
+// vec3_inner_product.c
+double	v3_inner_product_v(t_vec3 v1, t_vec3 v2);
+double	v3_inner_product_ds(t_vec3 v1, double x, double y, double z);
 
 // vec3_minus.c
 t_vec3	v3_minus_v(t_vec3 v1, t_vec3 v2);
@@ -81,11 +82,20 @@ t_vec3	v3_plus_v3(t_vec3 v1, t_vec3 v2);
 t_vec3	v3_plus_ds(t_vec3 v1, double x, double y, double z);
 t_vec3	v3_plus_d(t_vec3 v1, double d);
 
+//vec3_init.c
+t_vec3	v3_unit(t_vec3 v);
+double	l2norm(t_vec3 v);
+
 /* SOURCE CODES */
+
+// camera.c
+void	put_img(t_scene *scene, t_camera *camera, t_img *img);
+void	set_screen(t_screen *screen, t_camera *camera);
 
 // draw_scene.c
 void	put_scene_to_img(t_scene *scene, t_img *img);
 void	draw_scene(t_scene *scene);
+void	raytracing(t_scene *scnen, t_screen *screen, t_img *img);
 
 // error.c
 void	puterr_exit(char *str);

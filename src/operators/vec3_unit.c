@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vec3_cross_product.c                               :+:      :+:    :+:   */
+/*   vec3_unit.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/19 19:51:26 by gyim              #+#    #+#             */
-/*   Updated: 2023/01/25 17:04:23 by gyim             ###   ########seoul.kr  */
+/*   Created: 2023/01/19 19:44:45 by gyim              #+#    #+#             */
+/*   Updated: 2023/01/25 17:01:15 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_vec3	v3_cross_product_v(t_vec3 v1, t_vec3 v2)
+t_vec3	v3_unit(t_vec3 v)
 {
-	t_vec3	ret;
+	t_vec3	unit_vector;
+	double	norm;
 
-	ret.x = v1.y * v2.z - v1.z * v2.y;
-	ret.y = v1.x * v2.z - v1.z * v2.x;
-	ret.z = v1.x * v2.y - v1.y * v2.x;
-	return (ret);
+	norm = l2norm(v);
+	unit_vector = v3_div_d(v, norm);
+	return (unit_vector);
 }
 
-t_vec3	v3_cross_product_ds(t_vec3 v1, double x, double y, double z)
+double	l2norm(t_vec3	v)
 {
-	t_vec3	ret;
-
-	ret.x = v1.y * z - v1.z * y;
-	ret.y = v1.x * z - v1.z * x;
-	ret.z = v1.x * y - v1.y * x;
-	return (ret);
+	return (sqrt(v3_inner_product_v(v, v)));
 }

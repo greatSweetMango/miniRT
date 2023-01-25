@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 20:04:49 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/01/19 20:15:46 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/01/25 09:17:41 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,9 +133,9 @@ void	init_img(t_scene *scene)
 	scene->img = img;
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	t_scene *scene;
+	t_scene	*scene;
 	
 	scene = parse_arg(argc, argv);
 	print_all_objects_test(scene); //테스트 코드

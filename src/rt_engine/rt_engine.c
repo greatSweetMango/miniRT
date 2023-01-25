@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   rt_engine.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 18:43:16 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/01/17 19:33:40 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/01/25 19:42:53 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-int	rt_engine(t_scene *scene)
+int	rt_engine(t_scene *scnen)
 {
 	
 }
+

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+         #
+#    By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/14 16:46:22 by jaehyuki          #+#    #+#              #
-#    Updated: 2023/01/19 20:15:46 by jaehyuki         ###   ########.fr        #
+#    Updated: 2023/01/25 19:43:37 by gyim             ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,23 +34,28 @@ ifdef bonus
 endif
 ##############################
 
-SRCS		=	$(MAIN)							\
-				src/draw_scene.c				\
-				src/error.c						\
-				src/parse_arg.c					\
-				src/push_keys.c					\
-				src/set_scene_util.c			\
-				src/set_scene.c					\
-				src/functions/ft_ato_rgb.c		\
-				src/functions/ft_ato_vec3.c		\
-				src/functions/ft_atod.c			\
-				src/functions/ft_lst.c			\
-				src/functions/ft_rgb_to_i.c		\
-				src/functions/ft_split_free.c	\
-				src/operators/vec3_div.c		\
-				src/operators/vec3_minus.c		\
-				src/operators/vec3_multi.c		\
-				src/operators/vec3_plus.c		\
+SRCS		=	$(MAIN)								\
+				src/draw_scene.c					\
+				src/error.c							\
+				src/parse_arg.c						\
+				src/push_keys.c						\
+				src/set_scene_util.c				\
+				src/set_scene.c						\
+				src/ray.c							\
+				src/functions/ft_ato_rgb.c			\
+				src/functions/ft_ato_vec3.c			\
+				src/functions/ft_atod.c				\
+				src/functions/ft_lst.c				\
+				src/functions/ft_rgb_to_i.c			\
+				src/functions/ft_split_free.c		\
+				src/operators/vec3_cross_product.c	\
+				src/operators/vec3_div.c			\
+				src/operators/vec3_inner_product.c	\
+				src/operators/vec3_minus.c			\
+				src/operators/vec3_multi.c			\
+				src/operators/vec3_plus.c			\
+				src/operators/vec3_set.c			\
+				src/operators/vec3_unit.c			\
 				src/key_hooks/mouse_button.c
 				
 OBJS		=	$(addprefix $(OUTDIR),$(SRCS:%.c=%.o))
