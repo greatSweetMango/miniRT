@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 19:42:50 by gyim              #+#    #+#             */
-/*   Updated: 2023/01/25 19:43:08 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/01/26 07:44:39 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,3 +50,5 @@ void	raytracing(t_scene *scnen, t_screen *screen, t_img *img)
 		i--;
 	}	
 }
+
+int	check_object(t_t)
