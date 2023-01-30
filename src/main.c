@@ -6,7 +6,7 @@
 /*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 20:04:49 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/01/27 20:38:09 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/01/30 19:26:00 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,23 @@ void	print_all_objects_test(t_scene *scene)
 		cylinders_lst = cylinders_lst->next;
 	}
 	printf("\n-END-\n");
+	printf("<SCREEN>\norient: %f %f %f\nlowerleft: %f %f %f\nupperright: %f %f %f\nx_dir: %f %f %f\ny_dir: %f %f %f\n",
+		scene->screen.orient.x,
+		scene->screen.orient.y,
+		scene->screen.orient.z,
+		scene->screen.lowerleft.x,
+		scene->screen.lowerleft.y,
+		scene->screen.lowerleft.z,
+		scene->screen.upperright.x,
+		scene->screen.upperright.y,
+		scene->screen.upperright.z,
+		scene->screen.x_dir.x,
+		scene->screen.x_dir.y,
+		scene->screen.x_dir.z,
+		scene->screen.y_dir.x,
+		scene->screen.y_dir.y,
+		scene->screen.y_dir.z
+		);
 }//테스트코드
 
 int	close_scene(t_scene *scene)
@@ -139,7 +156,7 @@ int	main(int argc, char **argv)
 	
 	scene = parse_arg(argc, argv);
 	nomalize_camera(scene);
-	print_all_objects_test(scene); //테스트 코드
+	// print_all_objects_test(scene); //테스트 코드
 	scene->mlx = mlx_init();
 	scene->win = mlx_new_window(scene->mlx, WIN_WIDTH + CONSOLE_WIDTH, WIN_HEIGHT, "miniRT");
 	init_img(scene);
