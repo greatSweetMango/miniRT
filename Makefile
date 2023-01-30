@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+         #
+#    By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/14 16:46:22 by jaehyuki          #+#    #+#              #
-#    Updated: 2023/01/25 19:43:37 by gyim             ###   ########seoul.kr   #
+#    Updated: 2023/01/27 20:17:10 by jaehyuki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,29 +34,30 @@ ifdef bonus
 endif
 ##############################
 
-SRCS		=	$(MAIN)								\
-				src/draw_scene.c					\
-				src/error.c							\
-				src/parse_arg.c						\
-				src/push_keys.c						\
-				src/set_scene_util.c				\
-				src/set_scene.c						\
-				src/ray.c							\
-				src/functions/ft_ato_rgb.c			\
-				src/functions/ft_ato_vec3.c			\
-				src/functions/ft_atod.c				\
-				src/functions/ft_lst.c				\
-				src/functions/ft_rgb_to_i.c			\
-				src/functions/ft_split_free.c		\
-				src/operators/vec3_cross_product.c	\
-				src/operators/vec3_div.c			\
-				src/operators/vec3_inner_product.c	\
-				src/operators/vec3_minus.c			\
-				src/operators/vec3_multi.c			\
-				src/operators/vec3_plus.c			\
-				src/operators/vec3_set.c			\
-				src/operators/vec3_unit.c			\
-				src/key_hooks/mouse_button.c
+SRCS		=	$(MAIN)										\
+				src/draw_scene.c							\
+				src/error.c									\
+				src/key_hooks/mouse_button.c				\
+				src/key_hooks/push_keys.c					\
+				src/functions/ft_ato_rgb.c					\
+				src/functions/ft_ato_vec3.c					\
+				src/functions/ft_atod.c						\
+				src/functions/ft_lst.c						\
+				src/functions/ft_rgb_to_i.c					\
+				src/functions/ft_split_free.c				\
+				src/nomalization/nomalize_camera_utils.c	\
+				src/nomalization/nomalize_camera.c			\
+				src/operators/vec3_cross_product.c			\
+				src/operators/vec3_div.c					\
+				src/operators/vec3_inner_product.c			\
+				src/operators/vec3_minus.c					\
+				src/operators/vec3_multi.c					\
+				src/operators/vec3_plus.c					\
+				src/operators/vec3_set.c					\
+				src/operators/vec3_unit.c					\
+				src/parse_scene/parse_arg.c					\
+				src/parse_scene/set_scene_util.c			\
+				src/parse_scene/set_scene.c
 				
 OBJS		=	$(addprefix $(OUTDIR),$(SRCS:%.c=%.o))
 DEPS		=	$(addprefix $(OUTDIR),$(SRCS:%.c=%.d))

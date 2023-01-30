@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 20:04:49 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/01/25 09:17:41 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/01/27 20:38:09 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,6 +138,7 @@ int	main(int argc, char **argv)
 	t_scene	*scene;
 	
 	scene = parse_arg(argc, argv);
+	nomalize_camera(scene);
 	print_all_objects_test(scene); //테스트 코드
 	scene->mlx = mlx_init();
 	scene->win = mlx_new_window(scene->mlx, WIN_WIDTH + CONSOLE_WIDTH, WIN_HEIGHT, "miniRT");

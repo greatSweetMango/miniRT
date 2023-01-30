@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:59:09 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/01/25 19:41:16 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/01/27 20:16:22 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 #include "defines.h"
 #include "structs.h"
 
-/* FUNCTIONS */
+/* FUNCTIONS *////////////////////////////////////////////
 
 // ft_ato_rgb.c
 t_rgb	ft_ato_rgb(char *str);
@@ -49,26 +49,42 @@ int	ft_rgb_to_i(t_rgb rgb);
 //ft_split_free.c
 void	ft_split_free(char **str_arr);
 
-/* KEY_HOOKS */
+/* KEY_HOOKS *///////////////////////////////////////////////////////
 
 // mouse_button.c
 int	mouse_button(int btn, int x, int y, void *param);
 
-/* OPERATORS */
+// push_keys.c
+int	push_keys(int keycode, t_scene *scene);
+
+/* nomalizetion */////////////////////////////////////////////////
+
+//nomalize_camera_utils.c
+void	set_planes_pos(t_list *planes, t_camera *now_cam);
+void	set_cylinders_pos(t_list *cylinders, t_camera *now_cam);
+
+//nomalize_camera.c
+void		nomalize_camera(t_scene *scene);
+t_screen	get_screen(t_camera *camera);
+void		set_cameras_pos(t_list *cameras, t_camera *now_cam);
+void		set_lights_pos(t_list *lights, t_camera *now_cam);
+void		set_spheres_pos(t_list *spheres, t_camera *now_cam);
+
+/* OPERATORS *///////////////////////////////////////////////
 
 // vec3_cross_product.c
-t_vec3	v3_cross_product_v(t_vec3 v1, t_vec3 v2);
+t_vec3	v3_cross_product_v3(t_vec3 v1, t_vec3 v2);
 t_vec3	v3_cross_product_ds(t_vec3 v1, double x, double y, double z);
 // vec3_div.c
 t_vec3	v3_div_v3(t_vec3 v1, t_vec3 v2);
 t_vec3	v3_div_ds(t_vec3 v1, double x, double y, double z);
 t_vec3	v3_div_d(t_vec3 v1, double d);
 // vec3_inner_product.c
-double	v3_inner_product_v(t_vec3 v1, t_vec3 v2);
+double	v3_inner_product_v3(t_vec3 v1, t_vec3 v2);
 double	v3_inner_product_ds(t_vec3 v1, double x, double y, double z);
 
 // vec3_minus.c
-t_vec3	v3_minus_v(t_vec3 v1, t_vec3 v2);
+t_vec3	v3_minus_v3(t_vec3 v1, t_vec3 v2);
 t_vec3	v3_minus_ds(t_vec3 v1, double x, double y, double z);
 t_vec3	v3_minus_d(t_vec3 v1, double d);
 
@@ -86,7 +102,24 @@ t_vec3	v3_plus_d(t_vec3 v1, double d);
 t_vec3	v3_unit(t_vec3 v);
 double	l2norm(t_vec3 v);
 
-/* SOURCE CODES */
+/* PARSE SCENE *////////////////////////////////////////////
+
+// parse_arg.c
+void		put2scene(t_scene *scene, char *line);
+t_scene		*parse_arg(int argc, char **argv);
+
+// set_scene_util.c
+void	set_planes(t_scene *scene, char **object);
+void	set_cylinders(t_scene *scene, char **object);
+
+// set_scene.c
+void	set_scene(t_scene *scene, char **object);
+void	set_ambient_lightning(t_scene *scene, char **object);
+void	set_cameras(t_scene *scene, char **object);
+void	set_lights(t_scene *scene, char **object);
+void	set_spheres(t_scene *scene, char **object);
+
+/* SOURCE CODES *////////////////////////////////////////////////
 
 // camera.c
 void	put_img(t_scene *scene, t_camera *camera, t_img *img);
@@ -104,20 +137,5 @@ void	puterr_exit(char *str);
 int		close_scene(t_scene *scene);
 void	init_img(t_scene *scene);
 
-// parse_arg.c
-void		put2scene(t_scene *scene, char *line);
-t_scene		*parse_arg(int argc, char **argv);
-
 // push_keys.c
 int	push_keys(int keycode, t_scene *scene);
-
-// set_scene.c
-void	set_scene(t_scene *scene, char **object);
-void	set_ambient_lightning(t_scene *scene, char **object);
-void	set_cameras(t_scene *scene, char **object);
-void	set_lights(t_scene *scene, char **object);
-void	set_spheres(t_scene *scene, char **object);
-
-// set_scene_util.c
-void	set_planes(t_scene *scene, char **object);
-void	set_cylinders(t_scene *scene, char **object);

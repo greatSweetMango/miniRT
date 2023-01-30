@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:52:47 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/01/25 18:05:03 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/01/27 18:46:20 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,7 @@ typedef struct s_scene
 	void				*win;
 	t_img				img;
 	t_ambient_lightning	ambient_lightning;
+	t_screen			screen;
 	t_list				*cameras;
 	t_list				*lights;
 	t_list				*spheres;

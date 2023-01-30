@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vec3_unit.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 19:44:45 by gyim              #+#    #+#             */
-/*   Updated: 2023/01/25 17:01:15 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/01/27 20:06:25 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_vec3	v3_unit(t_vec3 v)
 	return (unit_vector);
 }
 
-double	l2norm(t_vec3	v)
+double	l2norm(t_vec3 v)
 {
-	return (sqrt(v3_inner_product_v(v, v)));
+	return (sqrt(v3_inner_product_v3(v, v)));
 }

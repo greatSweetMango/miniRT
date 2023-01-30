@@ -6,13 +6,13 @@
 /*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 19:41:48 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/01/18 19:58:58 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/01/27 19:59:48 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_vec3	v3_minus_v(t_vec3 v1, t_vec3 v2)
+t_vec3	v3_minus_v3(t_vec3 v1, t_vec3 v2)
 {
 	v1.x -= v2.x;
 	v1.y -= v2.y;

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   vec3_cross_product.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 19:51:26 by gyim              #+#    #+#             */
-/*   Updated: 2023/01/25 17:04:23 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/01/27 20:01:30 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_vec3	v3_cross_product_v(t_vec3 v1, t_vec3 v2)
+t_vec3	v3_cross_product_v3(t_vec3 v1, t_vec3 v2)
 {
 	t_vec3	ret;
 
