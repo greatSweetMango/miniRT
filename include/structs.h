@@ -6,7 +6,7 @@
 /*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:52:47 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/01/27 18:46:20 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/01/30 20:10:11 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,7 @@ typedef struct s_scene
 	t_list				*spheres;
 	t_list				*planes;
 	t_list				*cylinders;
+	t_list				*selected_obj;
 }	t_scene;
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 20:24:04 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/01/27 18:25:14 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/01/30 19:51:33 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void	put_scene_to_img(t_scene *scene, t_img *img)
 	int	w;
 	int	h;
 	
-	t_rgb   rgb;
 	(void)scene;//////////////// 
 	h = 0;
 	while (h < WIN_HEIGHT)
@@ -25,10 +24,7 @@ void	put_scene_to_img(t_scene *scene, t_img *img)
 		w = 0; 
 		while (w < WIN_WIDTH)
 		{
-			rgb.r = (double)w / 255;
-			rgb.g = (double)h / 255;
-			rgb.b = 0.25;
-				img->data[h * WIN_WIDTH + w] = ft_rgb_to_i(rgb);//rt_engine(scene, int w, int h);
+			img->data[h * WIN_WIDTH + w] = h;//rt_engine(scene, int w, int h);
 			w++;
 		}
 		h++;

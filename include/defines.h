@@ -6,7 +6,7 @@
 /*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:53:28 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/01/19 20:15:46 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/01/30 20:29:56 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,23 @@
 #define CONSOLE_WIDTH	200
 
 /* Key value */
-#define KEY_ESC 53
+#define KEY_ESC		53
+
+#define KEY_A			0
+#define KEY_S			1
+#define KEY_D			2
+#define KEY_W			13
+#define	MOVE_RATIO		1
+
+#define KEY_LEFT	123 //Arrow Key
+#define KEY_RIGHT	124 //Arrow Key
+#define KEY_DOWN	125 //Arrow Key
+#define KEY_UP		126 //Arrow Key
+#define ROTATE_RATIO	3
+
+#define KEY_PREV	43	//(<)
+#define KEY_NEXT	47	//(>)
+#define KEY_SPACEBAR	49
 
 /* Object type */
 #define CAMERA		0

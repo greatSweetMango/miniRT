@@ -6,7 +6,7 @@
 /*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 19:31:15 by gyim              #+#    #+#             */
-/*   Updated: 2023/01/30 19:19:33 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/01/30 19:49:34 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	set_lights_pos(t_list *lights, t_camera *now_cam)
 
 void	set_cameras_pos(t_list *cameras, t_camera *now_cam)
 {
-	t_camera *cam;
+	t_camera	*cam;
 
 	cameras = ft_lstlast(cameras);
 	while (cameras)
@@ -55,12 +55,14 @@ void	set_cameras_pos(t_list *cameras, t_camera *now_cam)
 t_screen	get_screen(t_camera *camera)
 {
 	t_screen	screen;
-	
+
 	screen.orient = v3_unit(camera->orientation);
 	screen.x_dir = v3_cross_product_ds(screen.orient, 0, 1, 0);
 	screen.y_dir = v3_cross_product_v3(screen.x_dir, screen.orient);
-	screen.lowerleft = v3_minus_v3(screen.orient, v3_plus_v3(screen.x_dir, screen.y_dir));
-	screen.upperright = v3_plus_v3(screen.orient, v3_plus_v3(screen.x_dir, screen.y_dir));
+	screen.lowerleft = v3_minus_v3(screen.orient,
+			v3_plus_v3(screen.x_dir, screen.y_dir));
+	screen.upperright = v3_plus_v3(screen.orient,
+			v3_plus_v3(screen.x_dir, screen.y_dir));
 	return (screen);
 }
 

@@ -6,7 +6,7 @@
 /*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:59:09 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/01/27 20:16:22 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/01/30 20:52:28 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,18 @@ void	ft_split_free(char **str_arr);
 
 // mouse_button.c
 int	mouse_button(int btn, int x, int y, void *param);
+
+// move_camera.c
+void	move_camera(int keycode, t_scene *scene);
+
+// move_cylinder.c
+void	move_cylinder(int keycode, t_scene *scene);
+
+// move_plane.c
+void	move_plane(int keycode, t_scene *scene);
+
+// move_sphere.c
+void	move_sphere(int keycode, t_scene *scene);
 
 // push_keys.c
 int	push_keys(int keycode, t_scene *scene);

@@ -6,7 +6,7 @@
 /*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 21:21:27 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/01/06 21:25:18 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/01/30 20:58:01 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,6 @@ t_scene	*parse_arg(int argc, char **argv)
 		state = get_next_line(fd, &line);
 	}
 	close(fd);
+	scene->selected_obj = scene->cameras;
 	return (scene);
 }

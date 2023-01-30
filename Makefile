@@ -6,7 +6,7 @@
 #    By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/14 16:46:22 by jaehyuki          #+#    #+#              #
-#    Updated: 2023/01/27 20:17:10 by jaehyuki         ###   ########.fr        #
+#    Updated: 2023/01/30 20:52:02 by jaehyuki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,10 @@ SRCS		=	$(MAIN)										\
 				src/draw_scene.c							\
 				src/error.c									\
 				src/key_hooks/mouse_button.c				\
+				src/key_hooks/move_camera.c					\
+				src/key_hooks/move_cylinder.c				\
+				src/key_hooks/move_plane.c					\
+				src/key_hooks/move_sphere.c					\
 				src/key_hooks/push_keys.c					\
 				src/functions/ft_ato_rgb.c					\
 				src/functions/ft_ato_vec3.c					\
