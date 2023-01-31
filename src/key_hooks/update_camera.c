@@ -6,7 +6,7 @@
 /*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 20:18:26 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/01/31 19:10:36 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/01/31 20:15:12 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,12 @@ void	update_camera(int keycode, t_scene *scene)
 	t_camera	*camera;
 
 	camera = scene->selected_obj->content;
-	if (keycode == KEY_LEFT)
-		printf("*CAMERA KEY_LEFT\n");
-	else if (keycode == KEY_RIGHT)
-		printf("*CAMERA KEY_RIGHT\n");
-	else if (keycode == KEY_DOWN)
-		printf("*CAMERA KEY_DOWN\n");
-	else if (keycode == KEY_UP)
-		printf("*CAMERA KEY_UP\n");
+	if (keycode == KEY_LEFT || keycode == KEY_RIGHT
+		|| keycode == KEY_DOWN || keycode == KEY_UP)
+	{
+		printf("*CAMERA ");
+		rotate_obj(keycode, &camera->orientation);
+	}
 	else if (keycode == KEY_A || keycode == KEY_D
 				|| keycode == KEY_W || keycode == KEY_S
 				|| keycode == KEY_R || keycode == KEY_F)

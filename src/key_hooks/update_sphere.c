@@ -6,7 +6,7 @@
 /*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 18:25:12 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/01/31 19:04:47 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/01/31 20:11:33 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,7 @@ void	update_sphere(int keycode, t_scene *scene)
 	t_sphere	*sphere;
 
 	sphere = scene->selected_obj->content;
-	if (keycode == KEY_LEFT)
-		printf("*SPHERE KEY_LEFT\n");
-	else if (keycode == KEY_RIGHT)
-		printf("*SPHERE KEY_RIGHT\n");
-	else if (keycode == KEY_DOWN)
-		printf("*SPHERE KEY_DOWN\n");
-	else if (keycode == KEY_UP)
-		printf("*SPHERE KEY_UP\n");
-	else if (keycode == KEY_A || keycode == KEY_D
+	if (keycode == KEY_A || keycode == KEY_D
 				|| keycode == KEY_W || keycode == KEY_S
 				|| keycode == KEY_R || keycode == KEY_F)
 	{

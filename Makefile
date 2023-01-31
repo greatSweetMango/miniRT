@@ -6,7 +6,7 @@
 #    By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/14 16:46:22 by jaehyuki          #+#    #+#              #
-#    Updated: 2023/01/31 18:56:31 by jaehyuki         ###   ########.fr        #
+#    Updated: 2023/01/31 19:56:17 by jaehyuki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,11 +39,12 @@ SRCS		=	$(MAIN)										\
 				src/error.c									\
 				src/key_hooks/mouse_button.c				\
 				src/key_hooks/move_obj.c					\
+				src/key_hooks/push_keys.c					\
+				src/key_hooks/rotate_obj.c					\
 				src/key_hooks/update_camera.c				\
 				src/key_hooks/update_cylinder.c				\
 				src/key_hooks/update_plane.c				\
 				src/key_hooks/update_sphere.c				\
-				src/key_hooks/push_keys.c					\
 				src/functions/ft_ato_rgb.c					\
 				src/functions/ft_ato_vec3.c					\
 				src/functions/ft_atod.c						\

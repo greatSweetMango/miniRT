@@ -6,7 +6,7 @@
 /*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 18:30:05 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/01/31 19:03:52 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/01/31 20:19:55 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,6 @@ void	move_obj(int keycode, t_vec3 *pos, t_screen screen)
 		*pos = v3_plus_v3(*pos, screen.y_dir);
 		printf("KEY_R\n");
 	}
+
+	printf("POS: %f %f %f\n", pos->x, pos->y, pos->z);
 }

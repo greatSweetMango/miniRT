@@ -6,7 +6,7 @@
 /*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:53:28 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/01/31 18:50:37 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/01/31 19:51:34 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #define STDERR	2
 
 #define WHITE_SPACE	"\n\t\v\f\r "
+#define PI			3.141592
 
 /* COLOR */
 #define RGB_MAX 255
@@ -42,7 +43,7 @@
 #define KEY_RIGHT	124 //Arrow Key
 #define KEY_DOWN	125 //Arrow Key
 #define KEY_UP		126 //Arrow Key
-#define ROTATE_RATIO	3
+#define ROTATE_RATIO	3 //degree
 
 #define KEY_PREV	43	//(<)
 #define KEY_NEXT	47	//(>)

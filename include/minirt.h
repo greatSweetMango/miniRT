@@ -6,7 +6,7 @@
 /*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:59:09 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/01/31 19:10:52 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/01/31 19:55:41 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,14 @@ int	mouse_button(int btn, int x, int y, void *param);
 // move_obj.c
 void	move_obj(int keycode, t_vec3 *pos, t_screen screen);
 
+// push_keys.c
+int	push_keys(int keycode, t_scene *scene);
+
+// rotate_boj.c
+void	rotate_obj(int keycode, t_vec3 *orientation);
+void	rotate_by_y_axis(t_vec3 *ori, double radian);
+void	rotate_by_x_axis(t_vec3 *ori, double radian);
+
 // update_camera.c
 void	update_camera(int keycode, t_scene *scene);
 void	switch_camera(int keycode, t_scene *scene);
@@ -69,9 +77,6 @@ void	update_plane(int keycode, t_scene *scene);
 
 // update_sphere.c
 void	update_sphere(int keycode, t_scene *scene);
-
-// push_keys.c
-int	push_keys(int keycode, t_scene *scene);
 
 /* nomalizetion */////////////////////////////////////////////////
 
