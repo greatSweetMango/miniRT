@@ -6,7 +6,7 @@
 /*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:59:09 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/01/31 19:55:41 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/01/31 20:25:01 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,10 +114,13 @@ t_vec3	v3_mul_v3(t_vec3 v1, t_vec3 v2);
 t_vec3	v3_mul_ds(t_vec3 v1, double x, double y, double z);
 t_vec3	v3_mul_d(t_vec3 v1, double d);
 
-//vec3_plus.c
+// vec3_plus.c
 t_vec3	v3_plus_v3(t_vec3 v1, t_vec3 v2);
 t_vec3	v3_plus_ds(t_vec3 v1, double x, double y, double z);
 t_vec3	v3_plus_d(t_vec3 v1, double d);
+
+// vec3_set.c
+void	v3_set(t_vec3 *v, double x, double y, double z);
 
 //vec3_init.c
 t_vec3	v3_unit(t_vec3 v);

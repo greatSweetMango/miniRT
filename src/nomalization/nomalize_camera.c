@@ -6,7 +6,7 @@
 /*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 19:31:15 by gyim              #+#    #+#             */
-/*   Updated: 2023/01/30 19:49:34 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/01/31 20:26:09 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,5 +76,6 @@ void	nomalize_camera(t_scene *scene)
 	set_spheres_pos(scene->spheres, now_cam);
 	set_planes_pos(scene->planes, now_cam);
 	set_cylinders_pos(scene->cylinders, now_cam);
+	v3_set(&now_cam->pos, 0, 0, 0);
 	scene->screen = get_screen(now_cam);
 }
