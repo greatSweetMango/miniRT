@@ -6,7 +6,7 @@
 /*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:53:28 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/01/30 20:29:56 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/01/31 18:50:37 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@
 #define KEY_S			1
 #define KEY_D			2
 #define KEY_W			13
+#define KEY_R			15
+#define KEY_F			3
 #define	MOVE_RATIO		1
 
 #define KEY_LEFT	123 //Arrow Key
