@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   update_camera.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 20:18:26 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/01/31 20:15:12 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/02/01 18:46:28 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	update_camera(int keycode, t_scene *scene)
 	{
 		printf("*CAMERA ");
 		move_obj(keycode, &camera->pos, scene->screen);
-		nomalize_camera(scene);
+		normalize_camera(scene);
 	}
 	else if (keycode == KEY_PREV || keycode == KEY_NEXT)
 	{

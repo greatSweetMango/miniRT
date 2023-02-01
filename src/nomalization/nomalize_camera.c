@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   nomalize_camera.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 19:31:15 by gyim              #+#    #+#             */
-/*   Updated: 2023/01/31 20:26:09 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/02/01 18:46:09 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,14 +59,16 @@ t_screen	get_screen(t_camera *camera)
 	screen.orient = v3_unit(camera->orientation);
 	screen.x_dir = v3_cross_product_ds(screen.orient, 0, 1, 0);
 	screen.y_dir = v3_cross_product_v3(screen.x_dir, screen.orient);
-	screen.lowerleft = v3_minus_v3(screen.orient,
-			v3_plus_v3(screen.x_dir, screen.y_dir));
-	screen.upperright = v3_plus_v3(screen.orient,
-			v3_plus_v3(screen.x_dir, screen.y_dir));
+	screen.x_dir = v3_unit(screen.x_dir);
+	screen.y_dir = v3_unit(screen.y_dir);
+	screen.upperleft = v3_minus_v3(screen.orient,
+			v3_minus_v3(screen.x_dir, screen.y_dir));
+	screen.lowerright = v3_plus_v3(screen.orient,
+			v3_minus_v3(screen.x_dir, screen.y_dir));
 	return (screen);
 }
 
-void	nomalize_camera(t_scene *scene)
+void	normalize_camera(t_scene *scene)
 {
 	t_camera	*now_cam;
 

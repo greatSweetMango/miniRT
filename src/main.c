@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 20:04:49 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/01/30 19:26:00 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/02/01 18:46:19 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,16 +116,16 @@ void	print_all_objects_test(t_scene *scene)
 		cylinders_lst = cylinders_lst->next;
 	}
 	printf("\n-END-\n");
-	printf("<SCREEN>\norient: %f %f %f\nlowerleft: %f %f %f\nupperright: %f %f %f\nx_dir: %f %f %f\ny_dir: %f %f %f\n",
+	printf("<SCREEN>\norient: %f %f %f\nupperleft: %f %f %f\nlowerright: %f %f %f\nx_dir: %f %f %f\ny_dir: %f %f %f\n",
 		scene->screen.orient.x,
 		scene->screen.orient.y,
 		scene->screen.orient.z,
-		scene->screen.lowerleft.x,
-		scene->screen.lowerleft.y,
-		scene->screen.lowerleft.z,
-		scene->screen.upperright.x,
-		scene->screen.upperright.y,
-		scene->screen.upperright.z,
+		scene->screen.upperleft.x,
+		scene->screen.upperleft.y,
+		scene->screen.upperleft.z,
+		scene->screen.lowerright.x,
+		scene->screen.lowerright.y,
+		scene->screen.lowerright.z,
 		scene->screen.x_dir.x,
 		scene->screen.x_dir.y,
 		scene->screen.x_dir.z,
@@ -155,7 +155,7 @@ int	main(int argc, char **argv)
 	t_scene	*scene;
 	
 	scene = parse_arg(argc, argv);
-	nomalize_camera(scene);
+	normalize_camera(scene);
 	// print_all_objects_test(scene); //테스트 코드
 	scene->mlx = mlx_init();
 	scene->win = mlx_new_window(scene->mlx, WIN_WIDTH + CONSOLE_WIDTH, WIN_HEIGHT, "miniRT");

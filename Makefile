@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+         #
+#    By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/14 16:46:22 by jaehyuki          #+#    #+#              #
-#    Updated: 2023/01/31 19:56:17 by jaehyuki         ###   ########.fr        #
+#    Updated: 2023/02/01 18:43:14 by gyim             ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,7 +63,9 @@ SRCS		=	$(MAIN)										\
 				src/operators/vec3_unit.c					\
 				src/parse_scene/parse_arg.c					\
 				src/parse_scene/set_scene_util.c			\
-				src/parse_scene/set_scene.c
+				src/parse_scene/set_scene.c					\
+				src/rt_engine/ray.c							\
+				src/rt_engine/rt_engine.c
 				
 OBJS		=	$(addprefix $(OUTDIR),$(SRCS:%.c=%.o))
 DEPS		=	$(addprefix $(OUTDIR),$(SRCS:%.c=%.d))

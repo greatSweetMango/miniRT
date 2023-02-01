@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:59:09 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/01/31 20:25:01 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/02/01 18:46:01 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,9 @@ void	move_obj(int keycode, t_vec3 *pos, t_screen screen);
 // push_keys.c
 int	push_keys(int keycode, t_scene *scene);
 
+// push_keys.c
+int	push_keys(int keycode, t_scene *scene);
+
 // rotate_boj.c
 void	rotate_obj(int keycode, t_vec3 *orientation);
 void	rotate_by_y_axis(t_vec3 *ori, double radian);
@@ -81,11 +84,11 @@ void	update_sphere(int keycode, t_scene *scene);
 /* nomalizetion */////////////////////////////////////////////////
 
 //nomalize_camera_utils.c
-void	set_planes_pos(t_list *planes, t_camera *now_cam);
-void	set_cylinders_pos(t_list *cylinders, t_camera *now_cam);
+void		set_planes_pos(t_list *planes, t_camera *now_cam);
+void		set_cylinders_pos(t_list *cylinders, t_camera *now_cam);
 
 //nomalize_camera.c
-void		nomalize_camera(t_scene *scene);
+void		normalize_camera(t_scene *scene);
 t_screen	get_screen(t_camera *camera);
 void		set_cameras_pos(t_list *cameras, t_camera *now_cam);
 void		set_lights_pos(t_list *lights, t_camera *now_cam);
@@ -143,6 +146,14 @@ void	set_cameras(t_scene *scene, char **object);
 void	set_lights(t_scene *scene, char **object);
 void	set_spheres(t_scene *scene, char **object);
 
+/* RT ENGINE *////////////////////////////////////////////////
+// ray.c
+t_rgb	raytracing(t_scene *scnen, int w, int h);
+int		check_sphere(t_vec3	ray, t_sphere *sphere);
+
+// rt_engine.c
+int		rt_engine(t_scene *scene, int w, int h);
+
 /* SOURCE CODES *////////////////////////////////////////////////
 
 // camera.c
@@ -152,7 +163,6 @@ void	set_screen(t_screen *screen, t_camera *camera);
 // draw_scene.c
 void	put_scene_to_img(t_scene *scene, t_img *img);
 void	draw_scene(t_scene *scene);
-void	raytracing(t_scene *scnen, t_screen *screen, t_img *img);
 
 // error.c
 void	puterr_exit(char *str);
@@ -161,5 +171,3 @@ void	puterr_exit(char *str);
 int		close_scene(t_scene *scene);
 void	init_img(t_scene *scene);
 
-// push_keys.c
-int	push_keys(int keycode, t_scene *scene);
