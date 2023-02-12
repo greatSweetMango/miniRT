@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 19:42:50 by gyim              #+#    #+#             */
-/*   Updated: 2023/02/02 15:08:02 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/02/12 19:52:17 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ t_rgb	raytracing(t_scene *scnen, int w, int h)
 	black.r = 0.0;
 	black.g = 0.0;
 	black.b = 0.0;
+
 	dx = v3_div_d(scnen->screen.x_dir, (WIN_WIDTH / 2.0));
 	dy = v3_div_d(scnen->screen.y_dir, (WIN_HEIGHT / 2.0));
 	dx = v3_mul_d(dx, (double)w);

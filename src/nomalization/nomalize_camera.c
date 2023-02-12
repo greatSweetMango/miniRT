@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 19:31:15 by gyim              #+#    #+#             */
-/*   Updated: 2023/02/01 18:46:09 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/02/12 19:27:14 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,16 +55,22 @@ void	set_cameras_pos(t_list *cameras, t_camera *now_cam)
 t_screen	get_screen(t_camera *camera)
 {
 	t_screen	screen;
+	double		d_theta;
+	t_vec3		x_axis;
+	t_vec3		y_axis;
 
 	screen.orient = v3_unit(camera->orientation);
 	screen.x_dir = v3_cross_product_ds(screen.orient, 0, 1, 0);
 	screen.y_dir = v3_cross_product_v3(screen.x_dir, screen.orient);
 	screen.x_dir = v3_unit(screen.x_dir);
 	screen.y_dir = v3_unit(screen.y_dir);
+	d_theta = camera->fov / 2;
+	x_axis = v3_mul_d(screen.x_dir, tanf(d_theta));
+	y_axis = v3_mul_d(screen.y_dir, tanf(d_theta));
 	screen.upperleft = v3_minus_v3(screen.orient,
-			v3_minus_v3(screen.x_dir, screen.y_dir));
+			v3_minus_v3(x_axis, y_axis));
 	screen.lowerright = v3_plus_v3(screen.orient,
-			v3_minus_v3(screen.x_dir, screen.y_dir));
+			v3_minus_v3(x_axis, y_axis));
 	return (screen);
 }
 
