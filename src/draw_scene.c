@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_scene.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 20:24:04 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/02/01 18:52:59 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/02/14 19:55:04 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void	put_scene_to_img(t_scene *scene, t_img *img)
 		w = 0; 
 		while (w < WIN_WIDTH)
 		{
-			// img->data[h * WIN_WIDTH + w] = h;
 			img->data[h * WIN_WIDTH + w] = rt_engine(scene, w, h);
 			w++;
 		}

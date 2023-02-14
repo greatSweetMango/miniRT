@@ -6,7 +6,7 @@
 /*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:53:28 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/02/14 19:06:14 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/02/14 19:42:18 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@
 #define RGB_MAX 255
 
 /* Image info */
-#define WIN_WIDTH		700
-#define WIN_HEIGHT		700
-#define CONSOLE_WIDTH	200
+#define WIN_WIDTH			700
+#define WIN_HEIGHT			700
+#define CONSOLE_WIDTH		200
 
 /* Key value */
 #define KEY_ESC		53
