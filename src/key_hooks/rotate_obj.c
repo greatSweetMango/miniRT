@@ -6,7 +6,7 @@
 /*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 19:18:38 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/01/31 20:14:13 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/02/14 19:11:57 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,4 @@ void	rotate_obj(int keycode, t_vec3 *orientation)
 		rotate_by_x_axis(orientation, radian);
 	else if (keycode == KEY_LEFT || keycode == KEY_RIGHT)
 		rotate_by_y_axis(orientation, radian);
-	printf("orientation: %f %f %f\n", orientation->x, orientation->y, orientation->z);
-		
-	if (keycode == KEY_LEFT)
-		printf("KEY_LEFT\n");
-	else if (keycode == KEY_RIGHT)
-		printf("KEY_RIGHT\n");
-	else if (keycode == KEY_UP)
-		printf("KEY_UP\n");	
-	else if (keycode == KEY_DOWN)
-		printf("KEY_DOWN\n");
 }
