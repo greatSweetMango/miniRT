@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 20:04:49 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/02/01 18:46:19 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/02/14 19:18:46 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,23 +162,8 @@ int	main(int argc, char **argv)
 	init_img(scene);
 	mlx_hook(scene->win, 2, 0, push_keys, scene);
 	mlx_hook(scene->win, 17, 0, close_scene, scene);
-	mlx_mouse_hook(scene->win, mouse_button, NULL);
+	mlx_mouse_hook(scene->win, mouse_button, scene);
 	draw_scene(scene);
 	mlx_loop(scene->mlx);
 	exit(0);
 }
-
-// int	main(void)
-// {
-// 	t_vec3 v1;
-// 	t_vec3 v2;
-	
-// 	v1.x = 1.5;
-// 	v1.y = 1.5;
-// 	v1.z = 1.5;
-
-// 	v2 = v1;
-// 	v1 = v3_div_d(v1, 0);
-// 	printf("%f %f %f\n", v1.x, v1.y, v1.z);
-// 	return (0);
-// }

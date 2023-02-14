@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:59:09 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/02/01 18:46:01 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/02/14 19:19:44 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	ft_split_free(char **str_arr);
 /* KEY_HOOKS *///////////////////////////////////////////////////////
 
 // mouse_button.c
-int	mouse_button(int btn, int x, int y, void *param);
+int	mouse_button(int btn, int x, int y, t_scene *scene);
 
 // move_obj.c
 void	move_obj(int keycode, t_vec3 *pos, t_screen screen);
