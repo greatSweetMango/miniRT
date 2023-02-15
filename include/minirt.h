@@ -6,7 +6,7 @@
 /*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:59:09 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/02/14 19:19:44 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/02/15 17:59:19 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,6 +161,7 @@ void	put_img(t_scene *scene, t_camera *camera, t_img *img);
 void	set_screen(t_screen *screen, t_camera *camera);
 
 // draw_scene.c
+void	set_console_bg(t_scene *scene);
 void	put_scene_to_img(t_scene *scene, t_img *img);
 void	draw_scene(t_scene *scene);
 
