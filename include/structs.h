@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:52:47 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/02/01 19:53:00 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/02/15 19:36:20 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ typedef struct s_screen
 	t_vec3	lowerright;
 	t_vec3	x_dir;
 	t_vec3	y_dir;
+	double	theta;
 }	t_screen;
 
 /* Main Structs */

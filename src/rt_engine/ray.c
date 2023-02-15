@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 19:42:50 by gyim              #+#    #+#             */
-/*   Updated: 2023/02/12 19:52:17 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/02/15 19:54:07 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,18 @@ t_rgb	raytracing(t_scene *scnen, int w, int h)
 	black.g = 0.0;
 	black.b = 0.0;
 
-	dx = v3_div_d(scnen->screen.x_dir, (WIN_WIDTH / 2.0));
-	dy = v3_div_d(scnen->screen.y_dir, (WIN_HEIGHT / 2.0));
-	dx = v3_mul_d(dx, (double)w);
-	dy = v3_mul_d(dy, -1.0 * (double)h);
+	dx = v3_mul_d(scnen->screen.x_dir, tan(scnen->screen.theta * w / WIN_WIDTH - scnen->screen.theta / 2));
+	dy = v3_mul_d(scnen->screen.y_dir, tan(scnen->screen.theta * h / WIN_HEIGHT - scnen->screen.theta / 2));
+	// dx = v3_div_d(scnen->screen.x_dir, (WIN_WIDTH / 2.0));
+	// dy = v3_div_d(scnen->screen.y_dir, (WIN_HEIGHT / 2.0));
+	// dx = v3_mul_d(dx, (double)w);
+	// dy = v3_mul_d(dy, -1.0 * (double)h);
 	temp = v3_plus_v3(scnen->screen.upperleft, dx);
 	screen_point = v3_plus_v3(temp, dy);
 	if (check_sphere(screen_point, scnen->spheres->next->content))
 		return (((t_sphere *)(scnen->spheres->next->content))->color);
+	else if (check_sphere(screen_point, scnen->spheres->content))
+		return (((t_sphere *)(scnen->spheres->content))->color);
 	else
 		return (black);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   nomalize_camera.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 19:31:15 by gyim              #+#    #+#             */
-/*   Updated: 2023/02/12 19:27:14 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/02/15 19:45:40 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ void	set_cameras_pos(t_list *cameras, t_camera *now_cam)
 t_screen	get_screen(t_camera *camera)
 {
 	t_screen	screen;
-	double		d_theta;
 	t_vec3		x_axis;
 	t_vec3		y_axis;
 
@@ -64,9 +63,10 @@ t_screen	get_screen(t_camera *camera)
 	screen.y_dir = v3_cross_product_v3(screen.x_dir, screen.orient);
 	screen.x_dir = v3_unit(screen.x_dir);
 	screen.y_dir = v3_unit(screen.y_dir);
-	d_theta = camera->fov / 2;
-	x_axis = v3_mul_d(screen.x_dir, tanf(d_theta));
-	y_axis = v3_mul_d(screen.y_dir, tanf(d_theta));
+	screen.theta = camera->fov * PI / 180.0;
+	// screen.theta = (camera->fov / 2) * PI / 180.0;
+	x_axis = v3_mul_d(screen.x_dir, tan(screen.theta / 2.0));
+	y_axis = v3_mul_d(screen.y_dir, tan(screen.theta / 2.0));
 	screen.upperleft = v3_minus_v3(screen.orient,
 			v3_minus_v3(x_axis, y_axis));
 	screen.lowerright = v3_plus_v3(screen.orient,
