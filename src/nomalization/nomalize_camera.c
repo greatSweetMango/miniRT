@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   nomalize_camera.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 19:31:15 by gyim              #+#    #+#             */
-/*   Updated: 2023/02/15 19:45:40 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/02/16 17:37:25 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ t_screen	get_screen(t_camera *camera)
 	screen.x_dir = v3_unit(screen.x_dir);
 	screen.y_dir = v3_unit(screen.y_dir);
 	screen.theta = camera->fov * PI / 180.0;
-	// screen.theta = (camera->fov / 2) * PI / 180.0;
 	x_axis = v3_mul_d(screen.x_dir, tan(screen.theta / 2.0));
 	y_axis = v3_mul_d(screen.y_dir, tan(screen.theta / 2.0));
 	screen.upperleft = v3_minus_v3(screen.orient,
