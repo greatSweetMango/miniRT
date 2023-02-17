@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 18:43:16 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/02/01 18:44:41 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/02/17 19:53:29 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,21 @@
 	//계산(scnen, 레이저 쏠 좌표)
 int	rt_engine(t_scene *scene, int w, int h)
 {
-	normalize_camera(scene);
-	return (ft_rgb_to_i(raytracing(scene, w, h)));
+	t_ray		ray;
+	t_hit_info	hit_info;
+
+	normalize_camera(scene); //??필요한지?
+	ray = get_ray_camera_to_obj(scene, w, h);
+	hit_info = check_sphere(ray.orient, scene->spheres->content);
+	return (ft_rgb_to_i(hit_info.color));
 }
+
+// t_rgb	raytracing(t_scene *scene, int w, int h)
+// {
+// }
+	// if (check_sphere(screen_point, scene->spheres->next->content) > 0)
+	// 	return (((t_sphere *)(scene->spheres->next->content))->color);
+	// else if (check_sphere(screen_point, scene->spheres->content) > 0)
+	// 	return (((t_sphere *)(scene->spheres->content))->color);
+	// else
+	// 	return (black);

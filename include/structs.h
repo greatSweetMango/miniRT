@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:52:47 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/02/17 10:11:00 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/02/17 19:43:10 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,20 @@ typedef struct s_screen
 	t_vec3	qy;
 	t_vec3	p1m;
 }	t_screen;
+
+typedef struct s_ray
+{
+	t_vec3	pos;
+	t_vec3	orient;
+}	t_ray;
+
+typedef struct s_hit_info
+{
+	t_list	*obj;
+	double	t;
+	t_vec3	point;
+	t_rgb	color;
+}	t_hit_info;
 
 /* Main Structs */
 

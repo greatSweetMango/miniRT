@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 19:42:50 by gyim              #+#    #+#             */
-/*   Updated: 2023/02/17 16:53:50 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/02/17 19:45:39 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,17 @@
 
 // screenpoint == ray_dir_vector
 
-t_rgb	raytracing(t_scene *scnen, int w, int h)
+t_ray	get_ray_camera_to_obj(t_scene *scene, int w, int h)
 {
-	t_vec3	screen_point;
-	t_rgb	black;
-	double	dist;
+	t_ray		ray;
+	t_camera	*camera;
 
-	black.r = 0.2;
-	black.g = 0.2;
-	black.b = 0.2;
-	screen_point = v3_plus_v3(scnen->screen.p1m,
-			v3_mul_d(scnen->screen.qx, (double)(w - 1)));
-	screen_point = v3_plus_v3(screen_point,
-			v3_mul_d(scnen->screen.qy, (double)(h - 1)));
-	screen_point = v3_unit(screen_point);
-	dist = -1;
-	if (check_sphere(screen_point, scnen->spheres->next->content) > 0)
-		return (((t_sphere *)(scnen->spheres->next->content))->color);
-	else if (check_sphere(screen_point, scnen->spheres->content) > 0)
-		return (((t_sphere *)(scnen->spheres->content))->color);
-	else
-		return (black);
+	camera = scene->cameras->content;
+	ray.pos = camera->pos;
+	ray.orient = v3_plus_v3(scene->screen.p1m,
+			v3_mul_d(scene->screen.qx, (double)(w - 1)));
+	ray.orient = v3_plus_v3(ray.orient,
+			v3_mul_d(scene->screen.qy, (double)(h - 1)));
+	ray.orient = v3_unit(ray.orient);
+	return (ray);
 }

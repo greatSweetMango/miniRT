@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:59:09 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/02/17 16:47:01 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/02/17 19:47:50 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,9 +147,14 @@ void	set_lights(t_scene *scene, char **object);
 void	set_spheres(t_scene *scene, char **object);
 
 /* RT ENGINE *////////////////////////////////////////////////
+
+// check_sphere.c
+t_hit_info	check_sphere(t_vec3	ray, t_sphere *sphere);
+
+// get_hit_info.c
+
 // ray.c
-t_rgb	raytracing(t_scene *scnen, int w, int h);
-double	check_sphere(t_vec3	ray, t_sphere *sphere);
+t_ray	get_ray_camera_to_obj(t_scene *scene, int w, int h);
 
 // rt_engine.c
 int		rt_engine(t_scene *scene, int w, int h);
