@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 20:04:49 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/02/14 19:43:44 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/02/17 10:11:34 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,16 +116,10 @@ void	print_all_objects_test(t_scene *scene)
 		cylinders_lst = cylinders_lst->next;
 	}
 	printf("\n-END-\n");
-	printf("<SCREEN>\norient: %f %f %f\nupperleft: %f %f %f\nlowerright: %f %f %f\nx_dir: %f %f %f\ny_dir: %f %f %f\n",
+	printf("<SCREEN>\norient: %f %f %f\nx_dir: %f %f %f\ny_dir: %f %f %f\n",
 		scene->screen.orient.x,
 		scene->screen.orient.y,
 		scene->screen.orient.z,
-		scene->screen.upperleft.x,
-		scene->screen.upperleft.y,
-		scene->screen.upperleft.z,
-		scene->screen.lowerright.x,
-		scene->screen.lowerright.y,
-		scene->screen.lowerright.z,
 		scene->screen.x_dir.x,
 		scene->screen.x_dir.y,
 		scene->screen.x_dir.z,

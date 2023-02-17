@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 19:31:15 by gyim              #+#    #+#             */
-/*   Updated: 2023/02/16 17:37:25 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/02/17 10:08:20 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ t_screen	get_screen(t_camera *camera)
 	t_screen	screen;
 	t_vec3		x_axis;
 	t_vec3		y_axis;
+	double		gx;
+	double		gy;
 
 	screen.orient = v3_unit(camera->orientation);
 	screen.x_dir = v3_cross_product_ds(screen.orient, 0, 1, 0);
@@ -66,10 +68,13 @@ t_screen	get_screen(t_camera *camera)
 	screen.theta = camera->fov * PI / 180.0;
 	x_axis = v3_mul_d(screen.x_dir, tan(screen.theta / 2.0));
 	y_axis = v3_mul_d(screen.y_dir, tan(screen.theta / 2.0));
-	screen.upperleft = v3_minus_v3(screen.orient,
-			v3_minus_v3(x_axis, y_axis));
-	screen.lowerright = v3_plus_v3(screen.orient,
-			v3_minus_v3(x_axis, y_axis));
+	gx = tan(screen.theta / 2);
+	gy = gx * ((WIN_HEIGHT - 1) / (WIN_WIDTH - 1));
+	screen.qx = v3_mul_d(screen.x_dir, 2 * gx / (WIN_WIDTH - 1));
+	screen.qy = v3_mul_d(screen.y_dir, 2 * gy / (WIN_HEIGHT - 1));
+	screen.p1m = screen.orient;
+	screen.p1m = v3_minus_v3(screen.p1m, v3_mul_d(screen.x_dir, gx));
+	screen.p1m = v3_minus_v3(screen.p1m, v3_mul_d(screen.y_dir, gy));
 	return (screen);
 }
 

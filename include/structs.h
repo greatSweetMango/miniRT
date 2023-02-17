@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:52:47 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/02/15 19:36:20 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/02/17 10:11:00 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,11 +85,12 @@ typedef struct s_cylinder
 typedef struct s_screen
 {
 	t_vec3	orient;
-	t_vec3	upperleft;
-	t_vec3	lowerright;
 	t_vec3	x_dir;
 	t_vec3	y_dir;
 	double	theta;
+	t_vec3	qx;
+	t_vec3	qy;
+	t_vec3	p1m;
 }	t_screen;
 
 /* Main Structs */
