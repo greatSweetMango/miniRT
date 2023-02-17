@@ -6,7 +6,7 @@
 #    By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/14 16:46:22 by jaehyuki          #+#    #+#              #
-#    Updated: 2023/02/01 18:43:14 by gyim             ###   ########seoul.kr   #
+#    Updated: 2023/02/17 16:47:19 by gyim             ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,7 +65,8 @@ SRCS		=	$(MAIN)										\
 				src/parse_scene/set_scene_util.c			\
 				src/parse_scene/set_scene.c					\
 				src/rt_engine/ray.c							\
-				src/rt_engine/rt_engine.c
+				src/rt_engine/rt_engine.c					\
+				src/rt_engine/rt_utils.c
 				
 OBJS		=	$(addprefix $(OUTDIR),$(SRCS:%.c=%.o))
 DEPS		=	$(addprefix $(OUTDIR),$(SRCS:%.c=%.d))

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:59:09 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/02/15 17:59:19 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/02/17 16:47:01 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,10 +149,13 @@ void	set_spheres(t_scene *scene, char **object);
 /* RT ENGINE *////////////////////////////////////////////////
 // ray.c
 t_rgb	raytracing(t_scene *scnen, int w, int h);
-int		check_sphere(t_vec3	ray, t_sphere *sphere);
+double	check_sphere(t_vec3	ray, t_sphere *sphere);
 
 // rt_engine.c
 int		rt_engine(t_scene *scene, int w, int h);
+
+// rt_utils.c
+double	find_t(double t1, double t2);
 
 /* SOURCE CODES *////////////////////////////////////////////////
 

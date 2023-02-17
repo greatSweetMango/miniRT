@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 19:42:50 by gyim              #+#    #+#             */
-/*   Updated: 2023/02/17 10:17:08 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/02/17 16:46:34 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_rgb	raytracing(t_scene *scnen, int w, int h)
 {
 	t_vec3	screen_point;
 	t_rgb	black;
-
+	double	dist;
 	black.r = 0.0;
 	black.g = 0.0;
 	black.b = 0.0;
@@ -27,28 +27,36 @@ t_rgb	raytracing(t_scene *scnen, int w, int h)
 	screen_point = v3_plus_v3(screen_point,
 			v3_mul_d(scnen->screen.qy, (double)(h - 1)));
 	screen_point = v3_unit(screen_point);
-	if (check_sphere(screen_point, scnen->spheres->next->content))
+	dist = -1;
+	if (check_sphere(screen_point, scnen->spheres->next->content) > 0)
 		return (((t_sphere *)(scnen->spheres->next->content))->color);
-	else if (check_sphere(screen_point, scnen->spheres->content))
+	else if (check_sphere(screen_point, scnen->spheres->content) > 0)
 		return (((t_sphere *)(scnen->spheres->content))->color);
 	else
 		return (black);
 }
 
-int	check_sphere(t_vec3	ray, t_sphere *sphere)
-{
-	double	a;
-	double	b;
-	double	c;
-	double	discriminant;
 
-	a = v3_inner_product_v3(ray, ray);
-	b = -2.0 * v3_inner_product_v3(ray, sphere->pos);
-	c = v3_inner_product_v3(sphere->pos, sphere->pos)
-		- pow(sphere->diameter / 2.0, 2);
-	discriminant = pow(b, 2.0) - 4.0 * a * c;
-	if (discriminant >= 0)
-		return (1);
-	else
+double	check_sphere(t_vec3	ray, t_sphere *sphere)
+{
+	double	discriminant;
+	t_vec3	v;
+	double	t1;
+	double	t2;
+	double	our_t;
+
+	v = v3_mul_d(sphere->pos, -1.0);
+	discriminant = pow(v3_inner_product_v3(v, ray), 2.0);
+	discriminant -= ((v3_inner_product_v3(v, v)
+				- pow(sphere->diameter / 2, 2.0)));
+	if (discriminant < 0)
+		return (0);	
+	t1 = -v3_inner_product_v3(v, ray) + sqrt(discriminant);
+	t2 = -v3_inner_product_v3(v, ray) - sqrt(discriminant);
+	our_t = find_t(t1, t2);
+	if (our_t < 0)
 		return (0);
+	else
+		return (1);
+	return (1);
 }
