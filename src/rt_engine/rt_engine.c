@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 18:43:16 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/02/18 18:37:53 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/02/18 18:38:44 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	rt_engine(t_scene *scene, int w, int h)
 		hit_info.color.b = 0.0;
 	}
 	return (ft_rgb_to_i(hit_info.color));
-
+}
 // t_rgb	raytracing(t_scene *scene, int w, int h)
 // {
 // }
