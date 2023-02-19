@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_scene_util.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 20:19:16 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/01/19 20:15:46 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/02/19 17:13:29 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	set_cylinders(t_scene *scene, char **object)
 		puterr_exit("Parsing fail! (object's property is wrong)");
 	cylinder->pos = ft_ato_vec3(object[1]);
 	cylinder->orientation = ft_ato_vec3(object[2]);
+	cylinder->orientation = v3_unit(cylinder->orientation);
 	cylinder->diameter = ft_atod(object[3]);
 	cylinder->height = ft_atod(object[4]);
 	cylinder->color = ft_ato_rgb(object[5]);
@@ -41,6 +42,7 @@ void	set_planes(t_scene *scene, char **object)
 		puterr_exit("Parsing fail! (object's property is wrong)");
 	plane->pos = ft_ato_vec3(object[1]);
 	plane->orientation = ft_ato_vec3(object[2]);
+	plane->orientation = v3_unit(plane->orientation);
 	plane->color = ft_ato_rgb(object[3]);
 	ft_lstadd_back(&(scene->planes), ft_lstnew(plane, PLANE));
 }

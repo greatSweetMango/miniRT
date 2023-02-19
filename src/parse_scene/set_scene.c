@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_scene.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 20:19:16 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/01/19 20:15:46 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/02/19 17:11:54 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ void	set_cameras(t_scene *scene, char **object)
 		puterr_exit("Parsing fail! (object's property is wrong)");
 	camera->pos = ft_ato_vec3(object[1]);
 	camera->orientation = ft_ato_vec3(object[2]);
+	camera->orientation = v3_unit(camera->orientation);
 	camera->fov = ft_atod(object[3]);
 	ft_lstadd_back(&(scene->cameras), ft_lstnew(camera, CAMERA));
 }
