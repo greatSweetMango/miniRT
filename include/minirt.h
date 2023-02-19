@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:59:09 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/02/17 19:47:50 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/02/19 11:51:36 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,9 +148,11 @@ void	set_spheres(t_scene *scene, char **object);
 
 /* RT ENGINE *////////////////////////////////////////////////
 
+// check_object.c
+t_hit_info	check_objects(t_ray ray, t_scene *scene);
 // check_sphere.c
-t_hit_info	check_sphere(t_vec3	ray, t_sphere *sphere);
-
+t_hit_info	check_all_sphere(t_ray ray, t_list *sphere);
+t_hit_info	check_sphere(t_ray ray, t_sphere *sphere);
 // get_hit_info.c
 
 // ray.c
