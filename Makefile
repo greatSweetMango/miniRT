@@ -6,7 +6,7 @@
 #    By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/14 16:46:22 by jaehyuki          #+#    #+#              #
-#    Updated: 2023/02/19 11:40:20 by gyim             ###   ########seoul.kr   #
+#    Updated: 2023/02/19 15:02:46 by gyim             ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,6 +65,7 @@ SRCS		=	$(MAIN)										\
 				src/parse_scene/set_scene_util.c			\
 				src/parse_scene/set_scene.c					\
 				src/rt_engine/check_object.c				\
+				src/rt_engine/check_plane.c					\
 				src/rt_engine/check_sphere.c				\
 				src/rt_engine/ray.c							\
 				src/rt_engine/rt_engine.c					\

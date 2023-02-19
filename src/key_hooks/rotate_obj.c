@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 19:18:38 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/02/19 11:28:48 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/02/19 15:47:48 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	rotate_obj(int keycode, t_vec3 *orientation)
 {
 	double	radian;
 
-	if (keycode == KEY_RIGHT || keycode == KEY_UP)
+	if (keycode == KEY_RIGHT || keycode == KEY_DOWN)
 		radian = ROTATE_RATIO * PI / 180;
 	else
 		radian = ROTATE_RATIO * PI / 180 * -1;

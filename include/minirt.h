@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:59:09 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/02/19 11:51:36 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/02/19 15:03:10 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,6 +150,9 @@ void	set_spheres(t_scene *scene, char **object);
 
 // check_object.c
 t_hit_info	check_objects(t_ray ray, t_scene *scene);
+// check_plane.c
+t_hit_info	check_all_plane(t_ray ray, t_list *plane);
+t_hit_info	check_plane(t_ray ray, t_plane *plane);
 // check_sphere.c
 t_hit_info	check_all_sphere(t_ray ray, t_list *sphere);
 t_hit_info	check_sphere(t_ray ray, t_sphere *sphere);

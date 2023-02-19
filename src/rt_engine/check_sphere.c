@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 16:49:48 by gyim              #+#    #+#             */
-/*   Updated: 2023/02/19 13:37:13 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/02/19 15:00:13 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,9 @@ t_hit_info	check_all_sphere(t_ray ray, t_list *sphere)
 	while (sphere != NULL)
 	{
 		temp = check_sphere(ray, (t_sphere *)sphere->content);
-		if (temp.obj == NULL)
+		if (target_object.obj == NULL 
+			|| (temp.obj != NULL && temp.t < target_object.t))
+			target_object = temp;
 		sphere = sphere->next;
 	}
 	return (target_object);
@@ -35,25 +37,20 @@ t_hit_info	check_sphere(t_ray ray, t_sphere *sphere)
 	double		t1;
 	double		t2;
 
+	hit_info.obj = NULL;
 	v = v3_mul_d(sphere->pos, -1.0);
 	discriminant = pow(v3_inner_product_v3(v, ray.orient), 2.0);
 	discriminant -= ((v3_inner_product_v3(v, v)
 				- pow(sphere->diameter / 2, 2.0)));
 	if (discriminant < 0)
-	{
-		hit_info.obj = NULL;
 		return (hit_info);
-	}
 	t1 = -v3_inner_product_v3(v, ray.orient) + sqrt(discriminant);
 	t2 = -v3_inner_product_v3(v, ray.orient) - sqrt(discriminant);
 	hit_info.t = find_t(t1, t2);
 	if (discriminant < 0 || hit_info.t < 0)
-	{
-		hit_info.obj = NULL;
 		return (hit_info);
-	}
 	hit_info.obj = (t_list *)sphere;
-	hit_info.point = v3_mul_d(ray.orient, hit_info.t);
+	hit_info.point = v3_plus_v3(ray.pos, v3_mul_d(ray.orient, hit_info.t));
 	hit_info.color = sphere->color;
 	return (hit_info);
 }
