@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+         #
+#    By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/14 16:46:22 by jaehyuki          #+#    #+#              #
-#    Updated: 2023/02/19 15:02:46 by gyim             ###   ########seoul.kr   #
+#    Updated: 2023/02/20 20:09:15 by jaehyuki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,8 +56,10 @@ SRCS		=	$(MAIN)										\
 				src/operators/vec3_cross_product.c			\
 				src/operators/vec3_div.c					\
 				src/operators/vec3_inner_product.c			\
+				src/operators/vec3_magnitude.c				\
 				src/operators/vec3_minus.c					\
 				src/operators/vec3_multi.c					\
+				src/operators/vec3_normalize.c				\
 				src/operators/vec3_plus.c					\
 				src/operators/vec3_set.c					\
 				src/operators/vec3_unit.c					\

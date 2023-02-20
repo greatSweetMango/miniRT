@@ -6,7 +6,7 @@
 /*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 18:25:03 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/02/14 19:15:55 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/02/20 19:39:02 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	update_cylinder(int keycode, t_scene *scene)
 	cylinder = scene->selected_obj->content;
 	if (keycode == KEY_LEFT || keycode == KEY_RIGHT
 		|| keycode == KEY_DOWN || keycode == KEY_UP)
-		rotate_obj(keycode, &cylinder->orientation);
+		rotate_obj(keycode, &cylinder->orientation, scene);
 	else if (keycode == KEY_A || keycode == KEY_D
 				|| keycode == KEY_W || keycode == KEY_S
 				|| keycode == KEY_R || keycode == KEY_F)

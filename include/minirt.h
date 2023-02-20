@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:59:09 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/02/19 15:03:10 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/02/20 20:58:01 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,10 @@ int	push_keys(int keycode, t_scene *scene);
 int	push_keys(int keycode, t_scene *scene);
 
 // rotate_boj.c
-void	rotate_obj(int keycode, t_vec3 *orientation);
+void	get_rotation_matrix(float matrix[3][3], t_vec3 axis_norm, float theta);
+t_vec3	rotate_by_dx_axis(t_vec3 orient, t_vec3 axis, double angle);
+void	rotate_obj(int keycode, t_vec3 *orientation, t_scene *scene);
 void	rotate_by_y_axis(t_vec3 *ori, double radian);
-void	rotate_by_x_axis(t_vec3 *ori, double radian);
 
 // update_camera.c
 void	update_camera(int keycode, t_scene *scene);
@@ -99,13 +100,18 @@ void		set_spheres_pos(t_list *spheres, t_camera *now_cam);
 // vec3_cross_product.c
 t_vec3	v3_cross_product_v3(t_vec3 v1, t_vec3 v2);
 t_vec3	v3_cross_product_ds(t_vec3 v1, double x, double y, double z);
+
 // vec3_div.c
 t_vec3	v3_div_v3(t_vec3 v1, t_vec3 v2);
 t_vec3	v3_div_ds(t_vec3 v1, double x, double y, double z);
 t_vec3	v3_div_d(t_vec3 v1, double d);
+
 // vec3_inner_product.c
 double	v3_inner_product_v3(t_vec3 v1, t_vec3 v2);
 double	v3_inner_product_ds(t_vec3 v1, double x, double y, double z);
+
+// vec3_magnitude.c
+float v3_magnitude(t_vec3 v);
 
 // vec3_minus.c
 t_vec3	v3_minus_v3(t_vec3 v1, t_vec3 v2);
@@ -116,6 +122,9 @@ t_vec3	v3_minus_d(t_vec3 v1, double d);
 t_vec3	v3_mul_v3(t_vec3 v1, t_vec3 v2);
 t_vec3	v3_mul_ds(t_vec3 v1, double x, double y, double z);
 t_vec3	v3_mul_d(t_vec3 v1, double d);
+
+// vec3_normalize.c
+t_vec3 vec3_normalize(t_vec3 v);
 
 // vec3_plus.c
 t_vec3	v3_plus_v3(t_vec3 v1, t_vec3 v2);

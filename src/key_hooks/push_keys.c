@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_keys.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 20:00:19 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/02/17 18:25:29 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/02/20 20:29:50 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@ int	push_keys(int keycode, t_scene *scene)
 		update_plane(keycode, scene);
 	else if (scene->selected_obj->obj_type == CYLINDER)
 		update_cylinder(keycode, scene);
-	printf("KEYCODE: %d\n", keycode);
-	printf("SELECTED OBJ: %d\n\n", scene->selected_obj->obj_type);
 	draw_scene(scene);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 20:18:26 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/02/15 19:18:08 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/02/20 20:31:36 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,10 @@ void	update_camera(int keycode, t_scene *scene)
 	camera = scene->selected_obj->content;
 	if (keycode == KEY_LEFT || keycode == KEY_RIGHT
 		|| keycode == KEY_DOWN || keycode == KEY_UP)
-		rotate_obj(keycode, &camera->orientation);
+	{
+		rotate_obj(keycode, &camera->orientation, scene);
+		scene->screen = get_screen(scene->cameras->content);
+	}
 	else if (keycode == KEY_A || keycode == KEY_D
 				|| keycode == KEY_W || keycode == KEY_S
 				|| keycode == KEY_R || keycode == KEY_F)
