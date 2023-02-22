@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:52:47 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/02/17 19:43:10 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/02/22 09:49:21 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,6 @@ typedef struct s_screen
 	t_vec3	x_dir;
 	t_vec3	y_dir;
 	double	theta;
-	t_vec3	qx;
-	t_vec3	qy;
 	t_vec3	p1m;
 }	t_screen;
 

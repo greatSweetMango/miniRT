@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   update_camera.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 20:18:26 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/02/20 20:31:36 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/02/22 08:09:27 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ void	update_camera(int keycode, t_scene *scene)
 		scene->screen = get_screen(scene->cameras->content);
 	}
 	else if (keycode == KEY_A || keycode == KEY_D
-				|| keycode == KEY_W || keycode == KEY_S
-				|| keycode == KEY_R || keycode == KEY_F)
+			|| keycode == KEY_W || keycode == KEY_S
+			|| keycode == KEY_R || keycode == KEY_F)
 	{
 		move_obj(keycode, &camera->pos, scene->screen);
 		normalize_camera(scene);

@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 18:43:16 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/02/19 12:00:19 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/02/22 08:09:05 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ int	rt_engine(t_scene *scene, int w, int h)
 	t_ray		ray;
 	t_hit_info	hit_info;
 
-	normalize_camera(scene); //??필요한지?
 	ray = get_ray_camera_to_obj(scene, w, h);
 	hit_info = check_objects(ray, scene);
 	if (hit_info.obj == NULL)

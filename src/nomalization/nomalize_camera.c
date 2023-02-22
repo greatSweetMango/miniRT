@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   nomalize_camera.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 19:31:15 by gyim              #+#    #+#             */
-/*   Updated: 2023/02/20 20:52:45 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/02/22 09:33:29 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,11 +70,11 @@ t_screen	get_screen(t_camera *camera)
 	y_axis = v3_mul_d(screen.y_dir, tan(screen.theta / 2.0));
 	gx = tan(screen.theta / 2);
 	gy = gx * ((WIN_HEIGHT - 1) / (WIN_WIDTH - 1));
-	screen.qx = v3_mul_d(screen.x_dir, 2 * gx / (WIN_WIDTH - 1));
-	screen.qy = v3_mul_d(screen.y_dir, 2 * gy / (WIN_HEIGHT - 1));
+	screen.x_dir = v3_mul_d(screen.x_dir, 2 * gx / (WIN_WIDTH - 1));
+	screen.y_dir = v3_mul_d(screen.y_dir, 2 * gy / (WIN_HEIGHT - 1));
 	screen.p1m = screen.orient;
-	screen.p1m = v3_minus_v3(screen.p1m, v3_mul_d(screen.x_dir, gx));
-	screen.p1m = v3_minus_v3(screen.p1m, v3_mul_d(screen.y_dir, gy));
+	screen.p1m = v3_minus_v3(screen.p1m, v3_mul_d(x_axis, gx));
+	screen.p1m = v3_minus_v3(screen.p1m, v3_mul_d(y_axis, gy));
 	return (screen);
 }
 

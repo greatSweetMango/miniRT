@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_scene.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 20:24:04 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/02/15 19:07:02 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/02/22 08:05:00 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 void	set_console_bg(t_scene *scene)
 {
 	void	*img;
-	int	img_width;
-	int	img_height;
+	int		img_width;
+	int		img_height;
 
 	img = mlx_xpm_file_to_image(scene->mlx,
 			"./console_bg.xpm", &img_width, &img_height);
