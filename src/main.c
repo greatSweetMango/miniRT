@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 20:04:49 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/02/23 15:35:13 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/02/23 19:38:26 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,7 +147,7 @@ void	init_img(t_scene *scene)
 int	main(int argc, char **argv)
 {
 	t_scene	*scene;
-	
+
 	scene = parse_arg(argc, argv);
 	normalize_camera(scene);
 	print_all_objects_test(scene); //테스트 코드

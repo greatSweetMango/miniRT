@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 19:31:15 by gyim              #+#    #+#             */
-/*   Updated: 2023/02/23 10:27:43 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/02/23 19:49:31 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,6 @@ void	normalize_camera(t_scene *scene)
 	set_spheres_pos(scene->spheres, now_cam);
 	set_planes_pos(scene->planes, now_cam);
 	set_cylinders_pos(scene->cylinders, now_cam);
-	v3_set(&now_cam->pos, 0, 0, 0);
+	v3_set(&(now_cam->pos), 0, 0, 0);
 	scene->screen = get_screen(now_cam);
 }

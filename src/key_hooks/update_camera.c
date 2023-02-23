@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 20:18:26 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/02/23 15:38:52 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/02/23 19:44:04 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,10 @@ void	update_camera(int keycode, t_scene *scene)
 	camera = scene->selected_obj->content;
 	if (keycode == KEY_LEFT || keycode == KEY_RIGHT
 		|| keycode == KEY_DOWN || keycode == KEY_UP)
-		rotate_obj(keycode, &camera->orientation, scene);
+		rotate_obj(keycode, &(camera->orientation), scene);
 	else if (keycode == KEY_A || keycode == KEY_D
-			|| keycode == KEY_W || keycode == KEY_S
-			|| keycode == KEY_R || keycode == KEY_F)
+		|| keycode == KEY_W || keycode == KEY_S
+		|| keycode == KEY_R || keycode == KEY_F)
 		move_obj(keycode, &camera->pos, scene->screen);
 	else if (keycode == KEY_PREV || keycode == KEY_NEXT)
 		switch_camera(keycode, scene);

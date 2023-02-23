@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 16:49:48 by gyim              #+#    #+#             */
-/*   Updated: 2023/02/19 15:00:13 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/02/23 19:42:34 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ t_hit_info	check_sphere(t_ray ray, t_sphere *sphere)
 	t1 = -v3_inner_product_v3(v, ray.orient) + sqrt(discriminant);
 	t2 = -v3_inner_product_v3(v, ray.orient) - sqrt(discriminant);
 	hit_info.t = find_t(t1, t2);
-	if (discriminant < 0 || hit_info.t < 0)
+	if (hit_info.t < 0)
 		return (hit_info);
 	hit_info.obj = (t_list *)sphere;
 	hit_info.point = v3_plus_v3(ray.pos, v3_mul_d(ray.orient, hit_info.t));
