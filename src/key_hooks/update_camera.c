@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 20:18:26 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/02/22 08:09:27 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/02/23 11:26:13 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,17 @@ void	update_camera(int keycode, t_scene *scene)
 		|| keycode == KEY_DOWN || keycode == KEY_UP)
 	{
 		rotate_obj(keycode, &camera->orientation, scene);
-		scene->screen = get_screen(scene->cameras->content);
+		// normalize_camera(scene);
+		// scene->screen = get_screen(scene->cameras->content);
 	}
 	else if (keycode == KEY_A || keycode == KEY_D
 			|| keycode == KEY_W || keycode == KEY_S
 			|| keycode == KEY_R || keycode == KEY_F)
 	{
 		move_obj(keycode, &camera->pos, scene->screen);
-		normalize_camera(scene);
+		// normalize_camera(scene);
 	}
 	else if (keycode == KEY_PREV || keycode == KEY_NEXT)
 		switch_camera(keycode, scene);
+	normalize_camera(scene);
 }
