@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 20:04:49 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/02/17 10:11:34 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/02/23 15:35:13 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,7 +150,7 @@ int	main(int argc, char **argv)
 	
 	scene = parse_arg(argc, argv);
 	normalize_camera(scene);
-	// print_all_objects_test(scene); //테스트 코드
+	print_all_objects_test(scene); //테스트 코드
 	scene->mlx = mlx_init();
 	scene->win = mlx_new_window(scene->mlx, WIN_WIDTH + CONSOLE_WIDTH, WIN_HEIGHT, "miniRT");
 	init_img(scene);
