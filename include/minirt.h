@@ -3,14 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:59:09 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/02/20 20:58:01 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/02/24 19:16:51 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma	once
+
+/* BONUS HEADER */
+#include <pthread.h>
 
 /* STANDARD HEADER */
 #include <stdio.h>
@@ -44,7 +47,7 @@ void	ft_lstadd_back(t_list **lst, t_list *new);
 t_list	*ft_lstnew(void	*content, int obj_type);
 
 // ft_rgb_to_i.c
-int	ft_rgb_to_i(t_rgb rgb);
+int		ft_rgb_to_i(t_rgb rgb);
 
 //ft_split_free.c
 void	ft_split_free(char **str_arr);
@@ -156,6 +159,13 @@ void	set_lights(t_scene *scene, char **object);
 void	set_spheres(t_scene *scene, char **object);
 
 /* RT ENGINE *////////////////////////////////////////////////
+
+// // check_cylinder.c
+// t_hit_info	check_all_cylinder(t_ray ray, t_list *cylinder);
+// t_hit_info	check_cylinder(t_ray ray, t_cylinder *cylinder);
+// double		get_cylinder_a(t_ray ray, t_cylinder *cylinder);
+// double		get_cylinder_b(t_ray ray, t_cylinder *cylinder);
+// double		get_cylinder_c(t_ray ray, t_cylinder *cylinder);
 
 // check_object.c
 t_hit_info	check_objects(t_ray ray, t_scene *scene);

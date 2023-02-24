@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 16:49:48 by gyim              #+#    #+#             */
-/*   Updated: 2023/02/19 15:35:55 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/02/24 19:13:27 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,9 @@ t_hit_info	check_objects(t_ray ray, t_scene *scene)
 	if (target_object.obj == NULL
 		|| (temp.obj != NULL && temp.t < target_object.t))
 		target_object = temp;
+	// temp = check_all_cylinder(ray, scene->cylinders);
+	// if (target_object.obj == NULL
+	// 	|| (temp.obj != NULL && temp.t < target_object.t))
+	// 	target_object = temp;
 	return (target_object);
 }

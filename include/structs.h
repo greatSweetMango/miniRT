@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:52:47 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/02/22 09:49:21 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/02/24 19:16:05 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,5 +130,16 @@ typedef struct s_scene
 	t_list				*cylinders;
 	t_list				*selected_obj;
 }	t_scene;
+
+// Bonuse structs
+typedef struct s_thread
+{
+	t_scene		*scene;
+	t_img		*img;
+	int			thread_no;
+	pthread_t	th;
+}	t_thread;
+
+
 
 #endif

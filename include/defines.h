@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:53:28 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/02/23 19:12:02 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/02/24 19:17:15 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,11 @@
 #define WIN_WIDTH			700
 #define WIN_HEIGHT			700
 #define CONSOLE_WIDTH		200
+
+/* Bonus */
+#define	NUM_THREAD		10
+#define WIDTH_BLOCK		WIN_WIDTH / NUM_THREAD
+#define HEIGHT_BLOCK	WIN_HEIGHT / NUM_THREAD
 
 /* Key value */
 #define KEY_ESC		53
