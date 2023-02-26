@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 20:24:04 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/02/24 19:15:28 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/02/26 10:55:06 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ void	set_console_bg(t_scene *scene)
 
 void	*put_scene_to_img_thread(void *argv)
 {
-	t_thread *thread;
-	int	w;
-	int	h;
+	t_thread	*thread;
+	int			w;
+	int			h;
 
 	thread = (t_thread *)argv;
 	h = HEIGHT_BLOCK * thread->thread_no;
@@ -36,13 +36,14 @@ void	*put_scene_to_img_thread(void *argv)
 		w = 0; 
 		while (w < WIN_WIDTH)
 		{
-			thread->img->data[h * WIN_WIDTH + w] = rt_engine(thread->scene, w, h);
+			thread->img->data[h * WIN_WIDTH + w]
+				= rt_engine(thread->scene, w, h);
 			w++;
 		}
 		h++;
 	}
 
-	return NULL;
+	return (NULL);
 }
 
 
@@ -58,7 +59,8 @@ void	put_scene_to_img(t_scene *scene, t_img *img)
 		threads[i].scene = scene;
 		threads[i].img = img;
 		threads[i].thread_no = i;
-		pthread_create(&threads[i].th, NULL, &put_scene_to_img_thread, (void *)&threads[i]);
+		pthread_create(&threads[i].th, NULL,
+			&put_scene_to_img_thread, (void *)&threads[i]);
 		i++;
 	}
 	i = 0;

@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:59:09 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/02/24 19:16:51 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/02/26 12:30:41 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,12 +160,13 @@ void	set_spheres(t_scene *scene, char **object);
 
 /* RT ENGINE *////////////////////////////////////////////////
 
-// // check_cylinder.c
-// t_hit_info	check_all_cylinder(t_ray ray, t_list *cylinder);
-// t_hit_info	check_cylinder(t_ray ray, t_cylinder *cylinder);
-// double		get_cylinder_a(t_ray ray, t_cylinder *cylinder);
-// double		get_cylinder_b(t_ray ray, t_cylinder *cylinder);
-// double		get_cylinder_c(t_ray ray, t_cylinder *cylinder);
+// check_cylinder.c
+t_hit_info	check_all_cylinder(t_ray ray, t_list *cylinder);
+t_hit_info	check_cylinder(t_ray ray, t_cylinder *cylinder);
+t_cylinder_var	get_cylinder_var(t_ray ray, t_cylinder *cylinder);
+void	get_cylinder_coeff(double coeff[3], t_ray ray, t_cylinder *cylinder,
+	t_cylinder_var variable);
+void	get_cylinder_alpha(double alpha[2], double mu[2], t_ray ray, t_cylinder_var variable);
 
 // check_object.c
 t_hit_info	check_objects(t_ray ray, t_scene *scene);

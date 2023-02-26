@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 13:37:58 by gyim              #+#    #+#             */
-/*   Updated: 2023/02/24 17:07:40 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/02/26 12:31:08 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,25 +31,27 @@ t_hit_info	check_all_cylinder(t_ray ray, t_list *cylinder)
 
 t_hit_info	check_cylinder(t_ray ray, t_cylinder *cylinder)
 {
-	t_hit_info	hit_info;
-	double		a;
-	double		b;
-	double		c;
-	double		discriminant;
-	double		t1;
-	double		t2;
+	t_hit_info		hit_info;
+	double			coeff[3];
+	double			discriminant;
+	double			t[2];
+	double			alpha[2];
+	t_cylinder_var	variable;
 
 	hit_info.obj = NULL;
-	a = get_cylinder_a(ray, cylinder);
-	b = get_cylinder_b(ray, cylinder);
-	c = get_cylinder_c(ray, cylinder);
-	discriminant = pow(b, 2.0) - 4 * a * c;
+	variable = get_cylinder_var(ray, cylinder);
+	get_cylinder_coeff(coeff, ray, cylinder, variable);
+	discriminant = pow(coeff[1], 2.0) - 4 * coeff[0] * coeff[2];
 	if (discriminant < 0)
 		return (hit_info);
-	t1 = (-b - sqrt(discriminant)) / (2.0 * a);
-	t2 = (-b + sqrt(discriminant)) / (2.0 * a);
-	hit_info.t = find_t(t1, t2);
+	t[0] = (-coeff[1] - sqrt(discriminant)) / (2.0 * coeff[0]);
+	t[1] = (-coeff[1] + sqrt(discriminant)) / (2.0 * coeff[0]);
+	hit_info.t = find_t(t[0], t[1]);
 	if (hit_info.t < 0)
+		return (hit_info);
+	get_cylinder_alpha(alpha, t, ray, variable);
+	if ((alpha[0] < 0 || alpha[0] > 1)
+		&& (alpha[1] < 0 || alpha[1] > 1))
 		return (hit_info);
 	hit_info.obj = (t_list *)cylinder;
 	hit_info.point = v3_plus_v3(ray.pos, v3_mul_d(ray.orient, hit_info.t));
@@ -57,62 +59,45 @@ t_hit_info	check_cylinder(t_ray ray, t_cylinder *cylinder)
 	return (hit_info);
 }
 
-double	get_cylinder_a(t_ray ray, t_cylinder *cylinder)
+t_cylinder_var	get_cylinder_var(t_ray ray, t_cylinder *cylinder)
 {
-	t_vec3	p2;
-	t_vec3	delta_p;
-	double	dp;
-	double	pp;
-	double	result;
+	t_cylinder_var	cylinder_var;
 
-	p2 = v3_plus_v3(cylinder->pos,
-			v3_mul_d(cylinder->orientation, cylinder->height));
-	delta_p = v3_minus_v3(p2, cylinder->pos);
-	dp = v3_inner_product_v3(cylinder->orientation, delta_p);
-	pp = v3_inner_product_v3(delta_p, delta_p);
-	result = v3_inner_product_v3(ray.orient, ray.orient);
-	result -= 2 * pow(dp, 2.0) / pp;
-	result += pow(dp, 2.0) / pp;
-	return (result);
+	cylinder_var.p0 = ray.pos;
+	cylinder_var.p1	= cylinder->pos;
+	cylinder_var.p2 = v3_plus_v3(cylinder->pos,
+			v3_mul_d(cylinder->orientation,cylinder->height));
+	cylinder_var.delta_p = v3_minus_v3(cylinder_var.p2, cylinder_var.p1);
+	cylinder_var.dp = v3_inner_product_v3(ray.orient, cylinder_var.delta_p);
+	cylinder_var.p01 = v3_minus_v3(cylinder_var.p0, cylinder_var.p1);
+	cylinder_var.pp = v3_inner_product_v3(cylinder_var.delta_p,
+			cylinder_var.delta_p);
+	return (cylinder_var);
 }
 
-double	get_cylinder_b(t_ray ray, t_cylinder *cylinder)
+void	get_cylinder_coeff(double coeff[3], t_ray ray, t_cylinder *cylinder,
+	t_cylinder_var variable)
 {
-	t_vec3	p2;
-	t_vec3	delta_p;
-	double	dp;
-	double	pp;
-	double	result;
-
-	p2 = v3_plus_v3(cylinder->pos,
-			v3_mul_d(cylinder->orientation, cylinder->height));
-	delta_p = v3_minus_v3(p2, cylinder->pos);
-	dp = v3_inner_product_v3(cylinder->orientation, delta_p);
-	pp = v3_inner_product_v3(delta_p, delta_p);
-	result = 2.0 * v3_inner_product_v3(
-			v3_mul_d(cylinder->pos, -1.0), ray.orient);
-	result -= 4.0 * v3_inner_product_v3(
-			v3_mul_d(cylinder->pos, -1.0), delta_p) * dp / pp;
-	result += 2.0 * v3_inner_product_v3(v3_mul_d(cylinder->pos, -1.0),
-			delta_p) * dp / pp;
-	return (result);
+	coeff[0] = v3_inner_product_v3(ray.orient, ray.orient)
+		- pow(variable.dp, 2.0) / variable.pp;
+	coeff[1] = 2.0 * (v3_inner_product_v3(variable.p01, ray.orient)
+			- v3_inner_product_v3(variable.p01, variable.delta_p) * variable.dp
+			/ variable.pp);
+	coeff[2] = v3_inner_product_v3(variable.p01, variable.p01)
+		- pow(v3_inner_product_v3(variable.p01, variable.delta_p), 2.0)
+		/ variable.pp;
+	coeff[2] -= pow(cylinder->diameter / 2.0, 2.0);
 }
 
-double	get_cylinder_c(t_ray ray, t_cylinder *cylinder)
+void	get_cylinder_alpha(double alpha[2], double mu[2],
+	t_ray ray, t_cylinder_var variable)
 {
-	t_vec3	p0p1;
-	t_vec3	p2;
-	t_vec3	delta_p;
-	double	pp;
-	double	result;
-
-	p0p1 = v3_minus_v3(ray.pos, v3_mul_d(cylinder->pos, -1.0));
-	p2 = v3_plus_v3(cylinder->pos,
-			v3_mul_d(cylinder->orientation, cylinder->height));
-	delta_p = v3_minus_v3(p2, cylinder->pos);
-	pp = v3_inner_product_v3(delta_p, delta_p);
-	result = v3_inner_product_v3(p0p1, p0p1);
-	result -= 2.0 * pow(v3_inner_product_v3(p0p1, delta_p), 2.0) / pp;
-	result += pow(v3_inner_product_v3(p0p1, delta_p), 2.0) / pp;
-	return (result);
+	alpha[0] = v3_inner_product_v3(variable.p0, variable.delta_p)
+		+ mu[0] * v3_inner_product_v3(ray.orient, variable.delta_p)
+		- v3_inner_product_v3(variable.p1, variable.delta_p);
+	alpha[0] /= variable.pp;
+	alpha[1] = v3_inner_product_v3(variable.p0, variable.delta_p)
+		+ mu[1] * v3_inner_product_v3(ray.orient, variable.delta_p)
+		- v3_inner_product_v3(variable.p1, variable.delta_p);
+	alpha[1] /= variable.pp;
 }

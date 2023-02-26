@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:52:47 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/02/24 19:16:05 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/02/26 09:38:20 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,19 @@ typedef struct s_hit_info
 	t_vec3	point;
 	t_rgb	color;
 }	t_hit_info;
+
+/* object variable */
+typedef struct s_cylinder_var
+{
+	t_vec3	p0;
+	t_vec3	p1;
+	t_vec3	p2;
+	t_vec3	delta_p;
+	double	pp;
+	t_vec3	p01;
+	double	dp;
+}	t_cylinder_var;
+
 
 /* Main Structs */
 
