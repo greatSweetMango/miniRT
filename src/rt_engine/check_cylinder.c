@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_cylinder.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 13:37:58 by gyim              #+#    #+#             */
-/*   Updated: 2023/02/26 12:31:08 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/02/27 20:16:21 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_hit_info	check_all_cylinder(t_ray ray, t_list *cylinder)
 	target_object.obj = NULL;
 	while (cylinder != NULL)
 	{
-		temp = check_cylinder(ray, (t_cylinder *)cylinder->content);
+		temp = check_cylinder(ray, cylinder);
 		if (target_object.obj == NULL
 			|| (temp.obj != NULL && temp.t < target_object.t))
 			target_object = temp;
@@ -29,7 +29,7 @@ t_hit_info	check_all_cylinder(t_ray ray, t_list *cylinder)
 	return (target_object);
 }
 
-t_hit_info	check_cylinder(t_ray ray, t_cylinder *cylinder)
+t_hit_info	check_cylinder(t_ray ray, t_list *cy)
 {
 	t_hit_info		hit_info;
 	double			coeff[3];
@@ -37,7 +37,9 @@ t_hit_info	check_cylinder(t_ray ray, t_cylinder *cylinder)
 	double			t[2];
 	double			alpha[2];
 	t_cylinder_var	variable;
+	t_cylinder		*cylinder;
 
+	cylinder = (t_cylinder *)cy->content;
 	hit_info.obj = NULL;
 	variable = get_cylinder_var(ray, cylinder);
 	get_cylinder_coeff(coeff, ray, cylinder, variable);
@@ -53,7 +55,7 @@ t_hit_info	check_cylinder(t_ray ray, t_cylinder *cylinder)
 	if ((alpha[0] < 0 || alpha[0] > 1)
 		&& (alpha[1] < 0 || alpha[1] > 1))
 		return (hit_info);
-	hit_info.obj = (t_list *)cylinder;
+	hit_info.obj = cy;
 	hit_info.point = v3_plus_v3(ray.pos, v3_mul_d(ray.orient, hit_info.t));
 	hit_info.color = cylinder->color;
 	return (hit_info);

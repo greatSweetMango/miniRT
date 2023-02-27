@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_engine.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 18:43:16 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/02/22 08:09:05 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/02/27 19:17:28 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ int	rt_engine(t_scene *scene, int w, int h)
 	hit_info = check_objects(ray, scene);
 	if (hit_info.obj == NULL)
 	{
-		hit_info.color.r = 0.0;
-		hit_info.color.g = 0.0;
-		hit_info.color.b = 0.0;
+		hit_info.color.r = 1.0;
+		hit_info.color.g = 1.0;
+		hit_info.color.b = 1.0;
 	}
 	return (ft_rgb_to_i(hit_info.color));
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:59:09 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/02/26 12:30:41 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/02/27 20:15:16 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,7 +162,7 @@ void	set_spheres(t_scene *scene, char **object);
 
 // check_cylinder.c
 t_hit_info	check_all_cylinder(t_ray ray, t_list *cylinder);
-t_hit_info	check_cylinder(t_ray ray, t_cylinder *cylinder);
+t_hit_info	check_cylinder(t_ray ray, t_list *cy);
 t_cylinder_var	get_cylinder_var(t_ray ray, t_cylinder *cylinder);
 void	get_cylinder_coeff(double coeff[3], t_ray ray, t_cylinder *cylinder,
 	t_cylinder_var variable);
@@ -172,10 +172,10 @@ void	get_cylinder_alpha(double alpha[2], double mu[2], t_ray ray, t_cylinder_var
 t_hit_info	check_objects(t_ray ray, t_scene *scene);
 // check_plane.c
 t_hit_info	check_all_plane(t_ray ray, t_list *plane);
-t_hit_info	check_plane(t_ray ray, t_plane *plane);
+t_hit_info	check_plane(t_ray ray, t_list *pl);
 // check_sphere.c
-t_hit_info	check_all_sphere(t_ray ray, t_list *sphere);
-t_hit_info	check_sphere(t_ray ray, t_sphere *sphere);
+t_hit_info	check_all_sphere(t_ray ray, t_list *sphare);
+t_hit_info	check_sphere(t_ray ray, t_list *sp);
 // get_hit_info.c
 
 // ray.c
@@ -185,6 +185,7 @@ t_ray	get_ray_camera_to_obj(t_scene *scene, int w, int h);
 int		rt_engine(t_scene *scene, int w, int h);
 
 // rt_utils.c
+t_rgb	add_ambient_light(t_rgb color, t_ambient_lightning ambient_light);
 double	find_t(double t1, double t2);
 
 /* SOURCE CODES *////////////////////////////////////////////////

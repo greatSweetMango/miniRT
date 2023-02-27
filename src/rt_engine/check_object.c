@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_object.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 16:49:48 by gyim              #+#    #+#             */
-/*   Updated: 2023/02/26 11:43:35 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/02/27 20:00:30 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,6 @@ t_hit_info	check_objects(t_ray ray, t_scene *scene)
 	if (target_object.obj == NULL
 		|| (temp.obj != NULL && temp.t < target_object.t))
 		target_object = temp;
+	target_object.color = add_ambient_light(target_object.color, scene->ambient_lightning);
 	return (target_object);
 }
