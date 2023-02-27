@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_scene.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 20:24:04 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/02/26 10:55:06 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/02/27 20:32:04 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,26 @@
 void	set_console_bg(t_scene *scene)
 {
 	void	*img;
-	int	img_width;
-	int	img_height;
-
+	int		img_width;
+	int		img_height;
+	char	*str;
+	
+	str = NULL;
 	img = mlx_xpm_file_to_image(scene->mlx,
 			"./console_bg.xpm", &img_width, &img_height);
 	mlx_put_image_to_window(scene->mlx, scene->win, img, WIN_WIDTH, 0);
+	if (scene->selected_obj->obj_type == CAMERA)
+		str = ft_strdup("[ CAMERA ]");
+	else if (scene->selected_obj->obj_type == SPHERE)
+		str = ft_strdup("[ SPHERE ]");
+	else if (scene->selected_obj->obj_type == PLANE)
+		str = ft_strdup("[ PLANE ]");
+	else if (scene->selected_obj->obj_type == CYLINDER)
+		str = ft_strdup("[ CYLINDER ]");
+	if (str)
+		mlx_string_put (scene->mlx, scene->win, 750,
+			350, 0xFFFFFF, str);
+	free(str);
 }
 
 void	*put_scene_to_img_thread(void *argv)
