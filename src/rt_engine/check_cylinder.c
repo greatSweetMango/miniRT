@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_cylinder.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 13:37:58 by gyim              #+#    #+#             */
-/*   Updated: 2023/02/27 20:16:21 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/02/28 18:23:06 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,11 @@ t_cylinder_var	get_cylinder_var(t_ray ray, t_cylinder *cylinder)
 	t_cylinder_var	cylinder_var;
 
 	cylinder_var.p0 = ray.pos;
-	cylinder_var.p1	= cylinder->pos;
+	// cylinder_var.p1	= cylinder->pos;
+	cylinder_var.p1 = v3_plus_v3(cylinder->pos,
+			v3_mul_d(v3_unit(cylinder->orientation),-cylinder->height / 2));
 	cylinder_var.p2 = v3_plus_v3(cylinder->pos,
-			v3_mul_d(cylinder->orientation,cylinder->height));
+			v3_mul_d(v3_unit(cylinder->orientation),cylinder->height));
 	cylinder_var.delta_p = v3_minus_v3(cylinder_var.p2, cylinder_var.p1);
 	cylinder_var.dp = v3_inner_product_v3(ray.orient, cylinder_var.delta_p);
 	cylinder_var.p01 = v3_minus_v3(cylinder_var.p0, cylinder_var.p1);

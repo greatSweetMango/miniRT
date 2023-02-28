@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_engine.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 18:43:16 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/02/27 19:17:28 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/02/28 18:13:40 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	rt_engine(t_scene *scene, int w, int h)
 
 	ray = get_ray_camera_to_obj(scene, w, h);
 	hit_info = check_objects(ray, scene);
+	// hit_info = add_light(hit_info, scene->lights);
 	if (hit_info.obj == NULL)
 	{
 		hit_info.color.r = 1.0;
@@ -31,12 +32,3 @@ int	rt_engine(t_scene *scene, int w, int h)
 	}
 	return (ft_rgb_to_i(hit_info.color));
 }
-// t_rgb	raytracing(t_scene *scene, int w, int h)
-// {
-// }
-	// if (check_sphere(screen_point, scene->spheres->next->content) > 0)
-	// 	return (((t_sphere *)(scene->spheres->next->content))->color);
-	// else if (check_sphere(screen_point, scene->spheres->content) > 0)
-	// 	return (((t_sphere *)(scene->spheres->content))->color);
-	// else
-	// 	return (black);

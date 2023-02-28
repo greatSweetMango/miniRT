@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:59:09 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/02/27 20:15:16 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/02/28 17:06:07 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,7 +167,9 @@ t_cylinder_var	get_cylinder_var(t_ray ray, t_cylinder *cylinder);
 void	get_cylinder_coeff(double coeff[3], t_ray ray, t_cylinder *cylinder,
 	t_cylinder_var variable);
 void	get_cylinder_alpha(double alpha[2], double mu[2], t_ray ray, t_cylinder_var variable);
-
+// check_light.c
+t_hit_info	add_light(t_hit_info hit_info, t_list *light);
+double		get_light_ratio(t_hit_info hit_info, t_light *light);
 // check_object.c
 t_hit_info	check_objects(t_ray ray, t_scene *scene);
 // check_plane.c
@@ -205,4 +207,3 @@ void	puterr_exit(char *str);
 // main.c
 int		close_scene(t_scene *scene);
 void	init_img(t_scene *scene);
-
