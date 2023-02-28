@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 12:08:00 by gyim              #+#    #+#             */
-/*   Updated: 2023/02/28 18:10:17 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/02/28 19:34:49 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_hit_info	add_light(t_hit_info hit_info, t_list *light)
 	double	light_ratio;
 
 	curr_light = light;
-	if (hit_info.obj->obj_type == SPHERE)
+	if (hit_info.obj == NULL || hit_info.obj->obj_type == SPHERE)
 	{
 		while (curr_light)
 		{
@@ -45,5 +45,12 @@ double	get_light_ratio(t_hit_info hit_info, t_light *light)
 
 	ratio = v3_inner_product_v3(hit_info.normal,
 			v3_unit(v3_minus_v3(hit_info.point, light->pos)));
+	printf("normal : %f %f %f\n", hit_info.normal.x, hit_info.normal.y, hit_info.normal.z);
+	printf("ltop   : %f %f %f\n",
+		v3_unit(v3_minus_v3(hit_info.point, light->pos)).x,
+		v3_unit(v3_minus_v3(hit_info.point, light->pos)).y,
+		v3_unit(v3_minus_v3(hit_info.point, light->pos)).z);
+	if (ratio < 0)
+		return (0.0);
 	return (ratio);
 }

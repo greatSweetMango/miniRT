@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:52:47 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/02/28 15:32:14 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/02/28 19:48:50 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,7 @@ typedef struct s_hit_info
 	double	t;
 	t_vec3	point;
 	t_rgb	color;
+	t_ray	ray;
 	t_vec3	normal;
 }	t_hit_info;
 

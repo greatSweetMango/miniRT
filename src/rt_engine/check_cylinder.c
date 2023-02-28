@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 13:37:58 by gyim              #+#    #+#             */
-/*   Updated: 2023/02/28 18:23:06 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/02/28 18:25:45 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ t_cylinder_var	get_cylinder_var(t_ray ray, t_cylinder *cylinder)
 	t_cylinder_var	cylinder_var;
 
 	cylinder_var.p0 = ray.pos;
-	// cylinder_var.p1	= cylinder->pos;
 	cylinder_var.p1 = v3_plus_v3(cylinder->pos,
 			v3_mul_d(v3_unit(cylinder->orientation),-cylinder->height / 2));
 	cylinder_var.p2 = v3_plus_v3(cylinder->pos,
