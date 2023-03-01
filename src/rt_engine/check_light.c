@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 12:08:00 by gyim              #+#    #+#             */
-/*   Updated: 2023/03/01 17:32:34 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/01 17:40:04 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ double	get_light_ratio(t_hit_info hit_info, t_light *light)
 	double	ratio;
 
 	ratio = v3_inner_product_v3(hit_info.normal,
-			v3_unit(v3_minus_v3(hit_info.point, light->pos)));
+			v3_unit(v3_minus_v3(light->pos, hit_info.point)));
 	if (ratio < 0)
 		return (0.0);
 	return (ratio);
