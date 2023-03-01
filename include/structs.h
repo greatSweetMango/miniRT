@@ -6,11 +6,10 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:52:47 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/02/28 19:48:50 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/01 17:53:56 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #pragma once
 #ifndef STRUCTS_H
 # define STRUCTS_H
 

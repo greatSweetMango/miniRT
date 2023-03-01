@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:59:09 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/02/28 17:06:07 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/01 18:19:10 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,8 +168,8 @@ void	get_cylinder_coeff(double coeff[3], t_ray ray, t_cylinder *cylinder,
 	t_cylinder_var variable);
 void	get_cylinder_alpha(double alpha[2], double mu[2], t_ray ray, t_cylinder_var variable);
 // check_light.c
-t_hit_info	add_light(t_hit_info hit_info, t_list *light);
-double		get_light_ratio(t_hit_info hit_info, t_light *light);
+t_hit_info	add_light(t_hit_info hit_info, t_list *light, t_scene *scene);
+double		get_light_ratio(t_hit_info hit_info, t_light *light, t_scene *scene);
 // check_object.c
 t_hit_info	check_objects(t_ray ray, t_scene *scene);
 // check_plane.c
