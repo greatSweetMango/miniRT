@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:59:09 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/03/01 18:19:10 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/01 19:44:21 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,6 +163,8 @@ void	set_spheres(t_scene *scene, char **object);
 // check_cylinder.c
 t_hit_info	check_all_cylinder(t_ray ray, t_list *cylinder);
 t_hit_info	check_cylinder(t_ray ray, t_list *cy);
+void	get_cylinder_body(t_hit_info *hit_info, t_ray ray, t_list *cy);
+double	find_root(double coeff[3], double discriminant);
 t_cylinder_var	get_cylinder_var(t_ray ray, t_cylinder *cylinder);
 void	get_cylinder_coeff(double coeff[3], t_ray ray, t_cylinder *cylinder,
 	t_cylinder_var variable);

@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 12:08:00 by gyim              #+#    #+#             */
-/*   Updated: 2023/03/01 18:28:13 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/01 19:35:41 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,11 @@ double	get_light_ratio(t_hit_info hit_info, t_light *light, t_scene *scene)
 	t_ray		light_ray;
 	t_hit_info	obstacle;
 	
-	light_ray.pos = hit_info.point;
 	light_ray.orient = v3_unit(v3_minus_v3(light->pos, hit_info.point));
+	light_ray.pos = v3_plus_v3(hit_info.point, v3_mul_d(light_ray.orient, 0.05));
 	obstacle = check_objects(light_ray, scene);
 	ratio = -1;
-	if (obstacle.obj == NULL)
+	if (obstacle.obj == NULL || obstacle.t == 0)
 		ratio = v3_inner_product_v3(hit_info.normal, light_ray.orient);
 	if (ratio < 0)
 		return (0.0);

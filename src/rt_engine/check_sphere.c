@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 16:49:48 by gyim              #+#    #+#             */
-/*   Updated: 2023/03/01 13:22:34 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/01 19:27:49 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ t_hit_info	check_sphere(t_ray ray, t_list *sp)
 
 	sphere = (t_sphere *)sp->content;
 	hit_info.obj = NULL;
-	v = v3_mul_d(sphere->pos, -1.0);
+	v = v3_minus_v3(ray.pos, sphere->pos);
 	discriminant = pow(v3_inner_product_v3(v, ray.orient), 2.0);
 	discriminant -= ((v3_inner_product_v3(v, v)
 				- pow(sphere->diameter / 2, 2.0)));
@@ -60,3 +60,4 @@ t_hit_info	check_sphere(t_ray ray, t_list *sp)
 	hit_info.color.b = sphere->color.b;
 	return (hit_info);
 }
+

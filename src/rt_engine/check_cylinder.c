@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 13:37:58 by gyim              #+#    #+#             */
-/*   Updated: 2023/03/01 18:28:31 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/01 19:49:28 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,33 +32,67 @@ t_hit_info	check_all_cylinder(t_ray ray, t_list *cylinder)
 t_hit_info	check_cylinder(t_ray ray, t_list *cy)
 {
 	t_hit_info		hit_info;
-	double			coeff[3];
+	// double			coeff[3];
+	// double			discriminant;
+	// double			t[2];
+	// double			alpha[2];
+	// t_cylinder_var	variable;
+	// t_cylinder		*cylinder;
+
+	get_cylinder_body(&hit_info, ray, cy);
+	// cylinder = (t_cylinder *)cy->content;
+	// hit_info.obj = NULL;
+	// variable = get_cylinder_var(ray, cylinder);
+	// get_cylinder_coeff(coeff, ray, cylinder, variable);
+	// discriminant = pow(coeff[1], 2.0) - 4 * coeff[0] * coeff[2];
+	// if (discriminant < 0)
+	// 	return (hit_info);
+	// t[0] = (-coeff[1] - sqrt(discriminant)) / (2.0 * coeff[0]);
+	// t[1] = (-coeff[1] + sqrt(discriminant)) / (2.0 * coeff[0]);
+	// hit_info.t = find_t(t[0], t[1]);
+	// if (hit_info.t < 0)
+	// 	return (hit_info);
+	// get_cylinder_alpha(alpha, t, ray, variable);
+	// if ((alpha[0] < 0 || alpha[0] > 1)
+	// 	&& (alpha[1] < 0 || alpha[1] > 1))
+	// 	return (hit_info);
+	// hit_info.obj = cy;
+	// hit_info.point = v3_plus_v3(ray.pos, v3_mul_d(ray.orient, hit_info.t));
+	// hit_info.color = cylinder->color;
+	return (hit_info);
+}
+
+void	get_cylinder_body(t_hit_info *hit_info, t_ray ray, t_list *cy)
+{
 	double			discriminant;
-	double			t[2];
-	double			alpha[2];
 	t_cylinder_var	variable;
+	double			coeff[3];
+	double			alpha[2];
 	t_cylinder		*cylinder;
 
 	cylinder = (t_cylinder *)cy->content;
-	hit_info.obj = NULL;
 	variable = get_cylinder_var(ray, cylinder);
 	get_cylinder_coeff(coeff, ray, cylinder, variable);
 	discriminant = pow(coeff[1], 2.0) - 4 * coeff[0] * coeff[2];
 	if (discriminant < 0)
-		return (hit_info);
+		return ;
+	find_root(coeff, discriminant);
+	if (hit_info->t < 0)
+		return ;
+	if ((alpha[0] < 0 || alpha[0] > 1) && (alpha[1] < 0 || alpha[1] > 1))
+		return ;
+	hit_info->obj = cy;
+	hit_info->point = v3_plus_v3(ray.pos, v3_mul_d(ray.orient, hit_info->t));
+	hit_info->color = cylinder->color;
+}
+
+double	find_root(double coeff[3], double discriminant)
+{
+	double	t[2];
+
 	t[0] = (-coeff[1] - sqrt(discriminant)) / (2.0 * coeff[0]);
 	t[1] = (-coeff[1] + sqrt(discriminant)) / (2.0 * coeff[0]);
-	hit_info.t = find_t(t[0], t[1]);
-	if (hit_info.t < 0)
-		return (hit_info);
-	get_cylinder_alpha(alpha, t, ray, variable);
-	if ((alpha[0] < 0 || alpha[0] > 1)
-		&& (alpha[1] < 0 || alpha[1] > 1))
-		return (hit_info);
-	hit_info.obj = cy;
-	hit_info.point = v3_plus_v3(ray.pos, v3_mul_d(ray.orient, hit_info.t));
-	hit_info.color = cylinder->color;
-	return (hit_info);
+	return (find_t(t[0], t[1]));
 }
 
 t_cylinder_var	get_cylinder_var(t_ray ray, t_cylinder *cylinder)
