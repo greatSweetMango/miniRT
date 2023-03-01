@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 20:19:16 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/02/19 17:11:54 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/01 16:35:13 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,11 +68,11 @@ void	set_ambient_lightning(t_scene *scene, char **object)
 
 void	set_scene(t_scene *scene, char **object)
 {
-	if (!ft_strncmp("A", object[0], 3))
+	if (!ft_strncmp("A", object[0], 2))
 		set_ambient_lightning(scene, object);
-	else if (!ft_strncmp("C", object[0], 3))
+	else if (!ft_strncmp("C", object[0], 2))
 		set_cameras(scene, object);
-	else if (!ft_strncmp("L", object[0], 3))
+	else if (!ft_strncmp("L", object[0], 2))
 		set_lights(scene, object);
 	else if (!ft_strncmp("sp", object[0], 3))
 		set_spheres(scene, object);

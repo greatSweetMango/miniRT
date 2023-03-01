@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 12:08:00 by gyim              #+#    #+#             */
-/*   Updated: 2023/02/28 19:34:49 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/01 17:02:29 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,30 @@
 t_hit_info	add_light(t_hit_info hit_info, t_list *light)
 {
 	t_list	*curr_light;
-	double	light_ratio;
+	double	density;
 
 	curr_light = light;
-	if (hit_info.obj == NULL || hit_info.obj->obj_type == SPHERE)
+	if (hit_info.obj != NULL && hit_info.obj->obj_type == SPHERE)
 	{
 		while (curr_light)
 		{
-			light_ratio = get_light_ratio(hit_info,
+			density = get_light_ratio(hit_info,
 					(t_light *)curr_light->content);
-			hit_info.color.r += light_ratio
+			hit_info.color.r += density
 				* ((t_light *)(curr_light->content))->ratio
 				* ((t_light *)(curr_light->content))->color.r;
-			hit_info.color.g += light_ratio
+			hit_info.color.g += density
 				* ((t_light *)(curr_light->content))->ratio
 				* ((t_light *)(curr_light->content))->color.g;
-			hit_info.color.b += light_ratio
+			hit_info.color.b += density
 				* ((t_light *)(curr_light->content))->ratio
 				* ((t_light *)(curr_light->content))->color.b;
+			if (hit_info.color.r > 1)
+				printf("111\n");
+			if (hit_info.color.g > 1)
+				printf("222\n");
+			if (hit_info.color.b > 1)
+				printf("333\n");
 			curr_light = curr_light->next;
 		}
 	}
@@ -45,11 +51,6 @@ double	get_light_ratio(t_hit_info hit_info, t_light *light)
 
 	ratio = v3_inner_product_v3(hit_info.normal,
 			v3_unit(v3_minus_v3(hit_info.point, light->pos)));
-	printf("normal : %f %f %f\n", hit_info.normal.x, hit_info.normal.y, hit_info.normal.z);
-	printf("ltop   : %f %f %f\n",
-		v3_unit(v3_minus_v3(hit_info.point, light->pos)).x,
-		v3_unit(v3_minus_v3(hit_info.point, light->pos)).y,
-		v3_unit(v3_minus_v3(hit_info.point, light->pos)).z);
 	if (ratio < 0)
 		return (0.0);
 	return (ratio);

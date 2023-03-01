@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_rgb_to_i.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 18:12:24 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/01/17 19:58:14 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/03/01 17:24:43 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ int	ft_rgb_to_i(t_rgb rgb)
 	int	num;
 
 	num = 0;
-	num += (rgb.r * 255) * 0x010000;
-	num += (rgb.g * 255) * 0x000100;
-	num += (rgb.b * 255) * 0x000001;
+	num += (int)(rgb.r * 255) * 0x010000;
+	num += (int)(rgb.g * 255) * 0x000100;
+	num += (int)(rgb.b * 255) * 0x000001;
 	return (num);
 }

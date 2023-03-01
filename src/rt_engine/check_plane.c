@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_plane.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 14:13:48 by gyim              #+#    #+#             */
-/*   Updated: 2023/02/27 20:12:53 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/03/01 14:33:58 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,15 @@ t_hit_info	check_plane(t_ray ray, t_list *pl)
 		return (hit_info);
 	hit_info.obj = pl;
 	hit_info.point = v3_plus_v3(ray.pos, v3_mul_d(ray.orient, hit_info.t));
-	if (sin(0.25 * hit_info.point.x) * sin(0.25 *hit_info.point.y) * sin(0.25 *hit_info.point.z) > 0)
-		hit_info.color = plane->color;
-	else
-		hit_info.color.r = 1 - plane->color.r;
-		hit_info.color.g = 1 - plane->color.g;
-		hit_info.color.b = 1 - plane->color.b; 
+	// if (sin(0.25 * hit_info.point.x) * sin(0.25 *hit_info.point.y) * sin(0.25 *hit_info.point.z) > 0)
+	// 	hit_info.color = plane->color;
+	// else
+	// 	hit_info.color.r = 1 - plane->color.r;
+	// 	hit_info.color.g = 1 - plane->color.g;
+	// 	hit_info.color.b = 1 - plane->color.b;
+	hit_info.color.r = plane->color.r;
+	hit_info.color.g = plane->color.g;
+	hit_info.color.b = plane->color.b;
+	 
 	return (hit_info);
 }
