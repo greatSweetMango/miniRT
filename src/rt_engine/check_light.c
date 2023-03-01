@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 12:08:00 by gyim              #+#    #+#             */
-/*   Updated: 2023/03/01 17:02:29 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/01 17:32:34 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,11 @@ t_hit_info	add_light(t_hit_info hit_info, t_list *light)
 				* ((t_light *)(curr_light->content))->ratio
 				* ((t_light *)(curr_light->content))->color.b;
 			if (hit_info.color.r > 1)
-				printf("111\n");
+				hit_info.color.r = 1.0;
 			if (hit_info.color.g > 1)
-				printf("222\n");
+				hit_info.color.g = 1.0;
 			if (hit_info.color.b > 1)
-				printf("333\n");
+				hit_info.color.b = 1.0;
 			curr_light = curr_light->next;
 		}
 	}
