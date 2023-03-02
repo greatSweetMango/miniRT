@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 16:29:34 by gyim              #+#    #+#             */
-/*   Updated: 2023/03/02 19:22:37 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/02 19:51:23 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	get_cylinder_body(t_hit_info *hit_info, t_ray ray, t_list *cy)
 	if ((variable.alpha[0] < 0 || variable.alpha[0] > 1)
 		&& (variable.alpha[1] < 0 || variable.alpha[1] > 1))
 		return ;
-	get_hit_point(hit_info, cy, ray, variable);
+	get_cylinder_body_hit_point(hit_info, cy, ray, variable);
 }
 
 
