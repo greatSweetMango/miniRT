@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 14:13:48 by gyim              #+#    #+#             */
-/*   Updated: 2023/03/01 18:12:54 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/02 18:54:44 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,12 @@ t_hit_info	check_plane(t_ray ray, t_list *pl)
 	// if (sin(0.25 * hit_info.point.x) * sin(0.25 *hit_info.point.y) * sin(0.25 *hit_info.point.z) > 0)
 	// 	hit_info.color = plane->color;
 	// else
-	// 	hit_info.color.r = 1 - plane->color.r;
-	// 	hit_info.color.g = 1 - plane->color.g;
-	// 	hit_info.color.b = 1 - plane->color.b;
-	hit_info.color.r = plane->color.r;
-	hit_info.color.g = plane->color.g;
-	hit_info.color.b = plane->color.b;
+	// 	hit_info.color.x = 1 - plane->color.x;
+	// 	hit_info.color.y = 1 - plane->color.y;
+	// 	hit_info.color.z = 1 - plane->color.z;
+	hit_info.color.x = plane->color.x;
+	hit_info.color.y = plane->color.y;
+	hit_info.color.z = plane->color.z;
 	
 	return (hit_info);
 }

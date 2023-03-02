@@ -6,7 +6,7 @@
 #    By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/14 16:46:22 by jaehyuki          #+#    #+#              #
-#    Updated: 2023/03/02 16:29:58 by gyim             ###   ########seoul.kr   #
+#    Updated: 2023/03/02 19:12:12 by gyim             ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,9 +66,6 @@ SRCS		=	$(MAIN)										\
 				src/parse_scene/parse_arg.c					\
 				src/parse_scene/set_scene_util.c			\
 				src/parse_scene/set_scene.c					\
-				src/rt_engine/check_cylinder_body.c			\
-				src/rt_engine/check_cylinder_head.c			\
-				src/rt_engine/check_cylinder.c				\
 				src/rt_engine/check_light.c					\
 				src/rt_engine/check_object.c				\
 				src/rt_engine/check_plane.c					\
@@ -76,7 +73,9 @@ SRCS		=	$(MAIN)										\
 				src/rt_engine/ray.c							\
 				src/rt_engine/rt_engine.c					\
 				src/rt_engine/rt_utils.c
-				
+#src/rt_engine/check_cylinder_body.c			\
+				src/rt_engine/check_cylinder_head.c			\
+				src/rt_engine/check_cylinder.c				
 OBJS		=	$(addprefix $(OUTDIR),$(SRCS:%.c=%.o))
 DEPS		=	$(addprefix $(OUTDIR),$(SRCS:%.c=%.d))
 -include $(DEPS)

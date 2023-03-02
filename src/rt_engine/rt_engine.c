@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 18:43:16 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/03/01 18:18:04 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/02 19:13:11 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ int	rt_engine(t_scene *scene, int w, int h)
 	hit_info = add_light(hit_info, scene->lights, scene);
 	if (hit_info.obj == NULL)
 	{
-		hit_info.color.r = 0.0;
-		hit_info.color.g = 0.0;
-		hit_info.color.b = 0.0;
+		hit_info.color.x = 0.0;
+		hit_info.color.y = 0.0;
+		hit_info.color.z = 0.0;
 	}
 	return (ft_rgb_to_i(hit_info.color));
 }

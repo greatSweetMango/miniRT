@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 13:37:58 by gyim              #+#    #+#             */
-/*   Updated: 2023/03/02 17:54:06 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/02 18:29:17 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,19 +36,6 @@ t_hit_info	check_cylinder(t_ray ray, t_list *cy)
 
 	get_cylinder_body(&hit_info, ray, cy);
 	get_cylinder_head(&hit_info2, ray, cy);
-	// if (hit_info.obj == NULL && hit_info2.obj == NULL)
-	// 	return (hit_info);
-	// if (hit_info.obj != NULL && hit_info2.obj == NULL)
-	// 	return (hit_info);
-	// else if (hit_info.obj == NULL && hit_info2.obj != NULL)
-	// 	return (hit_info2);
-	// else
-	// {
-	// 	if (hit_info.t < hit_info2.t)
-	// 		return (hit_info);
-	// 	else
-	// 		return (hit_info2);
-	// }
 	return (hit_info);
 }
 

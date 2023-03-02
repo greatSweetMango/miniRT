@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 20:04:49 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/02/27 19:29:23 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/03/02 18:52:11 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ void	print_all_objects_test(t_scene *scene)
 {
 	/* Test Code */
 	printf("\n<ambient_lightning>\n\nr: %f\ng: %f\nb: %f\nratio: %f\n",
-		scene->ambient_lightning.color.r * 255,
-		scene->ambient_lightning.color.g * 255,
-		scene->ambient_lightning.color.b * 255,
+		scene->ambient_lightning.color.x * 255,
+		scene->ambient_lightning.color.y * 255,
+		scene->ambient_lightning.color.z * 255,
 		scene->ambient_lightning.ratio);
 
 	printf("-END-\n<cameras>");
@@ -49,9 +49,9 @@ void	print_all_objects_test(t_scene *scene)
 			light->pos.y,
 			light->pos.z,
 			light->ratio,
-			light->color.r * 255,
-			light->color.g * 255,
-			light->color.b * 255
+			light->color.x * 255,
+			light->color.y * 255,
+			light->color.z * 255
 			);
 		lights_lst = lights_lst->next;
 	}
@@ -67,9 +67,9 @@ void	print_all_objects_test(t_scene *scene)
 			sphere->pos.y,
 			sphere->pos.z,
 			sphere->diameter,
-			sphere->color.r * 255,
-			sphere->color.g * 255,
-			sphere->color.b * 255
+			sphere->color.x * 255,
+			sphere->color.y * 255,
+			sphere->color.z * 255
 			);
 		spheres_lst = spheres_lst->next;
 	}
@@ -87,9 +87,9 @@ void	print_all_objects_test(t_scene *scene)
 			plane->orientation.x,
 			plane->orientation.y,
 			plane->orientation.z,
-			plane->color.r * 255,
-			plane->color.g * 255,
-			plane->color.b * 255
+			plane->color.x * 255,
+			plane->color.y * 255,
+			plane->color.z * 255
 			);
 		planes_lst = planes_lst->next;
 	}
@@ -109,9 +109,9 @@ void	print_all_objects_test(t_scene *scene)
 			cylinder->orientation.z,
 			cylinder->diameter,
 			cylinder->height,
-			cylinder->color.r * 255,
-			cylinder->color.g * 255,
-			cylinder->color.b * 255
+			cylinder->color.x * 255,
+			cylinder->color.y * 255,
+			cylinder->color.z * 255
 			);
 		cylinders_lst = cylinders_lst->next;
 	}

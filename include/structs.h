@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:52:47 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/03/02 10:04:49 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/02 18:51:06 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,6 @@
 # define STRUCTS_H
 
 /* BASE */
-typedef struct s_rgb
-{
-	double	r;
-	double	g;
-	double	b;
-}	t_rgb;
 
 typedef struct s_vec3
 {
@@ -27,6 +21,8 @@ typedef struct s_vec3
 	double	y;
 	double	z;
 }	t_vec3;
+
+typedef struct s_vec3 t_rgb;
 
 typedef struct s_list
 {

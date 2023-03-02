@@ -6,42 +6,41 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 12:08:00 by gyim              #+#    #+#             */
-/*   Updated: 2023/03/02 15:12:48 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/02 19:16:34 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_hit_info	add_light(t_hit_info hit_info, t_list *light, t_scene *scene)
+t_hit_info	add_light(t_hit_info hit_info, t_list *lst_light, t_scene *scene)
 {
 	t_list	*curr_light;
+	t_light *light;
 	double	density;
 
-	curr_light = light;
-	// if (hit_info.obj != NULL
-	// 	&& (hit_info.obj->obj_type == SPHERE
-	// 		|| hit_info.obj->obj_type == PLANE))
-	if (hit_info.obj != NULL)
+	curr_light = lst_light;
+	if (hit_info.obj != NULL
+		&& (hit_info.obj->obj_type == SPHERE
+			|| hit_info.obj->obj_type == PLANE))
+	// if (hit_info.obj != NULL)
 	{
 		while (curr_light)
 		{
+			light = (t_light *)curr_light->content;
 			density = get_light_ratio(hit_info,
-					(t_light *)curr_light->content, scene);
-			hit_info.color.r += density
-				* ((t_light *)(curr_light->content))->ratio
-				* ((t_light *)(curr_light->content))->color.r;
-			hit_info.color.g += density
-				* ((t_light *)(curr_light->content))->ratio
-				* ((t_light *)(curr_light->content))->color.g;
-			hit_info.color.b += density
-				* ((t_light *)(curr_light->content))->ratio
-				* ((t_light *)(curr_light->content))->color.b;
-			if (hit_info.color.r > 1)
-				hit_info.color.r = 1.0;
-			if (hit_info.color.g > 1)
-				hit_info.color.g = 1.0;
-			if (hit_info.color.b > 1)
-				hit_info.color.b = 1.0;
+					light, scene);
+			// hit_info.color = v3_plus_v3(hit_info.color,
+			// 	v3_mul_d(((t_light *)(curr_light->content))->color.x,
+			// 	density * ((t_light *)(curr_light->content))->ratio))
+			hit_info.color.x += density * light->ratio * light->color.x;
+			hit_info.color.y += density * light->ratio * light->color.y;
+			hit_info.color.z += density * light->ratio * light->color.z;
+			if (hit_info.color.x > 1)
+				hit_info.color.x = 1.0;
+			if (hit_info.color.y > 1)
+				hit_info.color.y = 1.0;
+			if (hit_info.color.z > 1)
+				hit_info.color.z = 1.0;
 			curr_light = curr_light->next;
 		}
 	}

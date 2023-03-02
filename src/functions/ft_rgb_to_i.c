@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 18:12:24 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/03/01 17:30:56 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/02 18:54:12 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ int	ft_rgb_to_i(t_rgb rgb)
 	int	num;
 
 	num = 0;
-	num += (int)(rgb.r *255) * 0x010000;
-	num += (int)(rgb.g *255) * 0x000100;
-	num += (int)(rgb.b *255) * 0x000001;
+	num += (int)(rgb.x *255) * 0x010000;
+	num += (int)(rgb.y *255) * 0x000100;
+	num += (int)(rgb.z *255) * 0x000001;
 	return (num);
 }

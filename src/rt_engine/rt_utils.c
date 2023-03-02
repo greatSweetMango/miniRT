@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 16:46:33 by gyim              #+#    #+#             */
-/*   Updated: 2023/03/01 13:20:44 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/02 19:12:37 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 t_rgb	add_ambient_light(t_rgb color, t_ambient_lightning ambient_light)
 {
-	color.r = color.r * ambient_light.color.r * ambient_light.ratio;
-	color.g = color.g * ambient_light.color.g * ambient_light.ratio;
-	color.b = color.b * ambient_light.color.b * ambient_light.ratio;
+	color.x = color.x * ambient_light.color.x * ambient_light.ratio;
+	color.y = color.y * ambient_light.color.y * ambient_light.ratio;
+	color.z = color.z * ambient_light.color.z * ambient_light.ratio;
 	return (color);
 }
 
