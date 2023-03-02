@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:52:47 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/03/01 17:53:56 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/02 10:04:49 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,9 @@ typedef struct s_cylinder_var
 	double	pp;
 	t_vec3	p01;
 	double	dp;
+	double	t[2];
+	double	coeff[3];
+	double	alpha[2];
 }	t_cylinder_var;
 
 

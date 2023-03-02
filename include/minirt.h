@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:59:09 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/03/01 19:44:21 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/02 18:00:33 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,15 +160,23 @@ void	set_spheres(t_scene *scene, char **object);
 
 /* RT ENGINE *////////////////////////////////////////////////
 
+//check_cylinder_body.c
+void	get_cylinder_body(t_hit_info *hit_info, t_ray ray, t_list *cy);
+void	get_cylinder_coeff(t_ray ray, t_cylinder *cylinder,
+				t_cylinder_var *variable);
+void	get_cylinder_alpha(t_ray ray, t_cylinder_var *variable);
+void	get_hit_point(t_hit_info *hit_info, t_list *cy,
+				t_ray ray, t_cylinder_var variable);
+//check_cylinder_head.c
+void	get_cylinder_head(t_hit_info *hit_info, t_ray ray, t_list *cy);
+double	check_cylinder_head(t_ray ray, t_vec3 pos, t_vec3 normal, double radius);
+
 // check_cylinder.c
 t_hit_info	check_all_cylinder(t_ray ray, t_list *cylinder);
 t_hit_info	check_cylinder(t_ray ray, t_list *cy);
-void	get_cylinder_body(t_hit_info *hit_info, t_ray ray, t_list *cy);
-double	find_root(double coeff[3], double discriminant);
+double	find_root(double t[2], double coeff[3], double discriminant);
 t_cylinder_var	get_cylinder_var(t_ray ray, t_cylinder *cylinder);
-void	get_cylinder_coeff(double coeff[3], t_ray ray, t_cylinder *cylinder,
-	t_cylinder_var variable);
-void	get_cylinder_alpha(double alpha[2], double mu[2], t_ray ray, t_cylinder_var variable);
+
 // check_light.c
 t_hit_info	add_light(t_hit_info hit_info, t_list *light, t_scene *scene);
 double		get_light_ratio(t_hit_info hit_info, t_light *light, t_scene *scene);
