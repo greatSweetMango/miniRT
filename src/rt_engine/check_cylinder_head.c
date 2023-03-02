@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 10:54:56 by gyim              #+#    #+#             */
-/*   Updated: 2023/03/02 19:17:01 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/02 19:20:49 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	get_cylinder_head(t_hit_info *hit_info, t_ray ray, t_list *cy)
 	t_cylinder		*cylinder;
 
 	hit_info->obj = NULL;
+	hit_info->t = -2.0;
 	cylinder = (t_cylinder *)cy->content;
 	variable = get_cylinder_var(ray, cylinder);
 	variable.t[0] = check_cylinder_head(ray, variable.p1,
@@ -26,8 +27,9 @@ void	get_cylinder_head(t_hit_info *hit_info, t_ray ray, t_list *cy)
 	variable.t[1] = check_cylinder_head(ray, variable.p2,
 			v3_unit(cylinder->orientation),
 			cylinder->diameter / 2.0);
-	if (variable.t[0] < 0 && variable.t[1] < 0)
-		return ;
+	if (variable.t[0] > 0)
+		hit_info->t = variable.t[0];
+	if (variable.t[1] > 0 && variable.t[1] < hit_info->t)
 }
 
 double	check_cylinder_head(t_ray ray, t_vec3 pos, t_vec3 normal, double radius)

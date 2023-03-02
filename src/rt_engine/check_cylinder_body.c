@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 16:29:34 by gyim              #+#    #+#             */
-/*   Updated: 2023/03/02 18:02:01 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/02 19:22:37 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	get_cylinder_alpha(t_ray ray, t_cylinder_var *variable)
 	variable->alpha[1] /= variable->pp;
 }
 
-void	get_hit_point(t_hit_info *hit_info, t_list *cy,
+void	get_cylinder_body_hit_point(t_hit_info *hit_info, t_list *cy,
 				t_ray ray, t_cylinder_var variable)
 {
 	t_cylinder *cylinder;
