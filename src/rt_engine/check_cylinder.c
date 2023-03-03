@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 13:37:58 by gyim              #+#    #+#             */
-/*   Updated: 2023/03/02 19:43:55 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/03 19:35:04 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,11 @@ t_hit_info	check_cylinder(t_ray ray, t_list *cy)
 
 	get_cylinder_body(&hit_info, ray, cy);
 	get_cylinder_head(&hit_info2, ray, cy);
+	if (hit_info2.obj != NULL
+		&& (hit_info.obj == NULL || hit_info2.t < hit_info.t))
+		return (hit_info2);
 	return (hit_info);
 }
-
 
 double	find_root(double t[2], double coeff[3], double discriminant)
 {
@@ -52,8 +54,8 @@ t_cylinder_var	get_cylinder_var(t_ray ray, t_cylinder *cylinder)
 	t_cylinder_var	cylinder_var;
 
 	cylinder_var.p0 = ray.pos;
-	cylinder_var.p1 = v3_plus_v3(cylinder->pos,
-			v3_mul_d(v3_unit(cylinder->orientation), -cylinder->height / 2.0));
+	cylinder_var.p1 = v3_minus_v3(cylinder->pos,
+			v3_mul_d(v3_unit(cylinder->orientation), cylinder->height / 2.0));
 	cylinder_var.p2 = v3_plus_v3(cylinder->pos,
 			v3_mul_d(v3_unit(cylinder->orientation), cylinder->height / 2.0));
 	cylinder_var.delta_p = v3_minus_v3(cylinder_var.p2, cylinder_var.p1);

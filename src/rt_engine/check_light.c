@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 12:08:00 by gyim              #+#    #+#             */
-/*   Updated: 2023/03/02 19:53:01 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/03 09:20:12 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,3 +51,4 @@ double	get_light_ratio(t_hit_info hit_info, t_light *light, t_scene *scene)
 	if (ratio < 0)
 		return (0.0);
 	return (ratio);
+}

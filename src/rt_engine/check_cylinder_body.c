@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 16:29:34 by gyim              #+#    #+#             */
-/*   Updated: 2023/03/02 19:51:23 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/03 19:52:10 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +22,27 @@ void	get_cylinder_body(t_hit_info *hit_info, t_ray ray, t_list *cy)
 	cylinder = (t_cylinder *)cy->content;
 	variable = get_cylinder_var(ray, cylinder);
 	get_cylinder_coeff(ray, cylinder, &variable);
-	discriminant = pow(variable.coeff[1], 2.0) - 4 * variable.coeff[0]
+	discriminant = pow(variable.coeff[1], 2.0) - 4.0 * variable.coeff[0]
 		* variable.coeff[2];
 	if (discriminant < 0)
 		return ;
-	if (find_root(variable.t, variable.coeff, discriminant) < 0)
+	hit_info->t = find_root(variable.t, variable.coeff, discriminant);
+	if (hit_info->t < 0)
 		return ;
-	get_cylinder_alpha(ray, &variable);
-	if ((variable.alpha[0] < 0 || variable.alpha[0] > 1)
-		&& (variable.alpha[1] < 0 || variable.alpha[1] > 1))
+	if (variable.t[0] > variable.t[1])
+	{
+		double temp;
+
+		temp = variable.t[0];
+		variable.t[0] = variable.t[1];
+		variable.t[1] = temp;
+	}
+	get_cylinder_alpha(&variable);
+	if (variable.alpha[0] < 0 || variable.alpha[0] > 1)
+		// && (variable.alpha[1] < 0 || variable.alpha[1] > 1))
 		return ;
 	get_cylinder_body_hit_point(hit_info, cy, ray, variable);
 }
-
 
 void	get_cylinder_coeff(t_ray ray, t_cylinder *cylinder,
 		t_cylinder_var *variable)
@@ -50,14 +58,14 @@ void	get_cylinder_coeff(t_ray ray, t_cylinder *cylinder,
 	variable->coeff[2] -= pow(cylinder->diameter / 2.0, 2.0);
 }
 
-void	get_cylinder_alpha(t_ray ray, t_cylinder_var *variable)
+void	get_cylinder_alpha(t_cylinder_var *variable)
 {
 	variable->alpha[0] = v3_inner_product_v3(variable->p0, variable->delta_p)
-		+ variable->t[0] * v3_inner_product_v3(ray.orient, variable->delta_p)
+		+ variable->t[0] * variable->dp
 		- v3_inner_product_v3(variable->p1, variable->delta_p);
 	variable->alpha[0] /= variable->pp;
 	variable->alpha[1] = v3_inner_product_v3(variable->p0, variable->delta_p)
-		+ variable->t[1] * v3_inner_product_v3(ray.orient, variable->delta_p)
+		+ variable->t[1] * variable->dp
 		- v3_inner_product_v3(variable->p1, variable->delta_p);
 	variable->alpha[1] /= variable->pp;
 }
@@ -65,7 +73,7 @@ void	get_cylinder_alpha(t_ray ray, t_cylinder_var *variable)
 void	get_cylinder_body_hit_point(t_hit_info *hit_info, t_list *cy,
 				t_ray ray, t_cylinder_var variable)
 {
-	t_cylinder *cylinder;
+	t_cylinder	*cylinder;
 
 	cylinder = (t_cylinder *)cy->content;
 	hit_info->obj = cy;
