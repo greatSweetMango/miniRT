@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:52:47 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/03/02 18:51:06 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/04 17:25:49 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ typedef struct s_vec3
 	double	z;
 }	t_vec3;
 
-typedef struct s_vec3 t_rgb;
+typedef struct s_vec3	t_rgb;
 
 typedef struct s_list
 {

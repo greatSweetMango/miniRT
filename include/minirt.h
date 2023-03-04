@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:59:09 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/03/03 14:52:19 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/04 19:28:01 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -179,7 +179,8 @@ t_cylinder_var	get_cylinder_var(t_ray ray, t_cylinder *cylinder);
 
 // check_light.c
 t_hit_info	add_light(t_hit_info hit_info, t_list *lst_light, t_scene *scene);
-double		get_light_ratio(t_hit_info hit_info, t_light *light, t_scene *scene);
+double		get_light_ratio(t_hit_info hit_info, t_light *light, t_scene *scene);\
+double	specular_light(t_hit_info hit_info, t_light *light);
 // check_object.c
 t_hit_info	check_objects(t_ray ray, t_scene *scene);
 // check_plane.c

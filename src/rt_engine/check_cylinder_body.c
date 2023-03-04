@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 16:29:34 by gyim              #+#    #+#             */
-/*   Updated: 2023/03/04 09:48:48 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/04 17:23:26 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,4 +74,5 @@ void	get_cylinder_body_hit_point(t_hit_info *hit_info, t_list *cy,
 				v3_mul_d(variable.delta_p, variable.alpha[0])));
 	hit_info->normal = v3_unit(hit_info->normal);
 	hit_info->color = cylinder->color;
+	hit_info->ray = ray;
 }

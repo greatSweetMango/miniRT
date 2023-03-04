@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 16:49:48 by gyim              #+#    #+#             */
-/*   Updated: 2023/03/02 19:12:51 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/04 17:22:50 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ t_hit_info	check_sphere(t_ray ray, t_list *sp)
 	hit_info.obj = (t_list *)sp;
 	hit_info.point = v3_plus_v3(ray.pos, v3_mul_d(ray.orient, hit_info.t));
 	hit_info.normal = v3_unit(v3_minus_v3(hit_info.point, sphere->pos));
+	hit_info.ray = ray;
 	// multiply ambient
 	hit_info.color.x = sphere->color.x;
 	hit_info.color.y = sphere->color.y;

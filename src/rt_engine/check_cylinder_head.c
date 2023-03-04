@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 10:54:56 by gyim              #+#    #+#             */
-/*   Updated: 2023/03/04 09:43:52 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/04 17:23:39 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void	get_cylinder_head(t_hit_info *hit_info, t_ray ray, t_list *cy)
 		hit_info->point = v3_plus_v3(ray.pos,
 				v3_mul_d(ray.orient, hit_info->t));
 		hit_info->color = cylinder->color;
+		hit_info->ray = ray;
 	}
 }
 
