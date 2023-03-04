@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 13:37:58 by gyim              #+#    #+#             */
-/*   Updated: 2023/03/03 19:35:04 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/04 09:35:33 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,16 @@ t_hit_info	check_cylinder(t_ray ray, t_list *cy)
 
 double	find_root(double t[2], double coeff[3], double discriminant)
 {
+	double temp;
+
 	t[0] = (-coeff[1] - sqrt(discriminant)) / (2.0 * coeff[0]);
 	t[1] = (-coeff[1] + sqrt(discriminant)) / (2.0 * coeff[0]);
+	if (t[0] > t[1])
+	{
+		temp = t[0];
+		t[0] = t[1];
+		t[1] = temp;
+	}
 	return (find_t(t[0], t[1]));
 }
 

@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 10:54:56 by gyim              #+#    #+#             */
-/*   Updated: 2023/03/03 19:20:24 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/04 09:43:52 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,30 +34,19 @@ void	get_cylinder_head(t_hit_info *hit_info, t_ray ray, t_list *cy)
 	{
 		hit_info->t = variable.t[0];
 		hit_info->normal = v3_mul_d(v3_unit(cylinder->orientation), -1.0);
-		hit_info->color = cylinder->color;
-		hit_info->color.x *= 0.5;
-		hit_info->color.y *= 0.5;
-		hit_info->color.z *= 0.5;
 	}
 	if (variable.t[1] > 0 
 		&& (variable.t[0] < 0 || variable.t[1] < variable.t[0]))
 	{
 		hit_info->t = variable.t[1];
 		hit_info->normal = v3_unit(cylinder->orientation);
-		hit_info->color = cylinder->color;
-		hit_info->color.x = 1 - hit_info->color.x;
-		hit_info->color.y = 1 - hit_info->color.x;
-		hit_info->color.z = 1 - hit_info->color.x;
 	}
 	if (hit_info->t > 0)
 	{
 		hit_info->obj = cy;
 		hit_info->point = v3_plus_v3(ray.pos,
 				v3_mul_d(ray.orient, hit_info->t));
-		// hit_info->color = cylinder->color;
-		// hit_info->color.x *= 0.5;
-		// hit_info->color.y *= 0.5;
-		// hit_info->color.z *= 0.5;
+		hit_info->color = cylinder->color;
 	}
 }
 

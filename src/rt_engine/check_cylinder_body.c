@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 16:29:34 by gyim              #+#    #+#             */
-/*   Updated: 2023/03/03 19:52:10 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/04 09:48:48 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,17 +29,8 @@ void	get_cylinder_body(t_hit_info *hit_info, t_ray ray, t_list *cy)
 	hit_info->t = find_root(variable.t, variable.coeff, discriminant);
 	if (hit_info->t < 0)
 		return ;
-	if (variable.t[0] > variable.t[1])
-	{
-		double temp;
-
-		temp = variable.t[0];
-		variable.t[0] = variable.t[1];
-		variable.t[1] = temp;
-	}
 	get_cylinder_alpha(&variable);
 	if (variable.alpha[0] < 0 || variable.alpha[0] > 1)
-		// && (variable.alpha[1] < 0 || variable.alpha[1] > 1))
 		return ;
 	get_cylinder_body_hit_point(hit_info, cy, ray, variable);
 }
@@ -79,7 +70,8 @@ void	get_cylinder_body_hit_point(t_hit_info *hit_info, t_list *cy,
 	hit_info->obj = cy;
 	hit_info->point = v3_plus_v3(ray.pos, v3_mul_d(ray.orient, hit_info->t));
 	hit_info->normal = v3_minus_v3(hit_info->point,
-			v3_mul_d(variable.delta_p, variable.alpha[0]));
+			v3_plus_v3(variable.p1, 
+				v3_mul_d(variable.delta_p, variable.alpha[0])));
 	hit_info->normal = v3_unit(hit_info->normal);
 	hit_info->color = cylinder->color;
 }

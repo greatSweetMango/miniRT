@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 12:08:00 by gyim              #+#    #+#             */
-/*   Updated: 2023/03/03 09:20:12 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/04 11:51:15 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,11 @@
 t_hit_info	add_light(t_hit_info hit_info, t_list *lst_light, t_scene *scene)
 {
 	t_list	*curr_light;
-	t_light *light;
+	t_light	*light;
 	double	density;
 
 	curr_light = lst_light;
-	if (hit_info.obj != NULL
-		&& (hit_info.obj->obj_type == SPHERE
-			|| hit_info.obj->obj_type == PLANE))
+	if (hit_info.obj != NULL)
 	{
 		while (curr_light)
 		{
