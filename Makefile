@@ -6,7 +6,7 @@
 #    By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/14 16:46:22 by jaehyuki          #+#    #+#              #
-#    Updated: 2023/03/02 19:40:43 by gyim             ###   ########seoul.kr   #
+#    Updated: 2023/03/05 17:01:47 by gyim             ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,6 +66,8 @@ SRCS		=	$(MAIN)										\
 				src/parse_scene/parse_arg.c					\
 				src/parse_scene/set_scene_util.c			\
 				src/parse_scene/set_scene.c					\
+				src/rt_engine/check_cone_body.c				\
+				src/rt_engine/check_cone.c					\
 				src/rt_engine/check_cylinder_body.c			\
 				src/rt_engine/check_cylinder_head.c			\
 				src/rt_engine/check_cylinder.c				\

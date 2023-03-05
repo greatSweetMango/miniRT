@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:52:47 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/03/04 17:25:49 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/05 17:11:57 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,15 @@ typedef struct s_cylinder
 	t_rgb	color;
 }	t_cylinder;
 
+typedef struct s_cone
+{
+	t_vec3	pos;
+	t_vec3	orientation;
+	double	diameter;
+	double	height;
+	t_rgb	color;
+}	t_cone;
+
 typedef struct s_screen
 {
 	t_vec3	orient;
@@ -117,6 +126,20 @@ typedef struct s_cylinder_var
 	double	alpha[2];
 }	t_cylinder_var;
 
+typedef struct s_cone_var
+{
+	t_vec3	cone_orient;
+	t_vec3	p2p0;
+	double	theta;
+	t_vec3	ray_orient;
+	double	cos_thata;
+	t_vec3	peak;
+	t_vec3	edge;
+	double	t[2];
+	double	coeff[3];
+	double	alpha[2];
+}	t_cone_var;
+
 
 /* Main Structs */
 
@@ -141,6 +164,7 @@ typedef struct s_scene
 	t_list				*spheres;
 	t_list				*planes;
 	t_list				*cylinders;
+	t_list				*cones;
 	t_list				*selected_obj;
 }	t_scene;
 

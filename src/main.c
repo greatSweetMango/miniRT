@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 20:04:49 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/03/02 18:52:11 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/05 17:31:31 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,30 @@ void	print_all_objects_test(t_scene *scene)
 		cylinders_lst = cylinders_lst->next;
 	}
 	printf("\n-END-\n");
+
+	printf("\n-END-\n\n<cones>");
+	t_list *cones_lst = scene->cones;
+	while (cones_lst)
+	{
+		t_cone	*cone = (t_cone *)cones_lst->content;
+
+		printf("\n\npos: %f %f %f\norientation: %f %f %f\ndiameter: %f\nheight: %f\ncolor: %f %f %f",
+			cone->pos.x,
+			cone->pos.y,
+			cone->pos.z,
+			cone->orientation.x,
+			cone->orientation.y,
+			cone->orientation.z,
+			cone->diameter,
+			cone->height,
+			cone->color.x * 255,
+			cone->color.y * 255,
+			cone->color.z * 255
+			);
+		cones_lst = cones_lst->next;
+	}
+	printf("\n-END-\n");
+
 	printf("<SCREEN>\norient: %f %f %f\nx_dir: %f %f %f\ny_dir: %f %f %f\n",
 		scene->screen.orient.x,
 		scene->screen.orient.y,

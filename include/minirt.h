@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:59:09 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/03/04 19:28:01 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/05 18:39:34 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ t_screen	get_screen(t_camera *camera);
 void		set_cameras_pos(t_list *cameras, t_camera *now_cam);
 void		set_lights_pos(t_list *lights, t_camera *now_cam);
 void		set_spheres_pos(t_list *spheres, t_camera *now_cam);
+void		set_cone_pos(t_list *cones, t_camera *now_cam);
 
 /* OPERATORS *///////////////////////////////////////////////
 
@@ -150,6 +151,7 @@ t_scene		*parse_arg(int argc, char **argv);
 // set_scene_util.c
 void	set_planes(t_scene *scene, char **object);
 void	set_cylinders(t_scene *scene, char **object);
+void	set_cones(t_scene *scene, char **object);
 
 // set_scene.c
 void	set_scene(t_scene *scene, char **object);
@@ -159,7 +161,17 @@ void	set_lights(t_scene *scene, char **object);
 void	set_spheres(t_scene *scene, char **object);
 
 /* RT ENGINE *////////////////////////////////////////////////
-
+//check_cone_body.c
+void	get_cone_body(t_hit_info *hit_info, t_ray, t_list *cone_list);
+void	get_cone_coeff(t_ray ray, t_cone *cone,
+		t_cone_var *variable);
+void	get_cone_body_hit_point(t_hit_info *hit_info, t_list *cone_list,
+				t_ray ray, t_cone_var variable);
+double	check_corn_root(t_ray ray, t_cone *cone, t_cone_var variable);
+//check_cone.c
+t_hit_info	check_all_cone(t_ray ray, t_list *cone);
+t_hit_info	check_cone(t_ray ray, t_list *cone);
+t_cone_var	get_cone_var(t_ray ray, t_cone *cone);
 //check_cylinder_body.c
 void	get_cylinder_body(t_hit_info *hit_info, t_ray ray, t_list *cy);
 void	get_cylinder_coeff(t_ray ray, t_cylinder *cylinder,

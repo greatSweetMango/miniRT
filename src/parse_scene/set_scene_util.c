@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 20:19:16 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/02/19 17:13:29 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/05 17:30:54 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,23 @@ void	set_planes(t_scene *scene, char **object)
 	plane->orientation = v3_unit(plane->orientation);
 	plane->color = ft_ato_rgb(object[3]);
 	ft_lstadd_back(&(scene->planes), ft_lstnew(plane, PLANE));
+}
+
+void	set_cones(t_scene *scene, char **object)
+{
+	t_cone	*cone;
+
+	cone = (t_cone *)malloc(sizeof(t_cone));
+	if (!cone)
+		puterr_exit("Allocate fail!\n");
+	if (!object[1] || !object[2] || !object[3] || !object[4]
+		|| !object[5] || object[6])
+		puterr_exit("Parsing fail! (object's property is wrong)");
+	cone->pos = ft_ato_vec3(object[1]);
+	cone->orientation = ft_ato_vec3(object[2]);
+	cone->orientation = v3_unit(cone->orientation);
+	cone->diameter = ft_atod(object[3]);
+	cone->height = ft_atod(object[4]);
+	cone->color = ft_ato_rgb(object[5]);
+	ft_lstadd_back(&(scene->cones), ft_lstnew(cone, CONE));
 }

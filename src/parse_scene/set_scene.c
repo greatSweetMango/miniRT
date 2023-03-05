@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 20:19:16 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/03/01 16:35:13 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/05 17:14:38 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,8 @@ void	set_scene(t_scene *scene, char **object)
 		set_planes(scene, object);
 	else if (!ft_strncmp("cy", object[0], 3))
 		set_cylinders(scene, object);
+	else if (!ft_strncmp("cn", object[0], 3))
+		set_cones(scene, object);
 	else
 		puterr_exit("Parsing fail! (object name is wrong)");
 }
