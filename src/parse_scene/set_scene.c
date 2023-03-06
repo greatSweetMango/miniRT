@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_scene.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 20:19:16 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/03/05 17:14:38 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/06 18:43:00 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ void	set_ambient_lightning(t_scene *scene, char **object)
 		puterr_exit("Parsing fail! (object's property is wrong)");
 	scene->ambient_lightning.ratio = ft_atod(object[1]);
 	scene->ambient_lightning.color = ft_ato_rgb(object[2]);
+	scene->ambient_lightning.is_set = 1;
 }
 
 void	set_scene(t_scene *scene, char **object)

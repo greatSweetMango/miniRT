@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:59:09 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/03/05 18:39:34 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/06 19:26:52 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,9 @@ void	rotate_by_y_axis(t_vec3 *ori, double radian);
 // update_camera.c
 void	update_camera(int keycode, t_scene *scene);
 void	switch_camera(int keycode, t_scene *scene);
+
+// update_cone.c
+void	update_cone(int keycode, t_scene *scene);
 
 // update_cylinder.c
 void	update_cylinder(int keycode, t_scene *scene);
@@ -145,6 +148,7 @@ double	l2norm(t_vec3 v);
 /* PARSE SCENE *////////////////////////////////////////////
 
 // parse_arg.c
+void		objects_elements_check(t_scene *scene);
 void		put2scene(t_scene *scene, char *line);
 t_scene		*parse_arg(int argc, char **argv);
 
@@ -192,7 +196,8 @@ t_cylinder_var	get_cylinder_var(t_ray ray, t_cylinder *cylinder);
 // check_light.c
 t_hit_info	add_light(t_hit_info hit_info, t_list *lst_light, t_scene *scene);
 double		get_light_ratio(t_hit_info hit_info, t_light *light, t_scene *scene);\
-double	specular_light(t_hit_info hit_info, t_light *light);
+double		specular_light(t_hit_info hit_info, t_light *light);
+double		get_distance(t_vec3 p1, t_vec3 p2);
 // check_object.c
 t_hit_info	check_objects(t_ray ray, t_scene *scene);
 // check_plane.c

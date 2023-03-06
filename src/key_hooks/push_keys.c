@@ -6,7 +6,7 @@
 /*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 20:00:19 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/02/20 20:29:50 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/03/06 17:59:13 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int	push_keys(int keycode, t_scene *scene)
 		update_plane(keycode, scene);
 	else if (scene->selected_obj->obj_type == CYLINDER)
 		update_cylinder(keycode, scene);
+	else if (scene->selected_obj->obj_type == CONE)
+		update_cone(keycode, scene);
 	draw_scene(scene);
 	return (0);
 }

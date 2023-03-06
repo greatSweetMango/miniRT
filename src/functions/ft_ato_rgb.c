@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_ato_rgb.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 20:31:16 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/03/02 18:53:34 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/06 18:34:46 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ t_rgb	ft_ato_rgb(char *str)
 	char	**values;
 
 	values = ft_split(str, ",");
-	printf("%s %s %s\n", values[0], values[1], values[2]);
 	if (!values[0] || !values[1] || !values[2] || values[3])
 		puterr_exit("Parsing fail! (object's property is wrong)");
 	rgb.x = ft_atoi(values[0]) / 255.0;

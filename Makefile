@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+         #
+#    By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/14 16:46:22 by jaehyuki          #+#    #+#              #
-#    Updated: 2023/03/05 17:01:47 by gyim             ###   ########seoul.kr   #
+#    Updated: 2023/03/06 18:00:24 by jaehyuki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,6 +42,7 @@ SRCS		=	$(MAIN)										\
 				src/key_hooks/push_keys.c					\
 				src/key_hooks/rotate_obj.c					\
 				src/key_hooks/update_camera.c				\
+				src/key_hooks/update_cone.c					\
 				src/key_hooks/update_cylinder.c				\
 				src/key_hooks/update_plane.c				\
 				src/key_hooks/update_sphere.c				\

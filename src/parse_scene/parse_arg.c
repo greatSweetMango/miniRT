@@ -6,11 +6,19 @@
 /*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 21:21:27 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/02/27 19:36:38 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/03/06 18:44:19 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+
+void	objects_elements_check(t_scene *scene)
+{
+	if (!scene->ambient_lightning.is_set)
+		puterr_exit("There is at least one Ambient Lights");
+	else if (!scene->cameras)
+		puterr_exit("There is at least one Camera!");
+}
 
 void	put2scene(t_scene *scene, char *line)
 {
@@ -45,6 +53,7 @@ t_scene	*parse_arg(int argc, char **argv)
 		state = get_next_line(fd, &line);
 	}
 	close(fd);
+	objects_elements_check(scene);
 	scene->selected_obj = scene->cameras;
 	return (scene);
 }

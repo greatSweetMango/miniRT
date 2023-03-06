@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_light.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 12:08:00 by gyim              #+#    #+#             */
-/*   Updated: 2023/03/04 19:38:59 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/06 19:40:36 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ t_hit_info	add_light(t_hit_info hit_info, t_list *lst_light, t_scene *scene)
 					light, scene);
 			hit_info.color = v3_plus_v3(hit_info.color,
 					v3_mul_d(light->color, density * light->ratio));
-			if (specular_light(hit_info, light) >= 0.0)
+			if (specular_light(hit_info, light) >= 0.0 && density != 0.0)
 				hit_info.color = v3_plus_v3(hit_info.color,
 						v3_mul_d(light->color,
 							light->ratio
@@ -46,12 +46,10 @@ double	get_light_ratio(t_hit_info hit_info, t_light *light, t_scene *scene)
 	t_hit_info	obstacle;
 
 	light_ray.orient = v3_unit(v3_minus_v3(light->pos, hit_info.point));
-	light_ray.pos = v3_plus_v3(hit_info.point, v3_mul_d(hit_info.normal, 0.05));
+	light_ray.pos = v3_plus_v3(hit_info.point, v3_mul_d(hit_info.normal, 0.000001));
 	obstacle = check_objects(light_ray, scene);
-	ratio = -1;
-	if (obstacle.obj == NULL)
-		ratio = v3_inner_product_v3(hit_info.normal, light_ray.orient);
-	if (ratio < 0)
+	ratio = v3_inner_product_v3(hit_info.normal, light_ray.orient);
+	if (ratio < 0 || (obstacle.obj && get_distance(hit_info.point, light->pos) > get_distance(hit_info.point, obstacle.point)))
 		return (0.0);
 	return (ratio);
 }
@@ -68,4 +66,13 @@ double	specular_light(t_hit_info hit_info, t_light *light)
 			2.0 * v3_inner_product_v3(hit_info.normal, point_to_light));
 	reflect_light = v3_minus_v3(reflect_light, point_to_light);
 	return (v3_inner_product_v3(v3_unit(reflect_light), v3_unit(point_to_eye)));
+}
+
+double get_distance(t_vec3 p1, t_vec3 p2)
+{
+	t_vec3	temp;
+
+	temp = v3_minus_v3(p1, p2);
+	temp = v3_mul_v3(temp, temp);
+	return	sqrt(temp.x + temp.y + temp.z);
 }
