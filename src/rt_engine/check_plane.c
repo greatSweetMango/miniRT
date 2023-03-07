@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 14:13:48 by gyim              #+#    #+#             */
-/*   Updated: 2023/03/02 18:54:44 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/07 14:33:38 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,15 +49,9 @@ t_hit_info	check_plane(t_ray ray, t_list *pl)
 	hit_info.obj = pl;
 	hit_info.point = v3_plus_v3(ray.pos, v3_mul_d(ray.orient, hit_info.t));
 	hit_info.normal = v3_unit(plane->orientation);
-	// if (sin(0.25 * hit_info.point.x) * sin(0.25 *hit_info.point.y) * sin(0.25 *hit_info.point.z) > 0)
-	// 	hit_info.color = plane->color;
-	// else
-	// 	hit_info.color.x = 1 - plane->color.x;
-	// 	hit_info.color.y = 1 - plane->color.y;
-	// 	hit_info.color.z = 1 - plane->color.z;
+	// hit_info.color = checker_plane(plane, hit_info);
 	hit_info.color.x = plane->color.x;
 	hit_info.color.y = plane->color.y;
 	hit_info.color.z = plane->color.z;
-	
 	return (hit_info);
 }

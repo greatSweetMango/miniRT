@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_scene.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 20:24:04 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/02/27 20:32:04 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/03/07 13:37:46 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ void	set_console_bg(t_scene *scene)
 		str = ft_strdup("[ PLANE ]");
 	else if (scene->selected_obj->obj_type == CYLINDER)
 		str = ft_strdup("[ CYLINDER ]");
+	else if (scene->selected_obj->obj_type == CONE)
+		str = ft_strdup("[ CONE ]");
 	if (str)
 		mlx_string_put (scene->mlx, scene->win, 750,
 			350, 0xFFFFFF, str);
