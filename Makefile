@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+         #
+#    By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/14 16:46:22 by jaehyuki          #+#    #+#              #
-#    Updated: 2023/03/06 18:00:24 by jaehyuki         ###   ########.fr        #
+#    Updated: 2023/03/07 10:06:40 by gyim             ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,6 +72,7 @@ SRCS		=	$(MAIN)										\
 				src/rt_engine/check_cylinder_body.c			\
 				src/rt_engine/check_cylinder_head.c			\
 				src/rt_engine/check_cylinder.c				\
+				src/rt_engine/check_disk.c					\
 				src/rt_engine/check_light.c					\
 				src/rt_engine/check_object.c				\
 				src/rt_engine/check_plane.c					\

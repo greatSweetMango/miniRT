@@ -31,13 +31,13 @@ t_hit_info	check_all_cone(t_ray ray, t_list *cone)
 t_hit_info	check_cone(t_ray ray, t_list *cone)
 {
 	t_hit_info	hit_info;
-	// t_hit_info	hit_info2;
+	t_hit_info	hit_info2;
 
 	get_cone_body(&hit_info, ray, cone);
-	// get_cone_bottom(&hit_info, ray, cone);
-	// if (hit_info2.obj != NULL
-	// 	&& (hit_info.obj == NULL || hit_info2.t < hit_info.t))
-	// 	return (hit_info2);
+	get_cone_bottom(&hit_info2, ray, cone);
+	if (hit_info2.obj != NULL
+		&& (hit_info.obj == NULL || hit_info2.t < hit_info.t))
+		return (hit_info2);
 	return (hit_info);
 }
 

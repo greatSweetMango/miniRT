@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:59:09 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/03/06 19:26:52 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/03/07 10:07:27 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -192,7 +192,9 @@ t_hit_info		check_all_cylinder(t_ray ray, t_list *cylinder);
 t_hit_info		check_cylinder(t_ray ray, t_list *cy);
 double			find_root(double t[2], double coeff[3], double discriminant);
 t_cylinder_var	get_cylinder_var(t_ray ray, t_cylinder *cylinder);
-
+// check_disk.c
+void	get_cone_bottom(t_hit_info *hit_info, t_ray ray, t_list *cone_list);
+double	check_disk(t_ray ray, t_vec3 pos, t_vec3 normal, double radius);
 // check_light.c
 t_hit_info	add_light(t_hit_info hit_info, t_list *lst_light, t_scene *scene);
 double		get_light_ratio(t_hit_info hit_info, t_light *light, t_scene *scene);\
