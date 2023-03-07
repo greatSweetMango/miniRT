@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:59:09 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/03/07 10:07:27 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/07 19:52:10 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,9 +148,9 @@ double	l2norm(t_vec3 v);
 /* PARSE SCENE *////////////////////////////////////////////
 
 // parse_arg.c
-void		objects_elements_check(t_scene *scene);
-void		put2scene(t_scene *scene, char *line);
-t_scene		*parse_arg(int argc, char **argv);
+void	objects_elements_check(t_scene *scene);
+void	put2scene(t_scene *scene, char *line);
+void	parse_arg(int argc, char **argv, t_scene *scene);
 
 // set_scene_util.c
 void	set_planes(t_scene *scene, char **object);

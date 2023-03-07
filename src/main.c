@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 20:04:49 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/03/06 18:36:18 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/03/07 19:47:34 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,11 +172,12 @@ int	main(int argc, char **argv)
 {
 	t_scene	*scene;
 
-	scene = parse_arg(argc, argv);
-	normalize_camera(scene);
-	print_all_objects_test(scene); //테스트 코드
+	scene = (t_scene *)ft_calloc(1, sizeof(t_scene));
 	scene->mlx = mlx_init();
 	scene->win = mlx_new_window(scene->mlx, WIN_WIDTH + CONSOLE_WIDTH, WIN_HEIGHT, "miniRT");
+	parse_arg(argc, argv, scene);
+	normalize_camera(scene);
+	print_all_objects_test(scene); //테스트 코드
 	init_img(scene);
 	mlx_hook(scene->win, 2, 0, push_keys, scene);
 	mlx_hook(scene->win, 17, 0, close_scene, scene);

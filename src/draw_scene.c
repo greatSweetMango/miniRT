@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 20:24:04 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/03/07 13:37:46 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/07 18:08:11 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	set_console_bg(t_scene *scene)
 
 void	*put_scene_to_img_thread(void *argv)
 {
-	t_thread	*thread;
+	t_thread	*thread; 
 	int			w;
 	int			h;
 

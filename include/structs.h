@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:52:47 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/03/06 18:29:42 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/03/07 19:18:25 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,22 @@
 # define STRUCTS_H
 
 /* BASE */
+
+typedef struct s_img
+{
+	void	*img_ptr;
+	int		*data;
+	int		size_l;
+	int		bpp;
+	int		endian;
+}	t_img;
+
+typedef struct s_texture
+{
+	t_img	*img;
+	int		width;
+	int		height;
+}	t_texture;
 
 typedef struct s_vec3
 {
@@ -57,16 +73,19 @@ typedef struct s_light
 
 typedef struct s_sphere
 {
-	t_vec3	pos;
-	double	diameter;
-	t_rgb	color;
+	t_vec3		pos;
+	double		diameter;
+	t_rgb		color;
+	t_vec3		orientation;
+	t_texture	texture;
 }	t_sphere;
 
 typedef struct s_plane
 {
-	t_vec3	pos;
-	t_vec3	orientation;
-	t_rgb	color;
+	t_vec3		pos;
+	t_vec3		orientation;
+	t_rgb		color;
+	t_texture	texture;
 }	t_plane;
 
 typedef struct s_cylinder
@@ -143,15 +162,6 @@ typedef struct s_cone_var
 
 
 /* Main Structs */
-
-typedef struct s_img
-{
-	void	*img_ptr;
-	int		*data;
-	int		size_l;
-	int		bpp;
-	int		endian;
-}	t_img;
 
 typedef struct s_scene
 {

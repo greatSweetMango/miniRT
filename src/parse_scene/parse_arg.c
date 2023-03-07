@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_arg.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 21:21:27 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/03/06 18:44:19 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/03/07 19:52:44 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,12 @@ void	put2scene(t_scene *scene, char *line)
 	ft_split_free(object);
 }
 
-t_scene	*parse_arg(int argc, char **argv)
+void	parse_arg(int argc, char **argv, t_scene *scene)
 {
-	t_scene	*scene;
 	int		fd;
 	int		state;
 	char	*line;
-
-	scene = (t_scene *)ft_calloc(1, sizeof(t_scene));
+	
 	if (argc != 2)
 		puterr_exit("Arguments error! It has to (./minirt filename.rt)");
 	fd = open(argv[1], O_RDONLY);
@@ -55,5 +53,4 @@ t_scene	*parse_arg(int argc, char **argv)
 	close(fd);
 	objects_elements_check(scene);
 	scene->selected_obj = scene->cameras;
-	return (scene);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_scene.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 20:19:16 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/03/06 18:43:00 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/03/07 19:41:31 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,9 @@ void	set_spheres(t_scene *scene, char **object)
 	sphere->pos = ft_ato_vec3(object[1]);
 	sphere->diameter = ft_atod(object[2]);
 	sphere->color = ft_ato_rgb(object[3]);
+	v3_set(&sphere->orientation, 0, 0, 1);
+	sphere->texture.img = mlx_xpm_file_to_image(scene->mlx,
+			"./console_bg.xpm", &sphere->texture.width, &sphere->texture.height);
 	ft_lstadd_back(&(scene->spheres), ft_lstnew(sphere, SPHERE));
 }
 
