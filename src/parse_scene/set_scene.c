@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 20:19:16 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/03/08 11:00:29 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/08 16:33:38 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,9 @@ void	set_spheres(t_scene *scene, char **object)
 	sphere->color = ft_ato_rgb(object[3]);
 	v3_set(&sphere->orientation, 0, 0, 1);
 	sphere->texture.img = mlx_xpm_file_to_image(scene->mlx,
-			"./console_bg.xpm", &sphere->texture.width, &sphere->texture.height);
+			"./console_bg.xpm", &sphere->texture.width,
+			&sphere->texture.height);
+	v3_set(&sphere->x_axis, 1, 0, 0);
 	ft_lstadd_back(&(scene->spheres), ft_lstnew(sphere, SPHERE));
 }
 

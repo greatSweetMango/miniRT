@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:59:09 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/03/08 13:02:05 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/08 17:25:33 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -204,12 +204,15 @@ double		get_distance(t_vec3 p1, t_vec3 p2);
 t_hit_info	check_objects(t_ray ray, t_scene *scene);
 // checker_map.c
 t_rgb	checker_plane(t_plane *plane, t_hit_info *hit_info);
+t_rgb	checker_sphere(t_sphere *sphere, t_hit_info *hit_info);
 // check_plane.c
 t_hit_info	check_all_plane(t_ray ray, t_list *plane);
 t_hit_info	check_plane(t_ray ray, t_list *pl);
 // check_sphere.c
 t_hit_info	check_all_sphere(t_ray ray, t_list *sphare);
 t_hit_info	check_sphere(t_ray ray, t_list *sp);
+double		get_sphere_phi(t_vec3 point);
+double		get_sphere_theta(t_vec3	point);
 // get_hit_info.c
 
 // ray.c

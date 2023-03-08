@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 16:49:48 by gyim              #+#    #+#             */
-/*   Updated: 2023/03/07 15:36:53 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/08 17:59:07 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,28 @@ t_hit_info	check_sphere(t_ray ray, t_list *sp)
 	if (v3_inner_product_v3(v3_mul_d(hit_info.normal, -1.0), ray.orient) < 0.0)
 		hit_info.obj = NULL;
 	hit_info.ray = ray;
-	hit_info.color = sphere->color;
-	// hit_info.color.x = sphere->color.x;
-	// hit_info.color.y = sphere->color.y;
-	// hit_info.color.z = sphere->color.z;
+	// hit_info.color = sphere->color;
+	hit_info.color = checker_sphere(sphere, &hit_info);
 	return (hit_info);
 }
 
+double	get_sphere_phi(t_vec3 point)
+{
+	double	ret;
+
+	ret = atan(point.y / point.x);
+	// ret /= (M_PI * 180);
+	if (ret < 0)
+		return (ret);
+	return (ret);
+}
+
+double	get_sphere_theta(t_vec3	point)
+{
+	double	den;
+	double	num;
+
+	num = point.z;
+	den = sqrt(pow(point.x, 2.0) + pow(point.y, 2.0));
+	return (atan(den / num));
+}

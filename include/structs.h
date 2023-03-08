@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:52:47 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/03/08 11:03:33 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/08 16:39:33 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ typedef struct s_sphere
 	double		diameter;
 	t_rgb		color;
 	t_vec3		orientation;
+	t_vec3		x_axis;
 	t_texture	texture;
 }	t_sphere;
 
