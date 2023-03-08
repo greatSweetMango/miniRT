@@ -6,7 +6,7 @@
 #    By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/14 16:46:22 by jaehyuki          #+#    #+#              #
-#    Updated: 2023/03/07 19:42:47 by gyim             ###   ########seoul.kr   #
+#    Updated: 2023/03/08 12:11:16 by gyim             ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -74,9 +74,10 @@ SRCS		=	$(MAIN)										\
 				src/rt_engine/check_cylinder.c				\
 				src/rt_engine/check_disk.c					\
 				src/rt_engine/check_light.c					\
-				src/rt_engine/check_object.c				\
 				src/rt_engine/check_plane.c					\
+				src/rt_engine/check_object.c				\
 				src/rt_engine/check_sphere.c				\
+				src/rt_engine/checker_map.c					\
 				src/rt_engine/ray.c							\
 				src/rt_engine/rt_engine.c					\
 				src/rt_engine/rt_utils.c

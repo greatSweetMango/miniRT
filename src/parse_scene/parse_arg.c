@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 21:21:27 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/03/07 19:52:44 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/08 11:04:38 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	parse_arg(int argc, char **argv, t_scene *scene)
 	int		fd;
 	int		state;
 	char	*line;
-	
+
 	if (argc != 2)
 		puterr_exit("Arguments error! It has to (./minirt filename.rt)");
 	fd = open(argv[1], O_RDONLY);

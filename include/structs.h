@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:52:47 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/03/07 19:18:25 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/08 11:03:33 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,8 @@ typedef struct s_plane
 	t_vec3		orientation;
 	t_rgb		color;
 	t_texture	texture;
+	t_vec3		dx;
+	t_vec3		dy;
 }	t_plane;
 
 typedef struct s_cylinder
@@ -159,7 +161,6 @@ typedef struct s_cone_var
 	double	coeff[3];
 	double	alpha[2];
 }	t_cone_var;
-
 
 /* Main Structs */
 
