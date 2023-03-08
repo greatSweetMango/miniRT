@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:52:47 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/03/08 16:39:33 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/08 19:19:10 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,11 @@ typedef struct s_img
 
 typedef struct s_texture
 {
-	t_img	*img;
-	int		width;
-	int		height;
+	int		type; //NONE 0, CHECKER 1, IMG 2 [  , ck, img]
+	t_img	*img; // IMG;
+	int		width; // PLANE (IMG O)
+	int		height;	// PALNE (IMG O)
+	int		divid; // CYLINDER, SPHERE (IMG X)
 }	t_texture;
 
 typedef struct s_vec3
@@ -93,11 +95,12 @@ typedef struct s_plane
 
 typedef struct s_cylinder
 {
-	t_vec3	pos;
-	t_vec3	orientation;
-	double	diameter;
-	double	height;
-	t_rgb	color;
+	t_vec3		pos;
+	t_vec3		orientation;
+	double		diameter;
+	double		height;
+	t_rgb		color;
+	t_texture	texture;
 }	t_cylinder;
 
 typedef struct s_cone

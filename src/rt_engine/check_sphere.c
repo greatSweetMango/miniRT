@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 16:49:48 by gyim              #+#    #+#             */
-/*   Updated: 2023/03/08 17:59:07 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/08 18:28:15 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ double	get_sphere_phi(t_vec3 point)
 	double	ret;
 
 	ret = atan(point.y / point.x);
-	// ret /= (M_PI * 180);
 	if (ret < 0)
 		return (ret);
 	return (ret);

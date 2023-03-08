@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 20:19:16 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/03/08 16:33:38 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/08 19:49:45 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,19 @@
 void	set_spheres(t_scene *scene, char **object)
 {
 	t_sphere	*sphere;
+	// t_texture	texture;
 
 	sphere = (t_sphere *)malloc(sizeof(t_sphere));
 	if (!sphere)
 		puterr_exit("Allocate fail!\n");
-	if (!object[1] || !object[2] || !object[3] || object[4])
+	if (!object[1] || !object[2] || !object[3])
 		puterr_exit("Parsing fail! (object's property is wrong)");
 	sphere->pos = ft_ato_vec3(object[1]);
 	sphere->diameter = ft_atod(object[2]);
 	sphere->color = ft_ato_rgb(object[3]);
 	v3_set(&sphere->orientation, 0, 0, 1);
-	sphere->texture.img = mlx_xpm_file_to_image(scene->mlx,
-			"./console_bg.xpm", &sphere->texture.width,
-			&sphere->texture.height);
 	v3_set(&sphere->x_axis, 1, 0, 0);
+	// sphere->texture = get_texture(&object[4], SPHERE)
 	ft_lstadd_back(&(scene->spheres), ft_lstnew(sphere, SPHERE));
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   defines.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:53:28 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/03/06 18:29:22 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/03/08 19:21:51 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,11 @@
 #define WIN_WIDTH			700
 #define WIN_HEIGHT			700
 #define CONSOLE_WIDTH		200
+
+/* TEXTURE_TYPE */
+#define TT_NONE 0
+#define TT_CHECKER 1
+#define TT_IMAGE 2
 
 /* Bonus */
 #define	NUM_THREAD		10
