@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:59:09 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/03/08 17:25:33 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/09 14:50:46 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -205,6 +205,8 @@ t_hit_info	check_objects(t_ray ray, t_scene *scene);
 // checker_map.c
 t_rgb	checker_plane(t_plane *plane, t_hit_info *hit_info);
 t_rgb	checker_sphere(t_sphere *sphere, t_hit_info *hit_info);
+t_rgb	checker_cylinder_body(t_cylinder *cylinder, t_hit_info *hit_info);
+t_rgb	checker_cylinder_head(t_cylinder *cylinder, t_hit_info *hit_info);
 // check_plane.c
 t_hit_info	check_all_plane(t_ray ray, t_list *plane);
 t_hit_info	check_plane(t_ray ray, t_list *pl);

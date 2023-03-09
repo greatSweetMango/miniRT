@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 20:24:04 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/03/07 18:08:11 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/09 17:30:04 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	set_console_bg(t_scene *scene)
 	int		img_width;
 	int		img_height;
 	char	*str;
-	
+
 	str = NULL;
 	img = mlx_xpm_file_to_image(scene->mlx,
 			"./console_bg.xpm", &img_width, &img_height);

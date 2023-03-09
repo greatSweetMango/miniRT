@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 10:54:56 by gyim              #+#    #+#             */
-/*   Updated: 2023/03/04 17:23:39 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/09 14:58:33 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ void	get_cylinder_head(t_hit_info *hit_info, t_ray ray, t_list *cy)
 	hit_info->ray = ray;
 	cylinder = (t_cylinder *)cy->content;
 	variable = get_cylinder_var(ray, cylinder);
-	variable.t[0] = check_cylinder_head(ray, variable.p1,
+	variable.t[0] = check_disk(ray, variable.p1,
 			v3_mul_d(cylinder->orientation, -1.0),
 			cylinder->diameter / 2.0);
-	variable.t[1] = check_cylinder_head(ray, variable.p2,
+	variable.t[1] = check_disk(ray, variable.p2,
 			cylinder->orientation,
 			cylinder->diameter / 2.0);
 	if (variable.t[0] < 0 && variable.t[1] < 0)
@@ -47,6 +47,7 @@ void	get_cylinder_head(t_hit_info *hit_info, t_ray ray, t_list *cy)
 		hit_info->point = v3_plus_v3(ray.pos,
 				v3_mul_d(ray.orient, hit_info->t));
 		hit_info->color = cylinder->color;
+		hit_info->color = checker_cylinder_head(cylinder, hit_info);
 		hit_info->ray = ray;
 	}
 }

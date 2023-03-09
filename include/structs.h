@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:52:47 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/03/08 19:19:10 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/09 10:31:51 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ typedef struct s_cylinder
 {
 	t_vec3		pos;
 	t_vec3		orientation;
+	t_vec3		x_axis;
 	double		diameter;
 	double		height;
 	t_rgb		color;

@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 20:19:16 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/03/08 11:18:41 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/09 10:22:36 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,11 @@ void	set_cylinders(t_scene *scene, char **object)
 	cylinder->pos = ft_ato_vec3(object[1]);
 	cylinder->orientation = ft_ato_vec3(object[2]);
 	cylinder->orientation = v3_unit(cylinder->orientation);
+	if (v3_inner_product_ds(cylinder->orientation, 0, 0, 1) == 0)
+		v3_set(&cylinder->x_axis, 1, 0, 0);
+	else
+		cylinder->x_axis = v3_unit(
+				v3_cross_product_ds(cylinder->orientation, 0, 0, -1));
 	cylinder->diameter = ft_atod(object[3]);
 	cylinder->height = ft_atod(object[4]);
 	cylinder->color = ft_ato_rgb(object[5]);
