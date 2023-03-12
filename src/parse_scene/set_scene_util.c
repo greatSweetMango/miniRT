@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 20:19:16 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/03/09 10:22:36 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/12 18:40:14 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,13 @@ void	set_cylinders(t_scene *scene, char **object)
 	cylinder->diameter = ft_atod(object[3]);
 	cylinder->height = ft_atod(object[4]);
 	cylinder->color = ft_ato_rgb(object[5]);
+	// texture test start
+	cylinder->texture.img = mlx_xpm_file_to_image(
+			scene->mlx,
+			"./earchmap.xmp",
+			&cylinder->texture.width,
+			&cylinder->texture.height);
+	// texture test end 
 	ft_lstadd_back(&(scene->cylinders), ft_lstnew(cylinder, CYLINDER));
 }
 

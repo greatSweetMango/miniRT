@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:59:09 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/03/09 14:50:46 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/12 19:51:52 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -226,6 +226,8 @@ int		rt_engine(t_scene *scene, int w, int h);
 // rt_utils.c
 t_rgb	add_ambient_light(t_rgb color, t_ambient_lightning ambient_light);
 double	find_t(double t1, double t2);
+// texture_sphere.c
+t_rgb	texture_sphere(t_sphere *sphere, t_hit_info *hit_info);
 
 /* SOURCE CODES *////////////////////////////////////////////////
 

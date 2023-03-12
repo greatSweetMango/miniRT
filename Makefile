@@ -6,7 +6,7 @@
 #    By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/14 16:46:22 by jaehyuki          #+#    #+#              #
-#    Updated: 2023/03/08 12:11:16 by gyim             ###   ########seoul.kr   #
+#    Updated: 2023/03/12 19:51:13 by gyim             ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,7 +80,8 @@ SRCS		=	$(MAIN)										\
 				src/rt_engine/checker_map.c					\
 				src/rt_engine/ray.c							\
 				src/rt_engine/rt_engine.c					\
-				src/rt_engine/rt_utils.c
+				src/rt_engine/rt_utils.c					\
+				src/rt_engine/texture_sphere.c
 OBJS		=	$(addprefix $(OUTDIR),$(SRCS:%.c=%.o))
 DEPS		=	$(addprefix $(OUTDIR),$(SRCS:%.c=%.d))
 -include $(DEPS)

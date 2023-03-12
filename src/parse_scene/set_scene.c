@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 20:19:16 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/03/08 19:49:45 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/12 18:33:58 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	set_spheres(t_scene *scene, char **object)
 	sphere->color = ft_ato_rgb(object[3]);
 	v3_set(&sphere->orientation, 0, 0, 1);
 	v3_set(&sphere->x_axis, 1, 0, 0);
-	// sphere->texture = get_texture(&object[4], SPHERE)
+	// sphere->texture = get_texture(&object[4], SPHERE);
 	ft_lstadd_back(&(scene->spheres), ft_lstnew(sphere, SPHERE));
 }
 
