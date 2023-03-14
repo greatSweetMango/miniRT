@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 19:18:38 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/03/03 19:20:56 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/14 09:44:05 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ void	rotate_obj(int keycode, t_vec3 *orientation, t_scene *scene)
 	if (keycode == KEY_UP || keycode == KEY_DOWN)
 		*orientation = rotate_by_dx_axis(*orientation, scene->screen.x_dir, angle);
 	else if (keycode == KEY_LEFT || keycode == KEY_RIGHT)
-		rotate_by_y_axis(orientation, angle);
+		// rotate_by_y_axis(orientation, angle);`
+		*orientation = rotate_by_dx_axis(*orientation, scene->screen.y_dir, angle);
 	printf("ORIENT : %f %f %f\n", orientation->x, orientation->y, orientation->z);
 }

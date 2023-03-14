@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 08:05:10 by gyim              #+#    #+#             */
-/*   Updated: 2023/03/09 13:14:04 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/14 15:45:29 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ void	get_cone_bottom(t_hit_info *hit_info, t_ray ray, t_list *cone_list)
 	hit_info->point = v3_plus_v3(ray.pos,
 			v3_mul_d(ray.orient, hit_info->t));
 	hit_info->color = cone->color;
-	hit_info->color = v3_mul_d(hit_info->color, 0.5);
 	hit_info->ray = ray;
 }
 
