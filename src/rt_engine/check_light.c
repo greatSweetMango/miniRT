@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 12:08:00 by gyim              #+#    #+#             */
-/*   Updated: 2023/03/15 15:48:57 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/15 15:55:00 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ t_hit_info	add_light(t_hit_info hit_info, t_list *lst_light, t_scene *scene)
 			density = get_light_ratio(hit_info,
 					light, scene);
 			hit_info.color = v3_plus_v3(hit_info.color,
-					v3_mul_d(light->color, density * 0.5 * light->ratio));
+					v3_mul_d(light->color, density * light->ratio));
 			if (specular_light(hit_info, light) >= 0.0 && density != 0.0)
 				hit_info.color = v3_plus_v3(hit_info.color,
-						v3_mul_d(light->color, light->ratio * 0.5
+						v3_mul_d(light->color, light->ratio
 							* pow(specular_light(hit_info, light), 2.0)));
 			curr_light = curr_light->next;
 		}

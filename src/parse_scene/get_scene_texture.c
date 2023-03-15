@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 18:57:39 by gyim              #+#    #+#             */
-/*   Updated: 2023/03/12 18:32:13 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/15 19:16:20 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int get_texture_type(char *texture_type)
 		puterr_exit("Parsing fail! (wrong texture type)");
 }
 
-t_texture get_sphere_texture(char **object)
+t_texture	get_sphere_texture(char **object)
 {
 	t_texture   texture;
 
@@ -47,7 +47,7 @@ t_texture get_sphere_texture(char **object)
 	return (texture);
 }
 
-t_texture get_texture(char **object, int obj_type)
+t_texture	get_texture(char **object, int obj_type)
 {
 	t_texture	texture;
 

@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 16:49:48 by gyim              #+#    #+#             */
-/*   Updated: 2023/03/15 15:52:00 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/15 17:16:21 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_hit_info	check_objects(t_ray ray, t_scene *scene)
 	t_hit_info	temp;
 
 	target_object.obj = NULL;
-	target_object = check_all_sphere(ray, scene->spheres);
+	target_object = check_all_sphere(ray, scene);
 	temp = check_all_plane(ray, scene->planes);
 	if (target_object.obj == NULL
 		|| (temp.obj != NULL && (temp.t > 0 && temp.t < target_object.t)))

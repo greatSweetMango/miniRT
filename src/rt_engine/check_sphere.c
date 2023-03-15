@@ -6,17 +6,19 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 16:49:48 by gyim              #+#    #+#             */
-/*   Updated: 2023/03/12 19:52:43 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/15 19:52:18 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_hit_info	check_all_sphere(t_ray ray, t_list *sphere)
+t_hit_info	check_all_sphere(t_ray ray, t_scene *scene)
 {
 	t_hit_info	target_object;
 	t_hit_info	temp;
+	t_list		*sphere;
 
+	sphere = scene->spheres;
 	target_object.obj = NULL;
 	while (sphere != NULL)
 	{
@@ -58,8 +60,8 @@ t_hit_info	check_sphere(t_ray ray, t_list *sp)
 		hit_info.obj = NULL;
 	hit_info.ray = ray;
 	// hit_info.color = sphere->color;
-	hit_info.color = checker_sphere(sphere, &hit_info);
-	// hit_info.color = texture_sphere(sphere, &hit_info);
+	// hit_info.color = checker_sphere(sphere, &hit_info);
+	hit_info.color = texture_sphere(sphere, &hit_info);
 	return (hit_info);
 }
 
@@ -68,8 +70,8 @@ double	get_sphere_phi(t_vec3 point)
 	double	ret;
 
 	ret = atan(point.y / point.x);
-	// if (ret < 0)
-	// 	return (ret);
+	if (ret < 0)
+		return (ret);
 	return (ret);
 }
 

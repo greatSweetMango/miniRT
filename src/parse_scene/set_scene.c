@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 20:19:16 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/03/12 18:33:58 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/15 19:53:37 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,16 @@ void	set_spheres(t_scene *scene, char **object)
 	v3_set(&sphere->orientation, 0, 0, 1);
 	v3_set(&sphere->x_axis, 1, 0, 0);
 	// sphere->texture = get_texture(&object[4], SPHERE);
+	// test get_texture_image start
+	printf("parse\n");
+	sphere->texture.img->img_ptr = mlx_xpm_file_to_image(scene->mlx,
+			"./earthmap.xpm", &sphere->texture.width, &sphere->texture.height);
+	printf("get image ok\n");
+	sphere->texture.img->data = mlx_get_data_addr(sphere->texture.img->img_ptr
+			, &sphere->texture.img->bpp, &sphere->texture.img->size_l
+			, &sphere->texture.img->endian);
+	printf("parse end\n");
+	// test get_texture_image end
 	ft_lstadd_back(&(scene->spheres), ft_lstnew(sphere, SPHERE));
 }
 

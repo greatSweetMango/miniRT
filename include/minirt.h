@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:59:09 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/03/15 15:01:31 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/15 18:54:13 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -211,7 +211,7 @@ t_rgb	checker_cylinder_head(t_cylinder *cylinder, t_hit_info *hit_info);
 t_hit_info	check_all_plane(t_ray ray, t_list *plane);
 t_hit_info	check_plane(t_ray ray, t_list *pl);
 // check_sphere.c
-t_hit_info	check_all_sphere(t_ray ray, t_list *sphare);
+t_hit_info	check_all_sphere(t_ray ray, t_scene *scene);
 t_hit_info	check_sphere(t_ray ray, t_list *sp);
 double		get_sphere_phi(t_vec3 point);
 double		get_sphere_theta(t_vec3	point);

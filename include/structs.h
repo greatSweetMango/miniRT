@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:52:47 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/03/09 10:31:51 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/15 19:51:30 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 typedef struct s_img
 {
 	void	*img_ptr;
-	int		*data;
+	char	*data;
 	int		size_l;
 	int		bpp;
 	int		endian;
