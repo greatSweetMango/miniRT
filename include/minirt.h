@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:59:09 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/03/12 19:51:52 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/15 15:01:31 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,6 +176,7 @@ double	check_corn_root(t_ray ray, t_cone *cone, t_cone_var variable);
 t_hit_info	check_all_cone(t_ray ray, t_list *cone);
 t_hit_info	check_cone(t_ray ray, t_list *cone);
 t_cone_var	get_cone_var(t_ray ray, t_cone *cone);
+double		check_disk(t_ray ray, t_vec3 pos, t_vec3 normal, double radius);
 //check_cylinder_body.c
 void	get_cylinder_body(t_hit_info *hit_info, t_ray ray, t_list *cy);
 void	get_cylinder_coeff(t_ray ray, t_cylinder *cylinder,
@@ -194,7 +195,6 @@ double			find_root(double t[2], double coeff[3], double discriminant);
 t_cylinder_var	get_cylinder_var(t_ray ray, t_cylinder *cylinder);
 // check_disk.c
 void	get_cone_bottom(t_hit_info *hit_info, t_ray ray, t_list *cone_list);
-double	check_disk(t_ray ray, t_vec3 pos, t_vec3 normal, double radius);
 // check_light.c
 t_hit_info	add_light(t_hit_info hit_info, t_list *lst_light, t_scene *scene);
 double		get_light_ratio(t_hit_info hit_info, t_light *light, t_scene *scene);\

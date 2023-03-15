@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 16:49:48 by gyim              #+#    #+#             */
-/*   Updated: 2023/03/14 15:33:38 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/15 15:52:00 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,15 @@ t_hit_info	check_objects(t_ray ray, t_scene *scene)
 	target_object = check_all_sphere(ray, scene->spheres);
 	temp = check_all_plane(ray, scene->planes);
 	if (target_object.obj == NULL
-		|| (temp.obj != NULL && temp.t < target_object.t))
+		|| (temp.obj != NULL && (temp.t > 0 && temp.t < target_object.t)))
 		target_object = temp;
 	temp = check_all_cylinder(ray, scene->cylinders);
 	if (target_object.obj == NULL
-		|| (temp.obj != NULL && temp.t < target_object.t))
+		|| (temp.obj != NULL && (temp.t > 0 && temp.t < target_object.t)))
 		target_object = temp;
 	temp = check_all_cone(ray, scene->cones);
 	if (target_object.obj == NULL
-		|| (temp.obj != NULL && temp.t < target_object.t))
+		|| (temp.obj != NULL && (temp.t > 0 && temp.t < target_object.t)))
 		target_object = temp;
 	target_object.ray = ray;
 	return (target_object);
