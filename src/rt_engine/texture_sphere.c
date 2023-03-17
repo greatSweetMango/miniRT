@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 18:42:09 by gyim              #+#    #+#             */
-/*   Updated: 2023/03/16 19:16:43 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/17 19:52:32 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ t_rgb	texture_sphere(t_sphere *sphere, t_hit_info *hit_info)
 	theta_degree = get_sphere_theta(point) / M_PI * 180.0;
 	phi_degree += 180.0;
 	theta_degree += 90.0;
-	printf("%f %f\n", phi_degree, theta_degree);
+	// printf("%f %f\n", phi_degree, theta_degree);
 	x = phi_degree / 360.0 * sphere->texture.width;
 	y = theta_degree / 180.0 * sphere->texture.height;
 	// int pos = (y * size_line + x * (bits_per_pixel / 8));
