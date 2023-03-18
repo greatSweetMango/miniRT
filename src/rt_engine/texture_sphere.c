@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 18:42:09 by gyim              #+#    #+#             */
-/*   Updated: 2023/03/18 19:36:05 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/18 19:49:49 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_rgb	texture_sphere(t_sphere *sphere, t_hit_info *hit_info)
 	double			theta_degree;
 	int				x;
 	int				y;
-	int				image_value;
+	unsigned int	image_value;
 	t_rgb			ret;
 	char			*data;
 
