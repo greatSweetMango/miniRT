@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 16:49:48 by gyim              #+#    #+#             */
-/*   Updated: 2023/03/17 19:47:52 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/18 19:27:25 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ double	get_sphere_phi(t_vec3 point)
 	double	ret;
 
 	ret = atan2(point.y, point.x);
+	if (ret < 0)
+		ret += 2 * M_PI;
 	return (ret);
 }
 
@@ -78,9 +80,11 @@ double	get_sphere_theta(t_vec3	point)
 	double	den;
 	double	num;
 	double	ret;
-	
+
 	num = point.z;
 	den = sqrt(pow(point.x, 2.0) + pow(point.y, 2.0));
 	ret = atan(den / num);
+	if (ret < 0)
+		ret = M_PI + ret;
 	return (ret);
 }
