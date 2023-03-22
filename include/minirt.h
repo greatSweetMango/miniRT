@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:59:09 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/03/15 18:54:13 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/22 19:26:10 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,9 @@ t_vec3	ft_ato_vec3(char *str);
 
 // ft_atod.c
 double	ft_atod(char *str);
+
+// ft_file_check.c
+void	ft_file_check(const char *filename);
 
 // ft_lst.c
 t_list	*ft_lstlast(t_list *lst);
@@ -146,6 +149,16 @@ t_vec3	v3_unit(t_vec3 v);
 double	l2norm(t_vec3 v);
 
 /* PARSE SCENE *////////////////////////////////////////////
+
+// get_scene_texture_util.c
+void    init_texture(t_texture *texture);
+int		set_texture_type(char *texture_type);
+
+// get_scene_texutre.c
+void		set_plane_texture(t_scene *scene, t_texture *texture, char **object);
+void		set_cylinder_texture(t_scene *scene, t_texture *texture, char **object);
+void		set_sphere_texture(t_scene *scene, t_texture *texture, char **object);
+t_texture	get_texture(t_scene *scene, char **object, int obj_type);
 
 // parse_arg.c
 void	objects_elements_check(t_scene *scene);

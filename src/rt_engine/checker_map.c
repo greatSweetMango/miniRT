@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 14:27:19 by gyim              #+#    #+#             */
-/*   Updated: 2023/03/09 17:00:36 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/22 19:54:59 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,18 @@ t_rgb	checker_plane(t_plane *plane, t_hit_info *hit_info)
 	double	beta;
 	t_rgb	color;
 	int		width;
+	int		height;
 
-	width = 100;
+	width = plane->texture.width;
+	height = plane->texture.height;
 	center_to_point = v3_minus_v3(hit_info->point, plane->pos);
 	alpha = v3_inner_product_v3(plane->dx, center_to_point);
 	beta = v3_inner_product_v3(plane->dy, center_to_point);
 	if (alpha < 0)
 		alpha = alpha - width;
 	if (beta < 0)
-		beta = beta - width;
-	if (((int)(alpha / width) + (int)(beta / width)) % 2 == 0)
+		beta = beta - height;
+	if (((int)(alpha / width) + (int)(beta / height)) % 2 == 0)
 		v3_set(&color, 0, 0, 0);
 	else
 		v3_set(&color, 1.0, 1.0, 1.0);
@@ -52,7 +54,7 @@ t_rgb	checker_sphere(t_sphere *sphere, t_hit_info *hit_info)
 	point.z = v3_inner_product_v3(center_to_point, sphere->orientation);
 	phi_degree = get_sphere_phi(point) / M_PI * 180.0;
 	theta_degree = get_sphere_theta(point) / M_PI * 180.0;
-	unit_degree = 15.0;
+	unit_degree = 360.0 / sphere->texture.divid;
 	if (phi_degree < 0)
 		phi_degree -= unit_degree;
 	if (theta_degree < 0)
@@ -78,7 +80,7 @@ t_rgb	checker_cylinder_body(t_cylinder *cylinder, t_hit_info *hit_info)
 	double	degree;
 	double	length;
 
-	width = 5;
+	width = M_PI * cylinder->diameter / cylinder->texture.divid;
 	center_to_point = v3_minus_v3(hit_info->point, cylinder->pos);
 	height = v3_inner_product_v3(cylinder->orientation, center_to_point);
 	dr = v3_unit(v3_minus_v3(center_to_point,
@@ -120,7 +122,7 @@ t_rgb	checker_cylinder_head(t_cylinder *cylinder, t_hit_info *hit_info)
 	degree = theta / M_PI * 180;
 	if (degree < 0)
 		degree -= 5;
-	if ((int)(degree) / 5 % 2 == 0)
+	if ((int)(degree) / cylinder->texture.divid % 2 == 0)
 		v3_set(&color, 0, 0, 0);
 	else
 		color = hit_info->color;

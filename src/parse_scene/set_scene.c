@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 20:19:16 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/03/18 17:51:20 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/22 19:41:06 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,7 @@
 void	set_spheres(t_scene *scene, char **object)
 {
 	t_sphere	*sphere;
-	// t_texture	texture;
-
+	
 	sphere = (t_sphere *)malloc(sizeof(t_sphere));
 	if (!sphere)
 		puterr_exit("Allocate fail!\n");
@@ -27,18 +26,7 @@ void	set_spheres(t_scene *scene, char **object)
 	sphere->color = ft_ato_rgb(object[3]);
 	v3_set(&sphere->orientation, 0, 0, 1);
 	v3_set(&sphere->x_axis, 1, 0, 0);
-	// sphere->texture = get_texture(&object[4], SPHERE);
-	// test get_texture_image start
-	printf("parse\n");
-	sphere->texture.img = malloc(sizeof(t_img));
-	sphere->texture.img->img_ptr = mlx_xpm_file_to_image(scene->mlx,
-			"./earthmap.xpm", &sphere->texture.width, &sphere->texture.height);
-	printf("get image ok\n");
-	sphere->texture.img->data = (int *)mlx_get_data_addr(sphere->texture.img->img_ptr
-			, &sphere->texture.img->bpp, &sphere->texture.img->size_l
-			, &sphere->texture.img->endian);
-	printf("parse end\n");
-	// test get_texture_image end
+	sphere->texture = get_texture(scene, &object[4], SPHERE);
 	ft_lstadd_back(&(scene->spheres), ft_lstnew(sphere, SPHERE));
 }
 

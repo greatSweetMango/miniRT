@@ -6,7 +6,7 @@
 #    By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/14 16:46:22 by jaehyuki          #+#    #+#              #
-#    Updated: 2023/03/15 16:37:13 by gyim             ###   ########seoul.kr   #
+#    Updated: 2023/03/22 19:24:51 by gyim             ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,6 +49,7 @@ SRCS		=	$(MAIN)										\
 				src/functions/ft_ato_rgb.c					\
 				src/functions/ft_ato_vec3.c					\
 				src/functions/ft_atod.c						\
+				src/functions/ft_file_check.c				\
 				src/functions/ft_lst.c						\
 				src/functions/ft_rgb_to_i.c					\
 				src/functions/ft_split_free.c				\
@@ -64,6 +65,8 @@ SRCS		=	$(MAIN)										\
 				src/operators/vec3_plus.c					\
 				src/operators/vec3_set.c					\
 				src/operators/vec3_unit.c					\
+				src/parse_scene/get_scene_texture_util.c	\
+				src/parse_scene/get_scene_texture.c			\
 				src/parse_scene/parse_arg.c					\
 				src/parse_scene/set_scene_util.c			\
 				src/parse_scene/set_scene.c					\

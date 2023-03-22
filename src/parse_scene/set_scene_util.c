@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 20:19:16 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/03/12 18:40:14 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/22 19:40:59 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	set_cylinders(t_scene *scene, char **object)
 	if (!cylinder)
 		puterr_exit("Allocate fail!\n");
 	if (!object[1] || !object[2] || !object[3] || !object[4]
-		|| !object[5] || object[6])
+		|| !object[5])
 		puterr_exit("Parsing fail! (object's property is wrong)");
 	cylinder->pos = ft_ato_vec3(object[1]);
 	cylinder->orientation = ft_ato_vec3(object[2]);
@@ -33,13 +33,7 @@ void	set_cylinders(t_scene *scene, char **object)
 	cylinder->diameter = ft_atod(object[3]);
 	cylinder->height = ft_atod(object[4]);
 	cylinder->color = ft_ato_rgb(object[5]);
-	// texture test start
-	cylinder->texture.img = mlx_xpm_file_to_image(
-			scene->mlx,
-			"./earchmap.xmp",
-			&cylinder->texture.width,
-			&cylinder->texture.height);
-	// texture test end 
+	cylinder->texture = get_texture(scene, &object[6], CYLINDER);
 	ft_lstadd_back(&(scene->cylinders), ft_lstnew(cylinder, CYLINDER));
 }
 
@@ -50,7 +44,7 @@ void	set_planes(t_scene *scene, char **object)
 	plane = (t_plane *)malloc(sizeof(t_plane));
 	if (!plane)
 		puterr_exit("Allocate fail!\n");
-	if (!object[1] || !object[2] || !object[3] || object[4])
+	if (!object[1] || !object[2] || !object[3])
 		puterr_exit("Parsing fail! (object's property is wrong)");
 	plane->pos = ft_ato_vec3(object[1]);
 	plane->orientation = ft_ato_vec3(object[2]);
@@ -61,6 +55,7 @@ void	set_planes(t_scene *scene, char **object)
 		v3_set(&plane->dx, 1, 0, 0);
 	plane->dy = v3_unit(v3_cross_product_v3(plane->orientation, plane->dx));
 	plane->color = ft_ato_rgb(object[3]);
+	plane->texture = get_texture(scene, &object[4], PLANE);
 	ft_lstadd_back(&(scene->planes), ft_lstnew(plane, PLANE));
 }
 
