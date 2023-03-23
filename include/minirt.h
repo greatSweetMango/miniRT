@@ -6,7 +6,7 @@
 /*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:59:09 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/03/23 17:53:39 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/03/23 21:51:44 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,11 +69,16 @@ int	push_keys(int keycode, t_scene *scene);
 // push_keys.c
 int	push_keys(int keycode, t_scene *scene);
 
-// rotate_boj.c
-void	get_rotation_matrix(float matrix[3][3], t_vec3 axis_norm, float theta);
-t_vec3	rotate_by_dx_axis(t_vec3 orient, t_vec3 axis, double angle);
-void	rotate_obj(int keycode, t_vec3 *orientation, t_scene *scene);
-void	rotate_by_y_axis(t_vec3 *ori, double radian);
+// rotate_obj.c
+t_vec3			quaternion_rotate(t_vec3 orient, t_vec3 axis, double angle);
+t_quaternion	get_quaternion_conjugate(t_quaternion q);
+t_quaternion	multiply_quaternion(t_quaternion a, t_quaternion b);
+t_quaternion	get_quaternion_from_axis_angle(t_vec3 axis, double angle);
+void			rotate_obj(int keycode, t_vec3 *orientation, t_scene *scene);
+// void	get_rotation_matrix(float matrix[3][3], t_vec3 axis_norm, float theta);
+// t_vec3	rotate_by_dx_axis(t_vec3 orient, t_vec3 axis, double angle);
+// void	rotate_obj(int keycode, t_vec3 *orientation, t_scene *scene);
+// void	rotate_by_y_axis(t_vec3 *ori, double radian);
 
 // update_camera.c
 void	update_camera(int keycode, t_scene *scene);

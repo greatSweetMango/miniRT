@@ -5,80 +5,83 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/31 19:18:38 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/03/23 19:55:25 by jaehyuki         ###   ########.fr       */
+/*   Created: 2023/03/23 20:39:06 by jaehyuki          #+#    #+#             */
+/*   Updated: 2023/03/23 21:48:45 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-void get_rotation_matrix(float matrix[3][3], t_vec3 axis_norm, float theta)
+t_quaternion get_quaternion_from_axis_angle(t_vec3 axis, double angle)
 {
-	float x;
-	float y;
-	float z;
+    t_quaternion q;
+	
+    double		half_angle;
+    double		sin_half_angle;
 
-	x = axis_norm.x;
-	y = axis_norm.y;
-	z = axis_norm.z;
-	matrix[0][0] = cos(theta) + x * x * (1 - cos(theta));
-    matrix[0][1] = x * y * (1 - cos(theta)) - z * sin(theta);
-    matrix[0][2] = x * z * (1 - cos(theta)) + y * sin(theta);
-    matrix[1][0] = x * y * (1 - cos(theta)) + z * sin(theta);
-    matrix[1][1] = cos(theta) + y * y * (1 - cos(theta));
-    matrix[1][2] = y * z * (1 - cos(theta)) - x * sin(theta);
-    matrix[2][0] = x * z * (1 - cos(theta)) - y * sin(theta);
-    matrix[2][1] = y * z * (1 - cos(theta)) + x * sin(theta);
-    matrix[2][2] = cos(theta) + z * z * (1 - cos(theta));
+	half_angle = angle / 2.0;
+	sin_half_angle = sin(half_angle);
+    q.w = cos(half_angle);
+    q.x = axis.x * sin_half_angle;
+    q.y = axis.y * sin_half_angle;
+    q.z = axis.z * sin_half_angle;
+    return q;
 }
 
-t_vec3	rotate_by_dx_axis(t_vec3 orient, t_vec3 axis, double angle)
+t_quaternion multiply_quaternion(t_quaternion a, t_quaternion b)
 {
-    // float rotation_matrix[3][3];
-	// t_vec3	result;
+    t_quaternion q;
 
-    // get_rotation_matrix(rotation_matrix, vec3_normalize(axis), angle * PI / 180);
-	// v3_set(&result, rotation_matrix[0][0] * orient.x + rotation_matrix[0][1] * orient.y + rotation_matrix[0][2] * orient.z,
-	// 	rotation_matrix[1][0] * orient.x + rotation_matrix[1][1] * orient.y + rotation_matrix[1][2] * orient.z,
-	// 	rotation_matrix[2][0] * orient.x + rotation_matrix[2][1] * orient.y + rotation_matrix[2][2] * orient.z);
-
-	t_vec3	result;
-	t_vec3	u;
-	t_vec3	v;
-	t_vec3	v_axis;
-
-	printf("beter rotate : %f %f %f\n", orient.x, orient.y, orient.z);
-	u = v3_mul_d(v3_unit(orient), cos(angle));
-	printf("[][]시도!\n");
-	v_axis = v3_unit(v3_cross_product_v3(axis, orient));
-	printf("[][]성공!\n");
-	// printf("v_axis : %f %f %f\n", v_axis.x, v_axis.y, v_axis.z);
-	v = v3_mul_d(v_axis, sin(angle));
-	// printf("u : %f %f %f\n", u.x, u.y, u.z);
-	// printf("v : %f %f %f\n", v.x, v.y, v.z);
-	result = v3_unit(v3_plus_v3(u, v));
-	printf("after rotate : %f %f %f\n", result.x, result.y, result.z);
-	return (result);
+    q.w = a.w * b.w - a.x * b.x - a.y * b.y - a.z * b.z;
+    q.x = a.w * b.x + a.x * b.w + a.y * b.z - a.z * b.y;
+    q.y = a.w * b.y - a.x * b.z + a.y * b.w + a.z * b.x;
+    q.z = a.w * b.z + a.x * b.y - a.y * b.x + a.z * b.w;
+    return q;
 }
 
-void	rotate_by_y_axis(t_vec3 *ori, double theta)
+t_quaternion get_quaternion_conjugate(t_quaternion q)
 {
-	ori->x = (cos(theta) * ori->x) - (sin(theta) * ori->z);
-	ori->z = (sin(theta) * ori->x) + (cos(theta) * ori->z);
+    t_quaternion conj;
+	
+    conj.w = q.w;
+    conj.x = -q.x;
+    conj.y = -q.y;
+    conj.z = -q.z;
+    return conj;
+}
+
+t_vec3 quaternion_rotate(t_vec3 orient, t_vec3 axis, double angle)
+{
+	t_quaternion q;
+    t_quaternion p;
+	t_quaternion conjQ;
+	
+	q = get_quaternion_from_axis_angle(axis, angle);
+    p.w = 0;
+    p.x = orient.x;
+    p.y = orient.y;
+    p.z = orient.z;
+    conjQ = get_quaternion_conjugate(q);
+    p = multiply_quaternion(q, multiply_quaternion(p, conjQ));
+    return (t_vec3 ) { p.x, p.y, p.z };
 }
 
 void	rotate_obj(int keycode, t_vec3 *orientation, t_scene *scene)
 {
 	double	angle;
+	t_vec3	y_axis;
+	t_vec3	dx_axis;
 
+	dx_axis = v3_unit(scene->screen.x_dir);
+	v3_set(&y_axis, 0, 1, 0);
 	if (keycode == KEY_RIGHT || keycode == KEY_UP)
-		angle = ROTATE_RATIO / 180.0 * M_PI;
+		angle = M_PI / -ROTATE_RATIO;
 	else
-		angle = -ROTATE_RATIO / 180.0 * M_PI;
+		angle = M_PI / ROTATE_RATIO;
 	if (keycode == KEY_UP || keycode == KEY_DOWN)
-		*orientation = rotate_by_dx_axis(*orientation, scene->screen.x_dir, angle);
+	{
+		*orientation = quaternion_rotate(*orientation, dx_axis, -angle);
+	}
 	else if (keycode == KEY_LEFT || keycode == KEY_RIGHT)
-		rotate_by_y_axis(orientation, angle);
-		// *orientation = rotate_by_dx_axis(*orientation, scene->screen.y_dir, angle);
-	printf("ORIENT : %f %f %f\n", orientation->x, orientation->y, orientation->z);
+		*orientation = quaternion_rotate(*orientation, y_axis, angle);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:52:47 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/03/16 19:07:55 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/23 21:52:10 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,14 @@ typedef struct s_texture
 	int		height;	// PALNE (IMG O)
 	int		divid; // CYLINDER, SPHERE (IMG X)
 }	t_texture;
+
+typedef struct s_quaternion{
+    double  w;
+    double  x;
+    double  y;
+    double  z;
+
+} t_quaternion;
 
 typedef struct s_vec3
 {
