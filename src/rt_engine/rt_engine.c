@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_engine.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 18:43:16 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/03/18 19:47:49 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/23 18:16:44 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	rt_engine(t_scene *scene, int w, int h)
 	hit_info = check_objects(ray, scene);
 	hit_info.color = add_ambient_light(hit_info.color,
 			scene->ambient_lightning);
-	// hit_info = add_light(hit_info, scene->lights, scene);
+	hit_info = add_light(hit_info, scene->lights, scene);
 	if (hit_info.obj == NULL)
 	{
 		hit_info.color.x = 0.0;

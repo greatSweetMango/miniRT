@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:59:09 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/03/22 19:26:10 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/23 17:53:39 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -192,6 +192,7 @@ t_cone_var	get_cone_var(t_ray ray, t_cone *cone);
 double		check_disk(t_ray ray, t_vec3 pos, t_vec3 normal, double radius);
 //check_cylinder_body.c
 void	get_cylinder_body(t_hit_info *hit_info, t_ray ray, t_list *cy);
+t_rgb	get_cylinder_body_color(t_cylinder *cylinder, t_hit_info *hit_info);
 void	get_cylinder_coeff(t_ray ray, t_cylinder *cylinder,
 				t_cylinder_var *variable);
 void	get_cylinder_alpha(t_cylinder_var *variable);
@@ -199,6 +200,7 @@ void	get_cylinder_body_hit_point(t_hit_info *hit_info, t_list *cy,
 				t_ray ray, t_cylinder_var variable);
 //check_cylinder_head.c
 void	get_cylinder_head(t_hit_info *hit_info, t_ray ray, t_list *cy);
+t_rgb	get_cylinder_head_color(t_cylinder *cylinder, t_hit_info *hit_info);
 double	check_cylinder_head(t_ray ray, t_vec3 pos, t_vec3 normal, double radius);
 
 // check_cylinder.c
@@ -223,9 +225,11 @@ t_rgb	checker_cylinder_head(t_cylinder *cylinder, t_hit_info *hit_info);
 // check_plane.c
 t_hit_info	check_all_plane(t_ray ray, t_list *plane);
 t_hit_info	check_plane(t_ray ray, t_list *pl);
+t_rgb		get_plane_color(t_plane *plane, t_hit_info *hit_info);
 // check_sphere.c
 t_hit_info	check_all_sphere(t_ray ray, t_scene *scene);
 t_hit_info	check_sphere(t_ray ray, t_list *sp);
+t_rgb		get_sphere_color(t_sphere *sphere, t_hit_info *hit_info);
 double		get_sphere_phi(t_vec3 point);
 double		get_sphere_theta(t_vec3	point);
 // get_hit_info.c

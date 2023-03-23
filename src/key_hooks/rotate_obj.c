@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate_obj.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 19:18:38 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/03/14 09:44:05 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/23 19:55:25 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,11 @@ t_vec3	rotate_by_dx_axis(t_vec3 orient, t_vec3 axis, double angle)
 	t_vec3	v;
 	t_vec3	v_axis;
 
+	printf("beter rotate : %f %f %f\n", orient.x, orient.y, orient.z);
 	u = v3_mul_d(v3_unit(orient), cos(angle));
+	printf("[][]시도!\n");
 	v_axis = v3_unit(v3_cross_product_v3(axis, orient));
+	printf("[][]성공!\n");
 	// printf("v_axis : %f %f %f\n", v_axis.x, v_axis.y, v_axis.z);
 	v = v3_mul_d(v_axis, sin(angle));
 	// printf("u : %f %f %f\n", u.x, u.y, u.z);
@@ -75,7 +78,7 @@ void	rotate_obj(int keycode, t_vec3 *orientation, t_scene *scene)
 	if (keycode == KEY_UP || keycode == KEY_DOWN)
 		*orientation = rotate_by_dx_axis(*orientation, scene->screen.x_dir, angle);
 	else if (keycode == KEY_LEFT || keycode == KEY_RIGHT)
-		// rotate_by_y_axis(orientation, angle);`
-		*orientation = rotate_by_dx_axis(*orientation, scene->screen.y_dir, angle);
+		rotate_by_y_axis(orientation, angle);
+		// *orientation = rotate_by_dx_axis(*orientation, scene->screen.y_dir, angle);
 	printf("ORIENT : %f %f %f\n", orientation->x, orientation->y, orientation->z);
 }

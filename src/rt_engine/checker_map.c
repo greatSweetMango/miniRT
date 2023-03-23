@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 14:27:19 by gyim              #+#    #+#             */
-/*   Updated: 2023/03/22 19:54:59 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/23 19:36:46 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ t_rgb	checker_plane(t_plane *plane, t_hit_info *hit_info)
 
 	width = plane->texture.width;
 	height = plane->texture.height;
+	plane->dx = v3_unit(v3_cross_product_ds(plane->orientation, 0.0, -1.0, 0.0));
+	plane->dy = v3_cross_product_v3(plane->orientation, plane->dx);
 	center_to_point = v3_minus_v3(hit_info->point, plane->pos);
 	alpha = v3_inner_product_v3(plane->dx, center_to_point);
 	beta = v3_inner_product_v3(plane->dy, center_to_point);
@@ -48,6 +50,7 @@ t_rgb	checker_sphere(t_sphere *sphere, t_hit_info *hit_info)
 	double	unit_degree;
 
 	center_to_point = v3_minus_v3(hit_info->point, sphere->pos);
+	sphere->x_axis = v3_unit(v3_cross_product_ds(sphere->orientation, 0.0, -1.0, 0.0));
 	y_axis = v3_cross_product_v3(sphere->orientation, sphere->x_axis);
 	point.x = v3_inner_product_v3(center_to_point, sphere->x_axis);
 	point.y = v3_inner_product_v3(center_to_point, y_axis);
@@ -80,6 +83,8 @@ t_rgb	checker_cylinder_body(t_cylinder *cylinder, t_hit_info *hit_info)
 	double	degree;
 	double	length;
 
+	cylinder->x_axis = v3_unit(v3_cross_product_ds(cylinder->orientation, 0.0, -1.0, 0.0));
+	
 	width = M_PI * cylinder->diameter / cylinder->texture.divid;
 	center_to_point = v3_minus_v3(hit_info->point, cylinder->pos);
 	height = v3_inner_product_v3(cylinder->orientation, center_to_point);

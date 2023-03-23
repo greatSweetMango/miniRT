@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_scene.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 20:19:16 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/03/22 19:41:06 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/23 18:52:05 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	set_spheres(t_scene *scene, char **object)
 	sphere->diameter = ft_atod(object[2]);
 	sphere->color = ft_ato_rgb(object[3]);
 	v3_set(&sphere->orientation, 0, 0, 1);
-	v3_set(&sphere->x_axis, 1, 0, 0);
+	// v3_set(&sphere->x_axis, 1, 0, 0);
 	sphere->texture = get_texture(scene, &object[4], SPHERE);
 	ft_lstadd_back(&(scene->spheres), ft_lstnew(sphere, SPHERE));
 }
@@ -88,4 +88,5 @@ void	set_scene(t_scene *scene, char **object)
 		set_cones(scene, object);
 	else
 		puterr_exit("Parsing fail! (object name is wrong)");
+	printf("%s\n", object[0]);
 }

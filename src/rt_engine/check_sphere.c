@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_sphere.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 16:49:48 by gyim              #+#    #+#             */
-/*   Updated: 2023/03/18 19:27:25 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/23 17:41:54 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,18 @@ t_hit_info	check_sphere(t_ray ray, t_list *sp)
 	if (v3_inner_product_v3(v3_mul_d(hit_info.normal, -1.0), ray.orient) < 0.0)
 		hit_info.obj = NULL;
 	hit_info.ray = ray;
-	// hit_info.color = sphere->color;
-	// hit_info.color = checker_sphere(sphere, &hit_info);
-	hit_info.color = texture_sphere(sphere, &hit_info);
+	hit_info.color = get_sphere_color(sphere, &hit_info);
 	return (hit_info);
+}
+
+t_rgb	get_sphere_color(t_sphere *sphere, t_hit_info *hit_info)
+{
+	if (sphere->texture.type == TT_CHECKER)
+		return checker_sphere(sphere, hit_info);
+	else if (sphere->texture.type == TT_IMAGE)
+		return texture_sphere(sphere, hit_info);
+	else
+		return sphere->color;
 }
 
 double	get_sphere_phi(t_vec3 point)

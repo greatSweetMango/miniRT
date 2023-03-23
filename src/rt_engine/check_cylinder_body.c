@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_cylinder_body.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 16:29:34 by gyim              #+#    #+#             */
-/*   Updated: 2023/03/09 10:33:41 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/23 17:51:02 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,19 @@ void	get_cylinder_body(t_hit_info *hit_info, t_ray ray, t_list *cy)
 	if (variable.alpha[0] < 0 || variable.alpha[0] > 1)
 		return ;
 	get_cylinder_body_hit_point(hit_info, cy, ray, variable);
-	hit_info->color = checker_cylinder_body(cylinder, hit_info);
+	// hit_info->color = checker_cylinder_body(cylinder, hit_info);
+	hit_info->color = get_cylinder_body_color(cylinder, hit_info);
 }
 
+t_rgb	get_cylinder_body_color(t_cylinder *cylinder, t_hit_info *hit_info)
+{
+	if (cylinder->texture.type == TT_CHECKER)
+		return checker_cylinder_body(cylinder, hit_info);
+	// else if (cylinder->texture.type == TT_IMAGE)
+	// 	return texture_cylinder_body(cylinder, hit_info);
+	else
+		return cylinder->color;
+}
 void	get_cylinder_coeff(t_ray ray, t_cylinder *cylinder,
 		t_cylinder_var *variable)
 {
