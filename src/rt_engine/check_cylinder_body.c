@@ -6,7 +6,7 @@
 /*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 16:29:34 by gyim              #+#    #+#             */
-/*   Updated: 2023/03/23 17:51:02 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/03/24 18:08:24 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ t_rgb	get_cylinder_body_color(t_cylinder *cylinder, t_hit_info *hit_info)
 	if (cylinder->texture.type == TT_CHECKER)
 		return checker_cylinder_body(cylinder, hit_info);
 	// else if (cylinder->texture.type == TT_IMAGE)
-	// 	return texture_cylinder_body(cylinder, hit_info);
+		// return texture_cylinder_body(cylinder, hit_info);
 	else
 		return cylinder->color;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   update_cylinder.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 18:25:03 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/03/14 09:46:28 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/24 17:52:06 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,12 @@ void	update_cylinder(int keycode, t_scene *scene)
 		scene->selected_obj = scene->selected_obj->pre;
 	else if (keycode == KEY_NEXT && scene->selected_obj->next)
 		scene->selected_obj = scene->selected_obj->next;
+	else if (keycode == KEY_DIAMETER_DOWN)
+		cylinder->diameter -= RESIZE_RATIO;
+	else if (keycode == KEY_DIAMETER_UP)
+		cylinder->diameter += RESIZE_RATIO;
+	else if (keycode == KEY_HEIGHT_DOWN)
+		cylinder->height -= RESIZE_RATIO;
+	else if (keycode == KEY_HEIGHT_UP)
+		cylinder->height += RESIZE_RATIO;
 }

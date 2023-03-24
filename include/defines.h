@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   defines.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:53:28 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/03/08 19:21:51 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/24 17:49:53 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,15 @@
 #define KEY_UP		126 //Arrow Key
 #define ROTATE_RATIO	10 //degree
 
-#define KEY_PREV	43	//(<)
-#define KEY_NEXT	47	//(>)
+#define KEY_PREV	    43	//(<)
+#define KEY_NEXT	    47	//(>)
 #define KEY_SPACEBAR	49
+
+#define KEY_DIAMETER_DOWN   27 //(=)
+#define KEY_DIAMETER_UP     24 //(-)
+#define KEY_HEIGHT_DOWN     33 //([)
+#define KEY_HEIGHT_UP       30 //(])
+#define RESIZE_RATIO        3
 
 /* Object type */
 #define CAMERA		0

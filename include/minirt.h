@@ -6,7 +6,7 @@
 /*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:59:09 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/03/24 16:50:19 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/03/24 18:26:42 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -251,6 +251,9 @@ int		rt_engine(t_scene *scene, int w, int h);
 // rt_utils.c
 t_rgb	add_ambient_light(t_rgb color, t_ambient_lightning ambient_light);
 double	find_t(double t1, double t2);
+
+// texture_cylinder.c
+t_rgb   texture_cylinder(t_cylinder *cylinder, t_hit_info *hit_info);
 
 // texture_sphere.c
 t_rgb	texture_sphere(t_sphere *sphere, t_hit_info *hit_info);

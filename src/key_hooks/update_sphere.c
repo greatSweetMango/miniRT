@@ -6,7 +6,7 @@
 /*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 18:25:12 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/03/24 16:59:51 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/03/24 17:46:37 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,8 @@ void	update_sphere(int keycode, t_scene *scene)
 		scene->selected_obj = scene->selected_obj->pre;
 	else if (keycode == KEY_NEXT && scene->selected_obj->next)
 		scene->selected_obj = scene->selected_obj->next;
+	else if (keycode == KEY_DIAMETER_DOWN)
+		sphere->diameter -= (double)RESIZE_RATIO;
+	else if (keycode == KEY_DIAMETER_UP)
+		sphere->diameter += (double)RESIZE_RATIO;
 }

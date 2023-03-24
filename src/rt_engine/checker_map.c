@@ -6,7 +6,7 @@
 /*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 14:27:19 by gyim              #+#    #+#             */
-/*   Updated: 2023/03/23 19:36:46 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/03/24 18:10:21 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,7 @@ t_rgb	checker_cylinder_head(t_cylinder *cylinder, t_hit_info *hit_info)
 	dr = v3_unit(v3_minus_v3(center_to_point,
 				v3_mul_d(cylinder->orientation, height)));
 	dx = cylinder->x_axis;
-	dy = v3_cross_product_v3(cylinder->orientation, dx);
+	dy = v3_unit(v3_cross_product_v3(cylinder->orientation, dx));
 	theta = atan(v3_inner_product_v3(dr, dy) / v3_inner_product_v3(dr, dx));
 	degree = theta / M_PI * 180;
 	if (degree < 0)

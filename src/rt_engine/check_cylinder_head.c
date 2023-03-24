@@ -6,7 +6,7 @@
 /*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 10:54:56 by gyim              #+#    #+#             */
-/*   Updated: 2023/03/23 17:55:31 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/03/24 18:24:28 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	get_cylinder_head(t_hit_info *hit_info, t_ray ray, t_list *cy)
 	if (variable.t[0] > 0)
 	{
 		hit_info->t = variable.t[0];
-		hit_info->normal = v3_mul_d(v3_unit(cylinder->orientation), -1.0);
+		hit_info->normal = v3_unit(v3_mul_d(cylinder->orientation, -1.0));
 	}
 	if (variable.t[1] > 0 
 		&& (variable.t[0] < 0 || variable.t[1] < variable.t[0]))
@@ -46,8 +46,6 @@ void	get_cylinder_head(t_hit_info *hit_info, t_ray ray, t_list *cy)
 		hit_info->obj = cy;
 		hit_info->point = v3_plus_v3(ray.pos,
 				v3_mul_d(ray.orient, hit_info->t));
-		// hit_info->color = cylinder->color;
-		// hit_info->color = checker_cylinder_head(cylinder, hit_info);
 		hit_info->color = get_cylinder_head_color(cylinder, hit_info);
 		hit_info->ray = ray;
 	}
