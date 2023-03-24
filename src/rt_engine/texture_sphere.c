@@ -6,7 +6,7 @@
 /*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 18:42:09 by gyim              #+#    #+#             */
-/*   Updated: 2023/03/23 19:44:49 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/03/24 15:56:41 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,11 @@ t_rgb	texture_sphere(t_sphere *sphere, t_hit_info *hit_info)
 	int				y;
 	unsigned int	image_value;
 	t_rgb			ret;
-	// char			*data;
 
 
 	center_to_point = v3_minus_v3(hit_info->point, sphere->pos);
 	sphere->x_axis = v3_unit(v3_cross_product_ds(sphere->orientation, 0.0, -1.0, 0.0));
 	y_axis = v3_cross_product_v3(sphere->orientation, sphere->x_axis);
-	// y_axis = v3_cross_product_v3(sphere->orientation, sphere->x_axis);
 	point.x = v3_inner_product_v3(center_to_point, sphere->x_axis);
 	point.y = v3_inner_product_v3(center_to_point, y_axis);
 	point.z = v3_inner_product_v3(center_to_point, sphere->orientation);
@@ -41,12 +39,7 @@ t_rgb	texture_sphere(t_sphere *sphere, t_hit_info *hit_info)
 	y = (theta_degree / 180.0) * sphere->texture.height;
 	if (y == sphere->texture.height)
 		y--;
-	// data = (char*)sphere->texture.img->data;
-	// image_value = sphere->texture.img->data + (y * sphere->texture.height + x);
-	// image_value = *(data + (y * sphere->texture.img->size_l + x * (sphere->texture.img->bpp / 8)));
-	int	image_width = sphere->texture.width;
-	// int	image_height = sphere->texture.height;
-	image_value = sphere->texture.img->data[y * image_width + x];
+	image_value = sphere->texture.img->data[y * sphere->texture.width + x];
 	ret.x = ((image_value >> 16) & 0xFF) / 256.0;
 	ret.y = ((image_value >> 8) & 0xFF) / 256.0;
 	ret.z = (image_value & 0xFF) / 256.0;

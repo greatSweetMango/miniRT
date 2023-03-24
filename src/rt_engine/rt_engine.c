@@ -6,16 +6,12 @@
 /*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 18:43:16 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/03/23 18:16:44 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/03/24 15:52:36 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-	//get_screen(scene);
-	//get_레이저 쏠 좌표(screen, w, h)
-	//raytracing()
-	//계산(scnen, 레이저 쏠 좌표)
 int	rt_engine(t_scene *scene, int w, int h)
 {
 	t_ray		ray;

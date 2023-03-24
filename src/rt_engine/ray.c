@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ray.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 19:42:50 by gyim              #+#    #+#             */
-/*   Updated: 2023/02/23 08:12:36 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/24 15:52:29 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
-
-// screenpoint == ray_dir_vector
 
 t_ray	get_ray_camera_to_obj(t_scene *scene, int w, int h)
 {

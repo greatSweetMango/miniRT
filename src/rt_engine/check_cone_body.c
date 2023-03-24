@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_cone_body.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 11:59:11 by gyim              #+#    #+#             */
-/*   Updated: 2023/03/15 14:51:18 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/24 15:58:16 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	get_cone_body_hit_point(t_hit_info *hit_info, t_list *cone_list,
 	temp = v3_mul_d(variable.cone_orient, beta);
 	temp = v3_div_d(temp, v3_inner_product_v3(v3_unit(variable.cone_orient),
 				v3_unit(peak_to_hit)));
-	hit_info->normal = v3_minus_v3(peak_to_hit, temp);
+	hit_info->normal = v3_unit(v3_minus_v3(peak_to_hit, temp));
 	hit_info->color = cone->color;
 	hit_info->ray = ray;
 }
