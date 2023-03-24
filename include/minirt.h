@@ -6,7 +6,7 @@
 /*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:59:09 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/03/23 21:51:44 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/03/24 16:22:39 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -248,8 +248,12 @@ int		rt_engine(t_scene *scene, int w, int h);
 // rt_utils.c
 t_rgb	add_ambient_light(t_rgb color, t_ambient_lightning ambient_light);
 double	find_t(double t1, double t2);
+
 // texture_sphere.c
 t_rgb	texture_sphere(t_sphere *sphere, t_hit_info *hit_info);
+
+// texture_plane.c
+t_rgb   texture_plane(t_plane *plane, t_hit_info *hit_info);
 
 /* SOURCE CODES *////////////////////////////////////////////////
 

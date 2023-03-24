@@ -6,7 +6,7 @@
 #    By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/14 16:46:22 by jaehyuki          #+#    #+#              #
-#    Updated: 2023/03/23 21:28:55 by jaehyuki         ###   ########.fr        #
+#    Updated: 2023/03/24 16:23:04 by jaehyuki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -84,7 +84,8 @@ SRCS		=	$(MAIN)										\
 				src/rt_engine/ray.c							\
 				src/rt_engine/rt_engine.c					\
 				src/rt_engine/rt_utils.c					\
-				src/rt_engine/texture_sphere.c								
+				src/rt_engine/texture_sphere.c				\
+				src/rt_engine/texture_plane.c			
 OBJS		=	$(addprefix $(OUTDIR),$(SRCS:%.c=%.o))
 DEPS		=	$(addprefix $(OUTDIR),$(SRCS:%.c=%.d))
 -include $(DEPS)

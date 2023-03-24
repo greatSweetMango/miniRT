@@ -6,7 +6,7 @@
 /*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 14:13:48 by gyim              #+#    #+#             */
-/*   Updated: 2023/03/23 17:45:52 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/03/24 16:21:52 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@ t_rgb	get_plane_color(t_plane *plane, t_hit_info *hit_info)
 {
 	if (plane->texture.type == TT_CHECKER)
 		return checker_plane(plane, hit_info);
-	// else if (plane->texture.type == TT_IMAGE)
-	// 	return texture_plane(plane, hit_info);
+	else if (plane->texture.type == TT_IMAGE)
+		return texture_plane(plane, hit_info);
 	else
 		return plane->color;
 }
