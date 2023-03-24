@@ -6,7 +6,7 @@
 /*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 16:02:16 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/03/24 16:22:02 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/03/24 16:51:47 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ t_rgb   texture_plane(t_plane *plane, t_hit_info *hit_info)
     t_vec3	center_to_point;
 	double	alpha;
 	double	beta;
-	t_rgb	color;
 	int		width;
 	int		height;
     unsigned int image_value;
@@ -33,11 +32,8 @@ t_rgb   texture_plane(t_plane *plane, t_hit_info *hit_info)
 		alpha = -alpha;
 	if (beta < 0)
 		beta = -beta;
-    int x = ((int)alpha % width);
-    int y = ((int)beta % height);
+    int x = (int)alpha % width;
+    int y = (int)beta % height;
     image_value = plane->texture.img->data[y * plane->texture.width + x];
-    color.x = ((image_value >> 16) & 0xFF) / 256.0;
-	color.y = ((image_value >> 8) & 0xFF) / 256.0;
-	color.z = (image_value & 0xFF) / 256.0;
-	return (color);
+	return (ft_i_to_rgb(image_value));
 }

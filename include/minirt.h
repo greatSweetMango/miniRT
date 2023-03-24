@@ -6,7 +6,7 @@
 /*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:59:09 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/03/24 16:22:39 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/03/24 16:50:19 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,9 @@ double	ft_atod(char *str);
 
 // ft_file_check.c
 void	ft_file_check(const char *filename);
+
+// ft_i_to_rgb.c
+t_rgb   ft_i_to_rgb(int value);
 
 // ft_lst.c
 t_list	*ft_lstlast(t_list *lst);

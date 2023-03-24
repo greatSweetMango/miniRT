@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vec3_magnitude.c                                   :+:      :+:    :+:   */
+/*   ft_i_to_rgb.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/20 20:04:09 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/03/24 17:12:59 by jaehyuki         ###   ########.fr       */
+/*   Created: 2023/03/24 16:48:07 by jaehyuki          #+#    #+#             */
+/*   Updated: 2023/03/24 16:57:25 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-float	v3_magnitude(t_vec3 v)
+t_rgb	ft_i_to_rgb(int value)
 {
-	return (sqrt(v.x * v.x + v.y * v.y + v.z * v.z));
+	t_rgb	rgb;
+
+	rgb.x = ((value >> 16) & 0xFF) / 256.0;
+	rgb.y = ((value >> 8) & 0xFF) / 256.0;
+	rgb.z = (value & 0xFF) / 256.0;
+	return (rgb);
 }

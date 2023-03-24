@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   update_camera.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 20:18:26 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/02/23 19:44:04 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/24 17:00:51 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	update_camera(int keycode, t_scene *scene)
 {
 	t_camera	*camera;
 	t_vec3		v;
-	
+
 	camera = scene->selected_obj->content;
 	v = camera->orientation;
 	if (keycode == KEY_LEFT || keycode == KEY_RIGHT
@@ -42,7 +42,8 @@ void	update_camera(int keycode, t_scene *scene)
 		move_obj(keycode, &camera->pos, scene->screen);
 	else if (keycode == KEY_PREV || keycode == KEY_NEXT)
 		switch_camera(keycode, scene);
-	if (v.x * camera->orientation.x <= 0 && v.z * camera->orientation.z <= 0 && (keycode == KEY_UP || keycode == KEY_DOWN))
+	if (v.x * camera->orientation.x <= 0 && v.z * camera->orientation.z <= 0
+		&& (keycode == KEY_UP || keycode == KEY_DOWN))
 		v3_set(&(camera->orientation), v.x, round(v.y), v.z);
 	normalize_camera(scene);
 }

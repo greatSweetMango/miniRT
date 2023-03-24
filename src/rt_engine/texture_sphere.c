@@ -6,7 +6,7 @@
 /*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 18:42:09 by gyim              #+#    #+#             */
-/*   Updated: 2023/03/24 15:56:41 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/03/24 16:51:25 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_rgb	texture_sphere(t_sphere *sphere, t_hit_info *hit_info)
 	int				x;
 	int				y;
 	unsigned int	image_value;
-	t_rgb			ret;
+	// t_rgb			ret;
 
 
 	center_to_point = v3_minus_v3(hit_info->point, sphere->pos);
@@ -40,8 +40,8 @@ t_rgb	texture_sphere(t_sphere *sphere, t_hit_info *hit_info)
 	if (y == sphere->texture.height)
 		y--;
 	image_value = sphere->texture.img->data[y * sphere->texture.width + x];
-	ret.x = ((image_value >> 16) & 0xFF) / 256.0;
-	ret.y = ((image_value >> 8) & 0xFF) / 256.0;
-	ret.z = (image_value & 0xFF) / 256.0;
-	return (ret);
+	// ret.x = ((image_value >> 16) & 0xFF) / 256.0;
+	// ret.y = ((image_value >> 8) & 0xFF) / 256.0;
+	// ret.z = (image_value & 0xFF) / 256.0;
+	return (ft_i_to_rgb(image_value));
 }
