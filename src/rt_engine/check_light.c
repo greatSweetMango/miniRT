@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 12:08:00 by gyim              #+#    #+#             */
-/*   Updated: 2023/03/15 15:55:00 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/25 19:49:26 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,7 @@ double	get_light_ratio(t_hit_info hit_info, t_light *light, t_scene *scene)
 				v3_mul_d(hit_info.normal, -1.0), light_ray.orient);
 	else
 		return (ratio);
-	if (ratio < 0 || (obstacle.obj
-			&& get_distance(hit_info.point, light->pos)
-			> get_distance(hit_info.point, obstacle.point)))
+	if (ratio < 0)
 		ratio = 0.0;
 	return (ratio);
 }

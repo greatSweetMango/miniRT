@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_cylinder_head.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 10:54:56 by gyim              #+#    #+#             */
-/*   Updated: 2023/03/24 18:24:28 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/03/25 12:00:22 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,11 @@ void	get_cylinder_head(t_hit_info *hit_info, t_ray ray, t_list *cy)
 t_rgb	get_cylinder_head_color(t_cylinder *cylinder, t_hit_info *hit_info)
 {
 	if (cylinder->texture.type == TT_CHECKER)
-		return checker_cylinder_head(cylinder, hit_info);
+		return (checker_cylinder_head(cylinder, hit_info));
 	else if (cylinder->texture.type == TT_IMAGE)
-		return cylinder->color;
+		return (cylinder->color);
 	else
-		return cylinder->color;
+		return (cylinder->color);
 }
 
 double	check_cylinder_head(t_ray ray, t_vec3 pos, t_vec3 normal, double radius)
