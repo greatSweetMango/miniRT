@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 10:54:56 by gyim              #+#    #+#             */
-/*   Updated: 2023/03/26 19:40:39 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/26 19:50:32 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ void	get_cylinder_head(t_hit_info *hit_info, t_ray ray, t_list *cy)
 	variable.t[1] = check_disk(ray, variable.p2,
 			cylinder->orientation,
 			cylinder->diameter / 2.0);
-	// printf("%f %f\n", variable.t[0], variable.t[1]);
-	if (variable.t[0] < 0 && variable.t[1] < 0)
+	if ((variable.t[0] < 0 || isnan(variable.t[0]))
+		&& (variable.t[1] < 0 || isnan(variable.t[1])))
 		return ;
 	if (variable.t[0] > 0)
 	{
