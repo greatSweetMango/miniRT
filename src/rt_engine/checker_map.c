@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 14:27:19 by gyim              #+#    #+#             */
-/*   Updated: 2023/03/25 12:02:37 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/26 17:13:36 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,8 @@ t_rgb	checker_cylinder_body(t_cylinder *cylinder, t_hit_info *hit_info)
 	double	degree;
 	double	length;
 
-	cylinder->x_axis = v3_unit(v3_cross_product_ds(cylinder->orientation, 0.0, -1.0, 0.0));
+	cylinder->x_axis = v3_unit(v3_cross_product_ds(cylinder->orientation,
+				0.0, -1.0, 0.0));
 	width = M_PI * cylinder->diameter / cylinder->texture.divid;
 	center_to_point = v3_minus_v3(hit_info->point, cylinder->pos);
 	height = v3_inner_product_v3(cylinder->orientation, center_to_point);

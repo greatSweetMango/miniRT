@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:59:09 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/03/24 18:26:42 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/03/26 16:49:16 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -253,7 +253,8 @@ t_rgb	add_ambient_light(t_rgb color, t_ambient_lightning ambient_light);
 double	find_t(double t1, double t2);
 
 // texture_cylinder.c
-t_rgb   texture_cylinder(t_cylinder *cylinder, t_hit_info *hit_info);
+t_rgb   texture_cylinder_body(t_cylinder *cylinder, t_hit_info *hit_info);
+double	get_circle_theta(t_vec3 dr, t_vec3 x_axis, t_vec3 y_axis);
 
 // texture_sphere.c
 t_rgb	texture_sphere(t_sphere *sphere, t_hit_info *hit_info);

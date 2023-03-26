@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture_sphere.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 18:42:09 by gyim              #+#    #+#             */
-/*   Updated: 2023/03/24 16:51:25 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/03/26 16:35:26 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ t_rgb	texture_sphere(t_sphere *sphere, t_hit_info *hit_info)
 
 
 	center_to_point = v3_minus_v3(hit_info->point, sphere->pos);
-	sphere->x_axis = v3_unit(v3_cross_product_ds(sphere->orientation, 0.0, -1.0, 0.0));
+	sphere->x_axis = v3_unit(v3_cross_product_ds(
+				sphere->orientation, 0.0, -1.0, 0.0));
 	y_axis = v3_cross_product_v3(sphere->orientation, sphere->x_axis);
 	point.x = v3_inner_product_v3(center_to_point, sphere->x_axis);
 	point.y = v3_inner_product_v3(center_to_point, y_axis);
@@ -40,8 +41,5 @@ t_rgb	texture_sphere(t_sphere *sphere, t_hit_info *hit_info)
 	if (y == sphere->texture.height)
 		y--;
 	image_value = sphere->texture.img->data[y * sphere->texture.width + x];
-	// ret.x = ((image_value >> 16) & 0xFF) / 256.0;
-	// ret.y = ((image_value >> 8) & 0xFF) / 256.0;
-	// ret.z = (image_value & 0xFF) / 256.0;
 	return (ft_i_to_rgb(image_value));
 }

@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 16:29:34 by gyim              #+#    #+#             */
-/*   Updated: 2023/03/25 16:21:54 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/26 18:39:20 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,14 @@ void	get_cylinder_body(t_hit_info *hit_info, t_ray ray, t_list *cy)
 	if (discriminant < 0)
 		return ;
 	hit_info->t = find_root(variable.t, variable.coeff, discriminant);
-	if (hit_info->t < 0)
+	if (hit_info->t < 0 || isnan(hit_info->t))
 		return ;
 	get_cylinder_alpha(&variable);
 	if (variable.alpha[0] < 0 || variable.alpha[0] > 1)
 		return ;
+	// printf("t : %f\n", hit_info->t);
 	get_cylinder_body_hit_point(hit_info, cy, ray, variable);
+	// printf("hit_info->point : %f %f %f\n",hit_info->point.x ,hit_info->point.y, hit_info->point.z);
 	hit_info->color = get_cylinder_body_color(cylinder, hit_info);
 }
 
@@ -40,8 +42,8 @@ t_rgb	get_cylinder_body_color(t_cylinder *cylinder, t_hit_info *hit_info)
 {
 	if (cylinder->texture.type == TT_CHECKER)
 		return (checker_cylinder_body(cylinder, hit_info));
-	// else if (cylinder->texture.type == TT_IMAGE)
-		// return texture_cylinder_body(cylinder, hit_info);
+	else if (cylinder->texture.type == TT_IMAGE)
+		return (texture_cylinder_body(cylinder, hit_info));
 	else
 		return (cylinder->color);
 }

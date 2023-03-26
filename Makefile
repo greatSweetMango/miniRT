@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+         #
+#    By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/14 16:46:22 by jaehyuki          #+#    #+#              #
-#    Updated: 2023/03/24 16:50:35 by jaehyuki         ###   ########.fr        #
+#    Updated: 2023/03/26 16:47:42 by gyim             ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -86,7 +86,8 @@ SRCS		=	$(MAIN)										\
 				src/rt_engine/rt_engine.c					\
 				src/rt_engine/rt_utils.c					\
 				src/rt_engine/texture_sphere.c				\
-				src/rt_engine/texture_plane.c			
+				src/rt_engine/texture_plane.c				\
+				src/rt_engine/texture_cylinder.c			
 OBJS		=	$(addprefix $(OUTDIR),$(SRCS:%.c=%.o))
 DEPS		=	$(addprefix $(OUTDIR),$(SRCS:%.c=%.d))
 -include $(DEPS)
