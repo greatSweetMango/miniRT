@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:59:09 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/03/26 16:49:16 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/28 18:41:28 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -199,23 +199,22 @@ t_hit_info	check_cone(t_ray ray, t_list *cone);
 t_cone_var	get_cone_var(t_ray ray, t_cone *cone);
 double		check_disk(t_ray ray, t_vec3 pos, t_vec3 normal, double radius);
 //check_cylinder_body.c
-void	get_cylinder_body(t_hit_info *hit_info, t_ray ray, t_list *cy);
-t_rgb	get_cylinder_body_color(t_cylinder *cylinder, t_hit_info *hit_info);
-void	get_cylinder_coeff(t_ray ray, t_cylinder *cylinder,
-				t_cylinder_var *variable);
-void	get_cylinder_alpha(t_cylinder_var *variable);
-void	get_cylinder_body_hit_point(t_hit_info *hit_info, t_list *cy,
-				t_ray ray, t_cylinder_var variable);
+void		get_cylinder_body(t_hit_info *hit_info, t_ray ray, t_list *cy);
+t_equation	get_cylinder_var(t_ray ray, t_cylinder *cylinder);
+int			get_cylinder_hit_point(t_hit_info *hit_info,
+	t_cylinder *cylinder, t_ray ray, t_root root);
+int			cylinder_height_check(t_cylinder *cylinder, t_vec3	point);
+void		get_cylinder_body_normal(t_hit_info *hit_info, t_cylinder *cylinder);
+t_rgb		get_cylinder_body_color(t_cylinder *cylinder, t_hit_info *hit_info);
 //check_cylinder_head.c
-void	get_cylinder_head(t_hit_info *hit_info, t_ray ray, t_list *cy);
-t_rgb	get_cylinder_head_color(t_cylinder *cylinder, t_hit_info *hit_info);
-double	check_cylinder_head(t_ray ray, t_vec3 pos, t_vec3 normal, double radius);
+// void	get_cylinder_head(t_hit_info *hit_info, t_ray ray, t_list *cy);
+// t_rgb	get_cylinder_head_color(t_cylinder *cylinder, t_hit_info *hit_info);
+// double	check_cylinder_head(t_ray ray, t_vec3 pos, t_vec3 normal, double radius);
 
 // check_cylinder.c
 t_hit_info		check_all_cylinder(t_ray ray, t_list *cylinder);
 t_hit_info		check_cylinder(t_ray ray, t_list *cy);
-double			find_root(double t[2], double coeff[3], double discriminant);
-t_cylinder_var	get_cylinder_var(t_ray ray, t_cylinder *cylinder);
+
 // check_disk.c
 void	get_cone_bottom(t_hit_info *hit_info, t_ray ray, t_list *cone_list);
 // check_light.c
@@ -251,6 +250,8 @@ int		rt_engine(t_scene *scene, int w, int h);
 // rt_utils.c
 t_rgb	add_ambient_light(t_rgb color, t_ambient_lightning ambient_light);
 double	find_t(double t1, double t2);
+t_root	solve_equation(t_equation eq);
+double	find_root(double t[2], double coeff[3], double discriminant);
 
 // texture_cylinder.c
 t_rgb   texture_cylinder_body(t_cylinder *cylinder, t_hit_info *hit_info);

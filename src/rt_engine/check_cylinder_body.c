@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 16:29:34 by gyim              #+#    #+#             */
-/*   Updated: 2023/03/26 18:39:20 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/28 19:43:17 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,102 @@
 
 void	get_cylinder_body(t_hit_info *hit_info, t_ray ray, t_list *cy)
 {
-	double			discriminant;
-	t_cylinder_var	variable;
 	t_cylinder		*cylinder;
+	t_equation		var;
+	t_root			root;
 
 	hit_info->obj = NULL;
 	cylinder = (t_cylinder *)cy->content;
-	variable = get_cylinder_var(ray, cylinder);
-	get_cylinder_coeff(ray, cylinder, &variable);
-	discriminant = pow(variable.coeff[1], 2.0) - 4.0 * variable.coeff[0]
-		* variable.coeff[2];
-	if (discriminant < 0)
+	var = get_cylinder_var(ray, cylinder);
+	root = solve_equation(var);
+	if (!root.valid)
 		return ;
-	hit_info->t = find_root(variable.t, variable.coeff, discriminant);
-	if (hit_info->t < 0 || isnan(hit_info->t))
+	if (!get_cylinder_hit_point(hit_info, cylinder, ray, root))
 		return ;
-	get_cylinder_alpha(&variable);
-	if (variable.alpha[0] < 0 || variable.alpha[0] > 1)
-		return ;
-	// printf("t : %f\n", hit_info->t);
-	get_cylinder_body_hit_point(hit_info, cy, ray, variable);
-	// printf("hit_info->point : %f %f %f\n",hit_info->point.x ,hit_info->point.y, hit_info->point.z);
-	hit_info->color = get_cylinder_body_color(cylinder, hit_info);
+	hit_info->obj = cy;
+	get_cylinder_body_normal(hit_info, cylinder);
+	hit_info->ray = ray;
+	hit_info->color = cylinder->color;
+}
+
+t_equation	get_cylinder_var(t_ray ray, t_cylinder *cylinder)
+{
+	t_equation		var;
+	t_vec3			w;
+	t_vec3			c;
+
+	c = v3_plus_v3(cylinder->pos,
+			v3_mul_d(cylinder->orientation, -0.5 * cylinder->height));
+	w = v3_minus_v3(ray.pos, c);
+	var.a = v3_inner_product_v3(ray.orient, ray.orient);
+	var.a -= pow(v3_inner_product_v3(ray.orient, cylinder->orientation), 2.0);
+	var.b = v3_inner_product_v3(ray.orient, w);
+	var.b -= v3_inner_product_v3(ray.orient, cylinder->orientation)
+		* v3_inner_product_v3(w, cylinder->orientation);
+	var.b *= 2.0;
+	var.c = v3_inner_product_v3(w, w);
+	var.c -= pow(v3_inner_product_v3(w, cylinder->orientation), 2.0);
+	var.c -= pow(cylinder->diameter / 2.0, 2.0);
+	return (var);
+}
+
+int	get_cylinder_hit_point(t_hit_info *hit_info,
+	t_cylinder *cylinder, t_ray ray, t_root root)
+{
+	t_vec3	l1;
+	t_vec3	l2;
+
+	if (root.t1 >= 0)
+	{
+		l1 = v3_plus_v3(ray.pos, v3_mul_d(ray.orient, root.t1));
+		if (cylinder_height_check(cylinder, l1))
+		{
+			hit_info->point = l1;
+			hit_info->t = root.t1;
+			return (1);
+		}
+	}
+	if (root.t2 >= 0)
+	{
+		l2 = v3_plus_v3(ray.pos, v3_mul_d(ray.orient, root.t2));
+		if (cylinder_height_check(cylinder, l2))
+		{
+			hit_info->point = l2;
+			hit_info->t = root.t2;
+			return (1);
+		}
+	}
+	return (0);
+}
+
+int	cylinder_height_check(t_cylinder *cylinder, t_vec3	point)
+{
+	t_vec3	lcenter;
+	t_vec3	lcenter_to_point;
+	double	height;
+
+	lcenter = v3_plus_v3(cylinder->pos,
+			v3_mul_d(cylinder->orientation, -0.5 * cylinder->height));
+	lcenter_to_point = v3_minus_v3(point, lcenter);
+	height = v3_inner_product_v3(lcenter_to_point, cylinder->orientation);
+	printf("height : %f %f\n", height, cylinder->height);
+	if (height < 0 || height > cylinder->height)
+		return (0);
+	return (1);
+}
+
+void	get_cylinder_body_normal(t_hit_info *hit_info, t_cylinder *cylinder)
+{
+	t_vec3	lcenter;
+	t_vec3	lcenter_to_point;
+	t_vec3	height;
+
+	lcenter = v3_plus_v3(cylinder->pos,
+			v3_mul_d(cylinder->orientation, -0.5 * cylinder->height));
+	lcenter_to_point = v3_minus_v3(hit_info->point, lcenter);
+	height = v3_mul_d(cylinder->orientation,
+			v3_inner_product_v3(lcenter_to_point, cylinder->orientation));
+	hit_info->normal = v3_unit(v3_minus_v3(lcenter_to_point, height));
 }
 
 t_rgb	get_cylinder_body_color(t_cylinder *cylinder, t_hit_info *hit_info)
@@ -46,45 +120,4 @@ t_rgb	get_cylinder_body_color(t_cylinder *cylinder, t_hit_info *hit_info)
 		return (texture_cylinder_body(cylinder, hit_info));
 	else
 		return (cylinder->color);
-}
-void	get_cylinder_coeff(t_ray ray, t_cylinder *cylinder,
-		t_cylinder_var *variable)
-{
-	variable->coeff[0] = v3_inner_product_v3(ray.orient, ray.orient)
-		- pow(variable->dp, 2.0) / variable->pp;
-	variable->coeff[1] = 2.0 * (v3_inner_product_v3(variable->p01, ray.orient)
-			- v3_inner_product_v3(variable->p01, variable->delta_p)
-			* variable->dp / variable->pp);
-	variable->coeff[2] = v3_inner_product_v3(variable->p01, variable->p01)
-		- pow(v3_inner_product_v3(variable->p01, variable->delta_p), 2.0)
-		/ variable->pp;
-	variable->coeff[2] -= pow(cylinder->diameter / 2.0, 2.0);
-}
-
-void	get_cylinder_alpha(t_cylinder_var *variable)
-{
-	variable->alpha[0] = v3_inner_product_v3(variable->p0, variable->delta_p)
-		+ variable->t[0] * variable->dp
-		- v3_inner_product_v3(variable->p1, variable->delta_p);
-	variable->alpha[0] /= variable->pp;
-	variable->alpha[1] = v3_inner_product_v3(variable->p0, variable->delta_p)
-		+ variable->t[1] * variable->dp
-		- v3_inner_product_v3(variable->p1, variable->delta_p);
-	variable->alpha[1] /= variable->pp;
-}
-
-void	get_cylinder_body_hit_point(t_hit_info *hit_info, t_list *cy,
-				t_ray ray, t_cylinder_var variable)
-{
-	t_cylinder	*cylinder;
-
-	cylinder = (t_cylinder *)cy->content;
-	hit_info->obj = cy;
-	hit_info->point = v3_plus_v3(ray.pos, v3_mul_d(ray.orient, hit_info->t));
-	hit_info->normal = v3_minus_v3(hit_info->point,
-			v3_plus_v3(variable.p1,
-				v3_mul_d(variable.delta_p, variable.alpha[0])));
-	hit_info->normal = v3_unit(hit_info->normal);
-	hit_info->color = cylinder->color;
-	hit_info->ray = ray;
 }

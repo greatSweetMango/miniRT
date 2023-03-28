@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 16:46:33 by gyim              #+#    #+#             */
-/*   Updated: 2023/03/02 19:12:37 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/28 18:41:42 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,48 @@ double	find_t(double t1, double t2)
 		else
 			return (t1);
 	}
+}
+
+t_root	solve_equation(t_equation eq)
+{
+	t_root	root;
+	double	discriminant;
+	double	temp;
+
+	discriminant = pow(eq.b, 2.0) - 4 * eq.a * eq.c;
+	if (discriminant < 0)
+	{
+		root.valid = 0;
+		return (root);
+	}
+	if (root.t1 < 0 && root.t2 < 0)
+	{
+		root.valid = 0;
+		return (root);
+	}
+	root.valid = 1;
+	root.t1 = -eq.b - sqrt(discriminant);
+	root.t2 = -eq.b	+ sqrt(discriminant);
+	if (root.t1 > root.t2)
+	{
+		temp = root.t1;
+		root.t1 = root.t2;
+		root.t2 = temp;
+	}
+	return (root);
+}
+
+double	find_root(double t[2], double coeff[3], double discriminant)
+{
+	double	temp;
+
+	t[0] = (-coeff[1] - sqrt(discriminant)) / (2.0 * coeff[0]);
+	t[1] = (-coeff[1] + sqrt(discriminant)) / (2.0 * coeff[0]);
+	if (t[0] > t[1])
+	{
+		temp = t[0];
+		t[0] = t[1];
+		t[1] = temp;
+	}
+	return (find_t(t[0], t[1]));
 }

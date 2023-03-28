@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:52:47 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/03/23 21:52:10 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/03/28 18:33:21 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,19 +147,20 @@ typedef struct s_hit_info
 }	t_hit_info;
 
 /* object variable */
-typedef struct s_cylinder_var
+
+typedef struct s_root
 {
-	t_vec3	p0;
-	t_vec3	p1;
-	t_vec3	p2;
-	t_vec3	delta_p;
-	double	pp;
-	t_vec3	p01;
-	double	dp;
-	double	t[2];
-	double	coeff[3];
-	double	alpha[2];
-}	t_cylinder_var;
+	double	t1;
+	double	t2;
+	int		valid;
+}	t_root;
+
+typedef struct s_equation
+{
+	double	a;
+	double	b;
+	double	c;
+}	t_equation;
 
 typedef struct s_cone_var
 {
