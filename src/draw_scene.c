@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_scene.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 20:24:04 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/03/23 18:04:31 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/03/29 19:31:54 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,8 @@ void	*put_scene_to_img_thread(void *argv)
 		}
 		h++;
 	}
-
 	return (NULL);
 }
-
 
 void	put_scene_to_img(t_scene *scene, t_img *img)
 {
