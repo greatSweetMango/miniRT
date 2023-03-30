@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 20:04:49 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/03/23 17:33:14 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/03/30 16:10:21 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,7 +164,8 @@ void	init_img(t_scene *scene)
 	t_img	img;
 
 	img.img_ptr = mlx_new_image(scene->mlx, WIN_WIDTH, WIN_HEIGHT);
-	img.data = (int *)mlx_get_data_addr(img.img_ptr, &img.bpp, &img.size_l, &img.endian);
+	img.data = (int *)mlx_get_data_addr(
+			img.img_ptr, &img.bpp, &img.size_l, &img.endian);
 	scene->img = img;
 }
 
@@ -174,7 +175,8 @@ int	main(int argc, char **argv)
 
 	scene = (t_scene *)ft_calloc(1, sizeof(t_scene));
 	scene->mlx = mlx_init();
-	scene->win = mlx_new_window(scene->mlx, WIN_WIDTH + CONSOLE_WIDTH, WIN_HEIGHT, "miniRT");
+	scene->win = mlx_new_window(
+			scene->mlx, WIN_WIDTH + CONSOLE_WIDTH, WIN_HEIGHT, "miniRT");
 	parse_arg(argc, argv, scene);
 	normalize_camera(scene);
 	// print_all_objects_test(scene); //테스트 코드

@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 16:46:33 by gyim              #+#    #+#             */
-/*   Updated: 2023/03/30 11:02:21 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/30 15:39:36 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,4 +82,13 @@ double	find_root(double t[2], double coeff[3], double discriminant)
 		t[1] = temp;
 	}
 	return (find_t(t[0], t[1]));
+}
+
+void	swap_double(double *a, double *b)
+{
+	double	temp;
+
+	temp = *a;
+	*a = *b;
+	*b = temp;
 }

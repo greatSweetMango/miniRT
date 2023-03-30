@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 16:29:34 by gyim              #+#    #+#             */
-/*   Updated: 2023/03/30 11:02:37 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/30 19:41:49 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	get_cylinder_body(t_hit_info *hit_info, t_ray ray, t_list *cy)
 		return ;
 	hit_info->obj = cy;
 	hit_info->ray = ray;
+	hit_info->color = cylinder->color;
 	get_cylinder_body_normal(hit_info, cylinder);
 	hit_info->color = get_cylinder_body_color(cylinder, hit_info);
 }
@@ -109,14 +110,4 @@ void	get_cylinder_body_normal(t_hit_info *hit_info, t_cylinder *cylinder)
 	height = v3_mul_d(cylinder->orientation,
 			v3_inner_product_v3(lcenter_to_point, cylinder->orientation));
 	hit_info->normal = v3_unit(v3_minus_v3(lcenter_to_point, height));
-}
-
-t_rgb	get_cylinder_body_color(t_cylinder *cylinder, t_hit_info *hit_info)
-{
-	if (cylinder->texture.type == TT_CHECKER)
-		return (checker_cylinder_body(cylinder, hit_info));
-	else if (cylinder->texture.type == TT_IMAGE)
-		return (texture_cylinder_body(cylinder, hit_info));
-	else
-		return (cylinder->color);
 }

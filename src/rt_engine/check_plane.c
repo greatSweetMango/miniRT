@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_plane.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 14:13:48 by gyim              #+#    #+#             */
-/*   Updated: 2023/03/24 16:21:52 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/03/30 15:26:32 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,9 @@ t_hit_info	check_plane(t_ray ray, t_list *pl)
 t_rgb	get_plane_color(t_plane *plane, t_hit_info *hit_info)
 {
 	if (plane->texture.type == TT_CHECKER)
-		return checker_plane(plane, hit_info);
+		return (checker_plane(plane, hit_info));
 	else if (plane->texture.type == TT_IMAGE)
-		return texture_plane(plane, hit_info);
+		return (texture_plane(plane, hit_info));
 	else
-		return plane->color;
+		return (plane->color);
 }

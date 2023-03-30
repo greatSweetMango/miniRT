@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   check_sphere.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 16:49:48 by gyim              #+#    #+#             */
-/*   Updated: 2023/03/24 15:55:44 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/03/30 16:09:41 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+
+void	set_sphere_hit_info(t_hit_info *hit_info, t_list *sp, t_ray ray);
 
 t_hit_info	check_all_sphere(t_ray ray, t_scene *scene)
 {
@@ -36,8 +38,7 @@ t_hit_info	check_sphere(t_ray ray, t_list *sp)
 	t_hit_info	hit_info;
 	double		discriminant;
 	t_vec3		v;
-	double		t1;
-	double		t2;
+	double		t[2];
 	t_sphere	*sphere;
 
 	sphere = (t_sphere *)sp->content;
@@ -48,29 +49,13 @@ t_hit_info	check_sphere(t_ray ray, t_list *sp)
 				- pow(sphere->diameter / 2, 2.0)));
 	if (discriminant < 0)
 		return (hit_info);
-	t1 = -v3_inner_product_v3(v, ray.orient) + sqrt(discriminant);
-	t2 = -v3_inner_product_v3(v, ray.orient) - sqrt(discriminant);
-	hit_info.t = find_t(t1, t2);
+	t[0] = -v3_inner_product_v3(v, ray.orient) + sqrt(discriminant);
+	t[1] = -v3_inner_product_v3(v, ray.orient) - sqrt(discriminant);
+	hit_info.t = find_t(t[0], t[1]);
 	if (hit_info.t < 0)
 		return (hit_info);
-	hit_info.obj = (t_list *)sp;
-	hit_info.point = v3_plus_v3(ray.pos, v3_mul_d(ray.orient, hit_info.t));
-	hit_info.normal = v3_unit(v3_minus_v3(hit_info.point, sphere->pos));
-	if (v3_inner_product_v3(v3_mul_d(hit_info.normal, -1.0), ray.orient) < 0.0)
-		hit_info.obj = NULL;
-	hit_info.ray = ray;
-	hit_info.color = get_sphere_color(sphere, &hit_info);
+	set_sphere_hit_info(&hit_info, sp, ray);
 	return (hit_info);
-}
-
-t_rgb	get_sphere_color(t_sphere *sphere, t_hit_info *hit_info)
-{
-	if (sphere->texture.type == TT_CHECKER)
-		return checker_sphere(sphere, hit_info);
-	else if (sphere->texture.type == TT_IMAGE)
-		return texture_sphere(sphere, hit_info);
-	else
-		return sphere->color;
 }
 
 double	get_sphere_phi(t_vec3 point)
@@ -95,4 +80,18 @@ double	get_sphere_theta(t_vec3	point)
 	if (ret < 0)
 		ret = M_PI + ret;
 	return (ret);
+}
+
+void	set_sphere_hit_info(t_hit_info *hit_info, t_list *sp, t_ray ray)
+{
+	t_sphere	*sphere;
+
+	sphere = (t_sphere *)sp->content;
+	hit_info->obj = (t_list *)sp;
+	hit_info->point = v3_plus_v3(ray.pos, v3_mul_d(ray.orient, hit_info->t));
+	hit_info->normal = v3_unit(v3_minus_v3(hit_info->point, sphere->pos));
+	if (v3_inner_product_v3(v3_mul_d(hit_info->normal, -1.0), ray.orient) < 0.0)
+		hit_info->obj = NULL;
+	hit_info->ray = ray;
+	hit_info->color = get_sphere_color(sphere, hit_info);
 }

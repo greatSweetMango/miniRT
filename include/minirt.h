@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:59:09 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/03/30 13:49:54 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/30 19:51:45 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -205,9 +205,13 @@ int			get_cylinder_hit_point(t_hit_info *hit_info,
 	t_cylinder *cylinder, t_ray ray, t_root root);
 int			cylinder_height_check(t_cylinder *cylinder, t_vec3	point);
 void		get_cylinder_body_normal(t_hit_info *hit_info, t_cylinder *cylinder);
+//check_cylinder_body2.c
 t_rgb		get_cylinder_body_color(t_cylinder *cylinder, t_hit_info *hit_info);
 //check_cylinder_head.c
 void	get_cylinder_head(t_hit_info *hit_info, t_ray ray, t_list *cy);
+void	set_cylinder_head_hit_info(t_hit_info *hit_info, t_list *cy,
+			double t, t_vec3 normal);
+double	get_cylinder_head_t(t_cylinder *cylinder, t_ray ray, t_vec3 orient);
 // t_rgb	get_cylinder_head_color(t_cylinder *cylinder, t_hit_info *hit_info);
 // double	check_cylinder_head(t_ray ray, t_vec3 pos, t_vec3 normal, double radius);
 
@@ -224,11 +228,17 @@ double		specular_light(t_hit_info hit_info, t_light *light);
 double		get_distance(t_vec3 p1, t_vec3 p2);
 // check_object.c
 t_hit_info	check_objects(t_ray ray, t_scene *scene);
-// checker_map.c
-t_rgb	checker_plane(t_plane *plane, t_hit_info *hit_info);
-t_rgb	checker_sphere(t_sphere *sphere, t_hit_info *hit_info);
+// checker_cylinder.c
 t_rgb	checker_cylinder_body(t_cylinder *cylinder, t_hit_info *hit_info);
+t_rgb	get_cylinder_checker_color(double theta, double height,
+	int width, t_hit_info *hit_info);
 t_rgb	checker_cylinder_head(t_cylinder *cylinder, t_hit_info *hit_info);
+// checker_plane.c
+t_rgb	checker_plane(t_plane *plane, t_hit_info *hit_info);
+// checker_sphere.c
+t_rgb	checker_sphere(t_sphere *sphere, t_hit_info *hit_info);
+void	get_sphere_phi_theta(double *phi, double *theta, t_vec3 point);
+t_rgb	get_sphere_checker_color(double phi, double theta, t_sphere *sphere);
 // check_plane.c
 t_hit_info	check_all_plane(t_ray ray, t_list *plane);
 t_hit_info	check_plane(t_ray ray, t_list *pl);
@@ -236,9 +246,11 @@ t_rgb		get_plane_color(t_plane *plane, t_hit_info *hit_info);
 // check_sphere.c
 t_hit_info	check_all_sphere(t_ray ray, t_scene *scene);
 t_hit_info	check_sphere(t_ray ray, t_list *sp);
-t_rgb		get_sphere_color(t_sphere *sphere, t_hit_info *hit_info);
 double		get_sphere_phi(t_vec3 point);
 double		get_sphere_theta(t_vec3	point);
+void		set_sphere_hit_info(t_hit_info *hit_info, t_list *sp, t_ray ray);
+// check_sphere2.c
+t_rgb		get_sphere_color(t_sphere *sphere, t_hit_info *hit_info);
 // get_hit_info.c
 
 // ray.c
@@ -252,13 +264,19 @@ t_rgb	add_ambient_light(t_rgb color, t_ambient_lightning ambient_light);
 double	find_t(double t1, double t2);
 t_root	solve_equation(t_equation eq);
 double	find_root(double t[2], double coeff[3], double discriminant);
+void	swap_double(double *a, double *b);
 
 // texture_cylinder.c
 t_rgb   texture_cylinder_body(t_cylinder *cylinder, t_hit_info *hit_info);
+void	get_cylinder_theta_height(double *theta, double *height, t_cylinder *cylinder, t_hit_info *hit_info);
 double	get_circle_theta(t_vec3 dr, t_vec3 x_axis, t_vec3 y_axis);
 
 // texture_sphere.c
 t_rgb	texture_sphere(t_sphere *sphere, t_hit_info *hit_info);
+t_vec3	change_of_basis(t_vec3	center_to_point,
+	t_vec3 x_axis, t_vec3 y_axis, t_vec3 z_axis);
+void	get_sphere_texture_point(int *x, int *y,
+	t_sphere *sphere, t_vec3 point);
 
 // texture_plane.c
 t_rgb   texture_plane(t_plane *plane, t_hit_info *hit_info);

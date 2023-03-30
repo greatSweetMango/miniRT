@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 11:59:11 by gyim              #+#    #+#             */
-/*   Updated: 2023/03/28 18:41:59 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/30 15:41:33 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,13 +92,7 @@ double	check_corn_root(t_ray ray, t_cone *cone, t_cone_var variable)
 	if (alpha < 0 || alpha > cone->height)
 		variable.t[1] = -1.0;
 	if (variable.t[0] > variable.t[1])
-	{
-		double temp;
-
-		temp = variable.t[0];
-		variable.t[0] = variable.t[1];
-		variable.t[1] = temp;
-	}
+		swap_double(&variable.t[0], &variable.t[1]);
 	if (variable.t[0] < 0)
 	{
 		if (variable.t[1] < 0)
