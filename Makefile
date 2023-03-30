@@ -6,14 +6,14 @@
 #    By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/14 16:46:22 by jaehyuki          #+#    #+#              #
-#    Updated: 2023/03/29 19:31:40 by gyim             ###   ########seoul.kr   #
+#    Updated: 2023/03/30 07:56:59 by gyim             ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
 .DEFAULT_GOAL = all
 
 NAME		=	minirt
-CFLAGS		=	-Wall -Werror -Wextra -MMD -MP -g3 -fsanitize=thread,undefined
+CFLAGS		=	-Wall -Werror -Wextra -MMD -MP -g3 #-fsanitize=thread,undefined
 CPPFLAGS	=	-I./include -I./libft -I./mlx
 LDFLAGS		=	-L./libft -L./mlx
 LDLIBS		=	-lft -lmlx

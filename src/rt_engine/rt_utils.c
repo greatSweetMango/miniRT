@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 16:46:33 by gyim              #+#    #+#             */
-/*   Updated: 2023/03/29 18:25:31 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/30 11:02:21 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,21 +52,14 @@ t_root	solve_equation(t_equation eq)
 		root.valid = 0;
 		return (root);
 	}
-	if (fabs(discriminant) < __DBL_EPSILON__)
-	{
-		root.valid = 1;
-		root.t1 = -eq.b / (2.0 * eq.a);
-		root.t2 = 0.0;
-		return (root);
-	}
+	root.t1 = (-eq.b - sqrt(discriminant)) / (2.0 * eq.a);
+	root.t2 = (-eq.b + sqrt(discriminant)) / (2.0 * eq.a);
 	if (root.t1 < 0 && root.t2 < 0)
 	{
 		root.valid = 0;
 		return (root);
 	}
 	root.valid = 2;
-	root.t1 = (-eq.b - sqrt(discriminant)) / (2.0 * eq.a);
-	root.t2 = (-eq.b + sqrt(discriminant)) / (2.0 * eq.a);
 	if (root.t1 > root.t2)
 	{
 		temp = root.t1;

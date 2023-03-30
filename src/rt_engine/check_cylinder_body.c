@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 16:29:34 by gyim              #+#    #+#             */
-/*   Updated: 2023/03/29 19:37:46 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/30 11:02:37 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	get_cylinder_body(t_hit_info *hit_info, t_ray ray, t_list *cy)
 	cylinder = (t_cylinder *)cy->content;
 	var = get_cylinder_var(ray, cylinder);
 	root = solve_equation(var);
-	printf("%f %f\n", root.t1, root.t2);
 	if (!root.valid)
 		return ;
 	if (!get_cylinder_hit_point(hit_info, cylinder, ray, root))
@@ -60,7 +59,7 @@ int	get_cylinder_hit_point(t_hit_info *hit_info,
 	t_vec3	l1;
 	t_vec3	l2;
 
-	if (root.t1 > 0)
+	if (root.t1 > 0.0)
 	{
 		l1 = v3_plus_v3(ray.pos, v3_mul_d(ray.orient, root.t1));
 		if (cylinder_height_check(cylinder, l1))
@@ -70,7 +69,7 @@ int	get_cylinder_hit_point(t_hit_info *hit_info,
 			return (1);
 		}
 	}
-	if (root.t2 > 0)
+	if (root.t2 > 0.0)
 	{
 		l2 = v3_plus_v3(ray.pos, v3_mul_d(ray.orient, root.t2));
 		if (cylinder_height_check(cylinder, l2))
