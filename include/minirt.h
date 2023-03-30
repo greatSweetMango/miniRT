@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:59:09 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/03/28 18:41:28 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/30 13:49:54 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -207,7 +207,7 @@ int			cylinder_height_check(t_cylinder *cylinder, t_vec3	point);
 void		get_cylinder_body_normal(t_hit_info *hit_info, t_cylinder *cylinder);
 t_rgb		get_cylinder_body_color(t_cylinder *cylinder, t_hit_info *hit_info);
 //check_cylinder_head.c
-// void	get_cylinder_head(t_hit_info *hit_info, t_ray ray, t_list *cy);
+void	get_cylinder_head(t_hit_info *hit_info, t_ray ray, t_list *cy);
 // t_rgb	get_cylinder_head_color(t_cylinder *cylinder, t_hit_info *hit_info);
 // double	check_cylinder_head(t_ray ray, t_vec3 pos, t_vec3 normal, double radius);
 
