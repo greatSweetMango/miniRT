@@ -6,7 +6,7 @@
 /*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 20:24:04 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/03/31 15:46:02 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/03/31 16:04:22 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,7 @@ void	set_console_bg(t_scene *scene)
 	else if (scene->selected_obj->obj_type == CONE)
 		str = ft_strdup("[ CONE ]");
 	if (str)
-		mlx_string_put (scene->mlx, scene->win, 750,
-			350, 0xFFFFFF, str);
+		mlx_string_put(scene->mlx, scene->win, 750, 350, 0xFFFFFF, str);
 	free(str);
 }
 

@@ -6,7 +6,7 @@
 #    By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/14 16:46:22 by jaehyuki          #+#    #+#              #
-#    Updated: 2023/03/31 15:41:17 by jaehyuki         ###   ########.fr        #
+#    Updated: 2023/03/31 15:54:32 by jaehyuki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ MAIN = src/main.c			\
 		src/draw_scene.c	\
 
 ifdef bonus
-	MAIN = main_bonus.c				\
+	MAIN = src/main_bonus.c			\
 			src/draw_scene_bonus.c	
 endif
 ##############################

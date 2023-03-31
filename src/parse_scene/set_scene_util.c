@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_scene_util.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 20:19:16 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/03/25 15:51:43 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/31 16:04:56 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,13 @@ void	set_planes(t_scene *scene, char **object)
 	plane->pos = ft_ato_vec3(object[1]);
 	plane->orientation = ft_ato_vec3(object[2]);
 	plane->orientation = v3_unit(plane->orientation);
-	plane->dx = v3_unit(
-			v3_mul_d(v3_cross_product_ds(plane->orientation, 0, 1, 0), -1));
-	if (plane->dx.x == 0 && plane->dx.x == 0 && plane->dx.z == 0)
+	if (plane->orientation.x == 0 && plane->orientation.y == 1.0
+		&& plane->orientation.z == 0)
 		v3_set(&plane->dx, 1, 0, 0);
+	else
+		plane->dx = v3_unit(
+				v3_mul_d(v3_cross_product_ds(plane->orientation,
+						0, 1, 0), -1));
 	plane->dy = v3_unit(v3_cross_product_v3(plane->orientation, plane->dx));
 	plane->color = ft_ato_rgb(object[3]);
 	plane->texture = get_texture(scene, &object[4], PLANE);
