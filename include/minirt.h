@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:59:09 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/03/30 19:51:45 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/31 09:30:00 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -230,9 +230,11 @@ double		get_distance(t_vec3 p1, t_vec3 p2);
 t_hit_info	check_objects(t_ray ray, t_scene *scene);
 // checker_cylinder.c
 t_rgb	checker_cylinder_body(t_cylinder *cylinder, t_hit_info *hit_info);
-t_rgb	get_cylinder_checker_color(double theta, double height,
-	int width, t_hit_info *hit_info);
+t_rgb	get_cylinder_body_checker_color(double theta,
+		double height, t_cylinder *cylinder, t_hit_info *hit_info);
 t_rgb	checker_cylinder_head(t_cylinder *cylinder, t_hit_info *hit_info);
+t_rgb	get_cylinder_head_checker_color(
+		double theta, t_cylinder *cylinder, t_hit_info *hit_info);
 // checker_plane.c
 t_rgb	checker_plane(t_plane *plane, t_hit_info *hit_info);
 // checker_sphere.c

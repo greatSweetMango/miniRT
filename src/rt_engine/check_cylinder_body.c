@@ -6,7 +6,7 @@
 /*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 16:29:34 by gyim              #+#    #+#             */
-/*   Updated: 2023/03/30 19:41:49 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/31 07:49:53 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,10 @@ t_equation	get_cylinder_var(t_ray ray, t_cylinder *cylinder)
 {
 	t_equation		var;
 	t_vec3			w;
-	t_vec3			c;
 
-	c = v3_plus_v3(cylinder->pos,
+	cylinder->low_center = v3_plus_v3(cylinder->pos,
 			v3_mul_d(cylinder->orientation, -0.5 * cylinder->height));
-	w = v3_minus_v3(ray.pos, c);
+	w = v3_minus_v3(ray.pos, cylinder->low_center);
 	var.a = v3_inner_product_v3(ray.orient, ray.orient);
 	var.a -= pow(v3_inner_product_v3(ray.orient, cylinder->orientation), 2.0);
 	var.b = v3_inner_product_v3(ray.orient, w);
