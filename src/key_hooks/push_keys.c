@@ -6,7 +6,7 @@
 /*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 20:00:19 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/03/06 17:59:13 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/03/31 15:17:22 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,12 @@ int	push_keys(int keycode, t_scene *scene)
 		close_scene(scene);
 	if (keycode == KEY_SPACEBAR)
 		scene->selected_obj = scene->cameras;
+	else if (keycode == KEY_LIGHT)
+		scene->selected_obj = scene->lights;
 	if (scene->selected_obj->obj_type == CAMERA)
 		update_camera(keycode, scene);
+	else if (scene->selected_obj->obj_type == LIGHT)
+		update_light(keycode, scene);
 	else if (scene->selected_obj->obj_type == SPHERE)
 		update_sphere(keycode, scene);
 	else if (scene->selected_obj->obj_type == PLANE)

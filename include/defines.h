@@ -6,7 +6,7 @@
 /*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:53:28 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/03/24 17:49:53 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/03/31 14:42:47 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@
 #define KEY_PREV	    43	//(<)
 #define KEY_NEXT	    47	//(>)
 #define KEY_SPACEBAR	49
+#define KEY_LIGHT       37
 
 #define KEY_DIAMETER_DOWN   27 //(=)
 #define KEY_DIAMETER_UP     24 //(-)
@@ -72,5 +73,3 @@
 #define PLANE		3
 #define CYLINDER	4
 #define CONE		5 // BONUS
-#define HYPERBOLOID 6 // BONUS
-#define PARABOLOID	7 // BONUS

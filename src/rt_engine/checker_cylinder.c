@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker_cylinder.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 18:22:09 by gyim              #+#    #+#             */
-/*   Updated: 2023/03/31 09:30:05 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/31 14:24:42 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ t_rgb	checker_cylinder_body(t_cylinder *cylinder, t_hit_info *hit_info)
 	dr = v3_unit(v3_minus_v3(center_to_point,
 				v3_mul_d(cylinder->orientation, height)));
 	y_axis = v3_cross_product_v3(cylinder->orientation, cylinder->x_axis);
-	theta = atan2(v3_inner_product_v3(dr, y_axis)
-			, v3_inner_product_v3(dr, cylinder->x_axis));
+	theta = atan2(v3_inner_product_v3(dr, y_axis),
+			v3_inner_product_v3(dr, cylinder->x_axis));
 	return (get_cylinder_body_checker_color(theta, height, cylinder, hit_info));
 }
 

@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+         #
+#    By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/14 16:46:22 by jaehyuki          #+#    #+#              #
-#    Updated: 2023/03/30 18:22:57 by gyim             ###   ########seoul.kr   #
+#    Updated: 2023/03/31 15:41:17 by jaehyuki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 .DEFAULT_GOAL = all
 
 NAME		=	minirt
-CFLAGS		=	-Wall -Werror -Wextra -MMD -MP -g3 #-fsanitize=thread,undefined
+CFLAGS		=	-Wall -Werror -Wextra -MMD -MP -g3 #-fsanitize=address#-fsanitize=thread,undefined
 CPPFLAGS	=	-I./include -I./libft -I./mlx
 LDFLAGS		=	-L./libft -L./mlx
 LDLIBS		=	-lft -lmlx
@@ -27,15 +27,16 @@ LIBFT		=	./libft/libft.a
 MLX			=	./mlx/libmlx.a
 
 ##########BONUS##############
-MAIN = src/main.c#??
+MAIN = src/main.c			\
+		src/draw_scene.c	\
 
 ifdef bonus
-	MAIN = main_bonus.c
+	MAIN = main_bonus.c				\
+			src/draw_scene_bonus.c	
 endif
 ##############################
 
 SRCS		=	$(MAIN)										\
-				src/draw_scene.c							\
 				src/error.c									\
 				src/key_hooks/mouse_button.c				\
 				src/key_hooks/move_obj.c					\
@@ -44,6 +45,7 @@ SRCS		=	$(MAIN)										\
 				src/key_hooks/update_camera.c				\
 				src/key_hooks/update_cone.c					\
 				src/key_hooks/update_cylinder.c				\
+				src/key_hooks/update_light.c				\
 				src/key_hooks/update_plane.c				\
 				src/key_hooks/update_sphere.c				\
 				src/functions/ft_ato_rgb.c					\

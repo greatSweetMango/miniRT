@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_scene.c                                       :+:      :+:    :+:   */
+/*   draw_scene_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 20:24:04 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/03/31 15:46:30 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/03/31 15:46:02 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,22 +42,50 @@ void	set_console_bg(t_scene *scene)
 	free(str);
 }
 
+void	*put_scene_to_img_thread(void *argv)
+{
+	t_thread	*thread;
+	int			w;
+	int			h;
+
+	thread = (t_thread *)argv;
+	h = HEIGHT_BLOCK * thread->thread_no;
+	while (h < HEIGHT_BLOCK * (thread->thread_no + 1))
+	{
+		w = 0;
+		while (w < WIN_WIDTH)
+		{
+			thread->img->data[h * WIN_WIDTH + w]
+				= rt_engine(thread->scene, w, h);
+			w++;
+		}
+		h++;
+	}
+	return (NULL);
+}
+
 void	put_scene_to_img(t_scene *scene, t_img *img)
 {
-	int	w;
-	int	h;
-	
-	h = 0;
-	while (h < WIN_HEIGHT)
- 	{
- 		w = 0; 
- 		while (w < WIN_WIDTH)
- 		{
- 			img->data[h * WIN_WIDTH + w] = rt_engine(scene, w, h);
- 			w++;
- 		}
- 		h++;
- 	}
+	t_thread	threads[NUM_THREAD];
+	int			i;
+	int			joinrv;
+
+	i = 0;
+	while (i < NUM_THREAD)
+	{
+		threads[i].scene = scene;
+		threads[i].img = img;
+		threads[i].thread_no = i;
+		pthread_create(&threads[i].th, NULL,
+			&put_scene_to_img_thread, (void *)&threads[i]);
+		i++;
+	}
+	i = 0;
+	while (i < NUM_THREAD)
+	{
+		pthread_join(threads[i].th, (void **)&joinrv);
+		i++;
+	}
 }
 
 void	draw_scene(t_scene *scene)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:59:09 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/03/31 09:30:00 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/31 14:50:23 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,10 +78,6 @@ t_quaternion	get_quaternion_conjugate(t_quaternion q);
 t_quaternion	multiply_quaternion(t_quaternion a, t_quaternion b);
 t_quaternion	get_quaternion_from_axis_angle(t_vec3 axis, double angle);
 void			rotate_obj(int keycode, t_vec3 *orientation, t_scene *scene);
-// void	get_rotation_matrix(float matrix[3][3], t_vec3 axis_norm, float theta);
-// t_vec3	rotate_by_dx_axis(t_vec3 orient, t_vec3 axis, double angle);
-// void	rotate_obj(int keycode, t_vec3 *orientation, t_scene *scene);
-// void	rotate_by_y_axis(t_vec3 *ori, double radian);
 
 // update_camera.c
 void	update_camera(int keycode, t_scene *scene);
@@ -93,13 +89,16 @@ void	update_cone(int keycode, t_scene *scene);
 // update_cylinder.c
 void	update_cylinder(int keycode, t_scene *scene);
 
+// update_light.cs
+void	update_light(int keycode, t_scene *scene);
+
 // update_plane.c
 void	update_plane(int keycode, t_scene *scene);
 
 // update_sphere.c
 void	update_sphere(int keycode, t_scene *scene);
 
-/* nomalizetion */////////////////////////////////////////////////
+/* nomalizetion */
 
 //nomalize_camera_utils.c
 void		set_planes_pos(t_list *planes, t_camera *now_cam);
@@ -211,6 +210,7 @@ t_rgb		get_cylinder_body_color(t_cylinder *cylinder, t_hit_info *hit_info);
 void	get_cylinder_head(t_hit_info *hit_info, t_ray ray, t_list *cy);
 void	set_cylinder_head_hit_info(t_hit_info *hit_info, t_list *cy,
 			double t, t_vec3 normal);
+t_rgb	get_cylinder_head_color(t_cylinder *cylinder, t_hit_info *hit_info);
 double	get_cylinder_head_t(t_cylinder *cylinder, t_ray ray, t_vec3 orient);
 // t_rgb	get_cylinder_head_color(t_cylinder *cylinder, t_hit_info *hit_info);
 // double	check_cylinder_head(t_ray ray, t_vec3 pos, t_vec3 normal, double radius);

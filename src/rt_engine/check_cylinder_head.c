@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_cylinder_head.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 10:54:56 by gyim              #+#    #+#             */
-/*   Updated: 2023/03/30 19:46:55 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/03/31 15:18:56 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	get_cylinder_head(t_hit_info *hit_info, t_ray ray, t_list *cy)
 		hit_info->point = v3_plus_v3(ray.pos, v3_mul_d(ray.orient, t2));
 	}
 	if (hit_info->obj != NULL)
-		hit_info->color = checker_cylinder_head(cylinder, hit_info);
+		hit_info->color = get_cylinder_head_color(cylinder, hit_info);
 }
 
 double	get_cylinder_head_t(t_cylinder *cylinder, t_ray ray, t_vec3 orient)
@@ -58,4 +58,14 @@ void	set_cylinder_head_hit_info(t_hit_info *hit_info, t_list *cy,
 	hit_info->t = t;
 	hit_info->normal = normal;
 	hit_info->color = cylinder->color;
+}
+
+t_rgb	get_cylinder_head_color(t_cylinder *cylinder, t_hit_info *hit_info)
+{
+	if (cylinder->texture.type == TT_CHECKER)
+		return (checker_cylinder_head(cylinder, hit_info));
+	else if (cylinder->texture.type == TT_IMAGE)
+		return (cylinder->color);
+	else
+		return (cylinder->color);
 }
