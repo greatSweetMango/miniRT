@@ -3,17 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:52:47 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/03/31 14:54:53 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/04/05 08:23:09 by gyim             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTS_H
 # define STRUCTS_H
-
-/* BASE */
 
 typedef struct s_img
 {
@@ -26,20 +24,20 @@ typedef struct s_img
 
 typedef struct s_texture
 {
-	int		type; //NONE 0, CHECKER 1, IMG 2 [  , ck, img]
-	t_img	*img; // IMG;
-	int		width; // PLANE (IMG O)
-	int		height;	// PALNE (IMG O)
-	int		divid; // CYLINDER, SPHERE (IMG X)
+	int		type;
+	t_img	*img;
+	int		width;
+	int		height;
+	int		divid;
 }	t_texture;
 
 typedef struct s_quaternion{
-    double  w;
-    double  x;
-    double  y;
-    double  z;
+	double	w;
+	double	x;
+	double	y;
+	double	z;
 
-} t_quaternion;
+}	t_quaternion;
 
 typedef struct s_vec3
 {
@@ -57,8 +55,6 @@ typedef struct s_list
 	struct s_list	*pre;
 	struct s_list	*next;
 }	t_list;
-
-/* OBJECTS */
 
 typedef struct s_ambient_lightning
 {
@@ -147,8 +143,6 @@ typedef struct s_hit_info
 	t_vec3	normal;
 }	t_hit_info;
 
-/* object variable */
-
 typedef struct s_root
 {
 	double	t1;
@@ -177,8 +171,6 @@ typedef struct s_cone_var
 	double	alpha[2];
 }	t_cone_var;
 
-/* Main Structs */
-
 typedef struct s_scene
 {
 	void				*mlx;
@@ -195,7 +187,6 @@ typedef struct s_scene
 	t_list				*selected_obj;
 }	t_scene;
 
-// Bonuse structs
 typedef struct s_thread
 {
 	t_scene		*scene;
