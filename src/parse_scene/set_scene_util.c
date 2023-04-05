@@ -6,11 +6,21 @@
 /*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 20:19:16 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/03/31 16:04:56 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/04/05 13:30:55 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+
+void	check_orientation(t_vec3 orientation)
+{
+	if (orientation.x < -1 || orientation.x > 1)
+		puterr_exit("Parsing fail! (orientation is wrong)");
+	else if (orientation.y < -1 || orientation.y > 1)
+		puterr_exit("Parsing fail! (orientation is wrong)");
+	else if (orientation.z < -1 || orientation.z > 1)
+		puterr_exit("Parsing fail! (orientation is wrong)");
+}
 
 void	set_cylinders(t_scene *scene, char **object)
 {
@@ -24,6 +34,7 @@ void	set_cylinders(t_scene *scene, char **object)
 		puterr_exit("Parsing fail! (object's property is wrong)");
 	cylinder->pos = ft_ato_vec3(object[1]);
 	cylinder->orientation = ft_ato_vec3(object[2]);
+	check_orientation(cylinder->orientation);
 	cylinder->orientation = v3_unit(cylinder->orientation);
 	cylinder->diameter = ft_atod(object[3]);
 	cylinder->height = ft_atod(object[4]);
@@ -43,6 +54,7 @@ void	set_planes(t_scene *scene, char **object)
 		puterr_exit("Parsing fail! (object's property is wrong)");
 	plane->pos = ft_ato_vec3(object[1]);
 	plane->orientation = ft_ato_vec3(object[2]);
+	check_orientation(plane->orientation);
 	plane->orientation = v3_unit(plane->orientation);
 	if (plane->orientation.x == 0 && plane->orientation.y == 1.0
 		&& plane->orientation.z == 0)
@@ -69,6 +81,7 @@ void	set_cones(t_scene *scene, char **object)
 		puterr_exit("Parsing fail! (object's property is wrong)");
 	cone->pos = ft_ato_vec3(object[1]);
 	cone->orientation = ft_ato_vec3(object[2]);
+	check_orientation(cone->orientation);
 	cone->orientation = v3_unit(cone->orientation);
 	cone->diameter = ft_atod(object[3]);
 	cone->height = ft_atod(object[4]);

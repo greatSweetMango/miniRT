@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   defines.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:53:28 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/04/05 09:34:44 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/04/05 12:28:50 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@
 #define RGB_MAX 255
 
 /* Image info */
-#define WIN_WIDTH			700
-#define WIN_HEIGHT			700
+#define WIN_WIDTH			900
+#define WIN_HEIGHT			900
 #define CONSOLE_WIDTH		200
 
 /* TEXTURE_TYPE */

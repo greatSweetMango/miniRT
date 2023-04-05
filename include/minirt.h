@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gyim <gyim@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:59:09 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/04/05 08:59:57 by gyim             ###   ########seoul.kr  */
+/*   Updated: 2023/04/05 13:27:09 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,6 +172,7 @@ void			put2scene(t_scene *scene, char *line);
 void			parse_arg(int argc, char **argv, t_scene *scene);
 
 // set_scene_util.c
+void			check_orientation(t_vec3 orientation);
 void			set_planes(t_scene *scene, char **object);
 void			set_cylinders(t_scene *scene, char **object);
 void			set_cones(t_scene *scene, char **object);
@@ -300,6 +301,7 @@ void			put_img(t_scene *scene, t_camera *camera, t_img *img);
 void			set_screen(t_screen *screen, t_camera *camera);
 
 // draw_scene.c
+void			put_target_obj_name(t_scene *scene);
 void			set_console_bg(t_scene *scene);
 void			put_scene_to_img(t_scene *scene, t_img *img);
 void			draw_scene(t_scene *scene);

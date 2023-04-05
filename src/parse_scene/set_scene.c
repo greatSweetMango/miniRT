@@ -6,7 +6,7 @@
 /*   By: jaehyuki <jaehyuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 20:19:16 by jaehyuki          #+#    #+#             */
-/*   Updated: 2023/03/24 17:13:53 by jaehyuki         ###   ########.fr       */
+/*   Updated: 2023/04/05 13:35:28 by jaehyuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ void	set_lights(t_scene *scene, char **object)
 		puterr_exit("Parsing fail! (object's property is wrong)");
 	light->pos = ft_ato_vec3(object[1]);
 	light->ratio = ft_atod(object[2]);
+	if (light->ratio > 1 || light->ratio < 0)
+		puterr_exit("Parsing fail! (Light ratio is wrong)");
 	light->color = ft_ato_rgb(object[3]);
 	ft_lstadd_back(&(scene->lights), ft_lstnew(light, LIGHT));
 }
@@ -55,8 +57,11 @@ void	set_cameras(t_scene *scene, char **object)
 		puterr_exit("Parsing fail! (object's property is wrong)");
 	camera->pos = ft_ato_vec3(object[1]);
 	camera->orientation = ft_ato_vec3(object[2]);
+	check_orientation(camera->orientation);
 	camera->orientation = v3_unit(camera->orientation);
 	camera->fov = ft_atod(object[3]);
+	if (camera->fov < 0 || camera->fov > 180)
+		puterr_exit("Parsing fail! (camera fov is wrong)");
 	ft_lstadd_back(&(scene->cameras), ft_lstnew(camera, CAMERA));
 }
 
@@ -65,6 +70,9 @@ void	set_ambient_lightning(t_scene *scene, char **object)
 	if (!object[1] || !object[2] || object[3])
 		puterr_exit("Parsing fail! (object's property is wrong)");
 	scene->ambient_lightning.ratio = ft_atod(object[1]);
+	if (scene->ambient_lightning.ratio > 1
+		|| scene->ambient_lightning.ratio < 0)
+		puterr_exit("Parsing fail! (Ambient_light ratio is wrong)");
 	scene->ambient_lightning.color = ft_ato_rgb(object[2]);
 	scene->ambient_lightning.is_set = 1;
 }
