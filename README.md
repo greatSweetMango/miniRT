@@ -11,6 +11,8 @@ Mlx기반 레이트레이싱 시뮬레이션
 - [License](#license)
 
 ## Installation
+Tested in MacOS
+
 ### 1. clone
 ```bash
 git clone git@github.com:greatSweetMango/miniRT.git
